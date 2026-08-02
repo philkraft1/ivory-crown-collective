@@ -26,7 +26,7 @@ export function Hero() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-pearl to-transparent" />
       </div>
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-28 sm:px-8 sm:pb-24 sm:pt-32">
+      <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-16 pt-44 sm:px-8 sm:pb-24 sm:pt-52">
         <p
           id="hero-brand"
           className="animate-rise font-[family-name:var(--font-syne)] text-4xl font-semibold leading-[0.95] tracking-[-0.03em] text-ink sm:text-6xl md:text-7xl lg:text-8xl"
