@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/site";
+
 export function ConstructionBanner() {
   return (
     <div
@@ -7,10 +9,17 @@ export function ConstructionBanner() {
       <p className="font-[family-name:var(--font-cinzel)] text-[0.8rem] font-bold uppercase leading-snug tracking-[0.05em] sm:text-base md:text-lg lg:text-xl">
         Site still under construction — any questions contact me at{" "}
         <a
-          href="mailto:phil@ivorycrowncollective.com"
+          href={`mailto:${SITE.email}`}
           className="underline decoration-2 underline-offset-4 transition-opacity hover:opacity-70"
         >
-          phil@ivorycrowncollective.com
+          {SITE.email}
+        </a>
+        {" · "}
+        <a
+          href={`tel:${SITE.phoneTel}`}
+          className="underline decoration-2 underline-offset-4 transition-opacity hover:opacity-70"
+        >
+          {SITE.phoneDisplay}
         </a>
       </p>
     </div>
