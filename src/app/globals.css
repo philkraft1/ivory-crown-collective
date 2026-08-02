@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #14171c;
+  --ink-soft: #2a3038;
+  --pearl: #eef0f3;
+  --mist: #d7dce4;
+  --stone: #9aa3b0;
+  --brass: #a8894d;
+  --brass-bright: #c4a45e;
+  --slate: #4a5d72;
+  --background: var(--pearl);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-pearl: var(--pearl);
+  --color-mist: var(--mist);
+  --color-stone: var(--stone);
+  --color-brass: var(--brass);
+  --color-brass-bright: var(--brass-bright);
+  --color-slate: var(--slate);
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-syne);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-outfit), sans-serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brass) 35%, transparent);
+  color: var(--ink);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(2%, -1.5%, 0) scale(1.04);
+  }
+}
+
+@keyframes pulse-line {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-rise-delay-1 {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.animate-rise-delay-2 {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+
+.animate-rise-delay-3 {
+  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+}
+
+.animate-drift {
+  animation: drift 18s ease-in-out infinite;
+}
+
+.animate-pulse-line {
+  animation: pulse-line 4.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-rise,
+  .animate-rise-delay-1,
+  .animate-rise-delay-2,
+  .animate-rise-delay-3,
+  .animate-drift,
+  .animate-pulse-line {
+    animation: none;
+  }
+}
