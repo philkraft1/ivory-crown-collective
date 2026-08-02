@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, Syne } from "next/font/google";
+import { Cinzel, Outfit } from "next/font/google";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -7,9 +7,10 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
-const syne = Syne({
-  variable: "--font-syne",
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
   subsets: ["latin"],
+  weight: ["400", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -18,11 +19,10 @@ export const metadata: Metadata = {
     template: "%s · Ivory Crown Collective",
   },
   description:
-    "Ivory Crown Collective LLC — web and software design alongside DJ gigs. Two co-equal practices, one standard of craft.",
+    "Ivory Crown Collective — web design, entertainment, and IT solutions. Launching soon.",
   openGraph: {
     title: "Ivory Crown Collective",
-    description:
-      "Digital craft and live sound — equal weight, one collective. Web/software design and DJ bookings.",
+    description: "Web design · Entertainment · IT solutions. Launching soon.",
     type: "website",
   },
 };
@@ -33,8 +33,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${syne.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-pearl text-ink">{children}</body>
+    <html lang="en" className={`${outfit.variable} ${cinzel.variable} h-svh overflow-hidden antialiased`}>
+      <body className="h-svh overflow-hidden bg-void text-pearl [font-family:var(--font-outfit),sans-serif]">
+        {children}
+      </body>
     </html>
   );
 }
