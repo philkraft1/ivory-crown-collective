@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { ContactIdentity } from "@/components/ContactIdentity";
 import { SITE } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -56,10 +57,15 @@ export function Contact() {
             Let’s build something.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-pearl/55">
-            Web design, entertainment bookings, or IT help — tell me what you need and I’ll follow up.
+            Web design, entertainment bookings, or IT help — message {SITE.founder.name} and you’ll
+            hear back directly.
           </p>
 
-          <div className="mt-10 space-y-5">
+          <div className="mt-10">
+            <ContactIdentity />
+          </div>
+
+          <div className="mt-8 space-y-3 border-t border-gold/15 pt-8">
             <a
               href={`tel:${SITE.phoneTel}`}
               className="block font-[family-name:var(--font-cinzel)] text-xl text-gold-hot transition-colors hover:text-gold-bright sm:text-2xl"
@@ -76,6 +82,19 @@ export function Contact() {
         </div>
 
         <form onSubmit={onSubmit} className="space-y-5" noValidate>
+          <div className="flex items-start justify-between gap-4 border border-gold/20 px-4 py-4 sm:px-5">
+            <div className="min-w-0">
+              <p className="text-xs tracking-[0.2em] text-pearl/40 uppercase">Sending to</p>
+              <p className="mt-1 font-[family-name:var(--font-cinzel)] text-lg font-semibold text-pearl">
+                {SITE.founder.name}
+              </p>
+              <p className="mt-0.5 text-xs tracking-[0.22em] text-gold-bright uppercase">
+                {SITE.founder.title}
+              </p>
+            </div>
+            <ContactIdentity size="sm" showDetails={false} />
+          </div>
+
           <input
             type="text"
             name="company"
@@ -155,7 +174,7 @@ export function Contact() {
 
           {status === "sent" && (
             <p className="text-sm text-gold-bright" role="status">
-              Message received — I’ll get back to you soon.
+              Message received — {SITE.founder.name} will get back to you soon.
             </p>
           )}
           {status === "error" && (

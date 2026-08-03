@@ -4,9 +4,14 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-gold/15 px-5 py-10 sm:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <p className="font-[family-name:var(--font-cinzel)] text-sm tracking-[0.12em] text-pearl/70 uppercase">
-          {SITE.name}
-        </p>
+        <div>
+          <p className="font-[family-name:var(--font-cinzel)] text-sm tracking-[0.12em] text-pearl/70 uppercase">
+            {SITE.name}
+          </p>
+          <p className="mt-1 text-xs tracking-[0.16em] text-pearl/40 uppercase">
+            {SITE.founder.name}, {SITE.founder.title}
+          </p>
+        </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-pearl/45">
           <a href={`tel:${SITE.phoneTel}`} className="transition-colors hover:text-gold-bright">
             {SITE.phoneDisplay}
