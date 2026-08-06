@@ -39,10 +39,10 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 flex min-h-[calc(100svh-4.25rem)] flex-col">
-        <div className="animate-rise relative min-h-0 flex-1">
+        <div className="animate-rise relative min-h-0 flex-1 px-3 py-2 sm:px-8 sm:py-4">
           <Image
             src="/brand/logo.png"
-            alt="Ivory Crown Collective — Web Design, Entertainment, IT Solutions"
+            alt="Ivory Crown Collective — Web Design, IT Solutions & Software Development"
             fill
             priority
             sizes="100vw"
