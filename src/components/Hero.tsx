@@ -66,14 +66,14 @@ export function Hero() {
               Explore
             </a>
             <a
-              href="#contact"
+              href="#pay"
               className="group relative inline-flex items-center justify-center overflow-hidden px-7 py-3 font-[family-name:var(--font-cinzel)] text-[0.7rem] font-semibold tracking-[0.22em] text-ink uppercase sm:text-xs"
             >
               <span
                 aria-hidden="true"
                 className="absolute inset-0 bg-[linear-gradient(105deg,#f6d45a_0%,#e8b923_40%,#fff1a0_50%,#e8b923_60%,#c9971a_100%)] transition-transform duration-500 group-hover:scale-[1.03]"
               />
-              <span className="relative">Book / contact</span>
+              <span className="relative">Pay / book</span>
             </a>
           </div>
         </div>

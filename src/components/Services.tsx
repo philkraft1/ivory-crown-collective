@@ -29,10 +29,10 @@ export function Services() {
               </h3>
               <p className="mt-4 text-base leading-relaxed text-pearl/55">{service.blurb}</p>
               <a
-                href={`#contact`}
+                href="#pay"
                 className="mt-6 inline-block text-xs tracking-[0.2em] text-gold uppercase transition-colors hover:text-gold-hot"
               >
-                Inquire →
+                Pay deposit →
               </a>
             </article>
           ))}
