@@ -29,6 +29,15 @@
 *.pem
 /ivory-crown-tmp
 
+# generated reports from scripts/shopify (regenerate with the scripts)
+/docs/shopify/*-report.json
+/docs/shopify/*-plan.json
+/docs/shopify/offline-preview.json
+/docs/shopify/emergency-findings.json
+/docs/shopify/option-cleanup.json
+/docs/shopify/image-worklist.json
+/docs/shopify/snapshot.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*

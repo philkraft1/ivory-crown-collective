@@ -6,7 +6,7 @@
  *   node scripts/shopify/01-audit-export.mjs
  *
  * Writes docs/shopify/snapshot.json. Every later script can be reversed from it
- * via 13-restore.mjs, so run this first and keep the file.
+ * via restore.mjs, so run this first and keep the file.
  */
 import { fetchAllProducts, fetchShopInfo } from "./lib/client.mjs";
 import { log, writeReport } from "./lib/cli.mjs";

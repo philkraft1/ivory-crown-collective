@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { SITE } from "@/lib/site";
+
 const dust = [
   { left: "8%", delay: "0s", duration: "11s", size: 2 },
   { left: "18%", delay: "2.2s", duration: "13s", size: 1 },
@@ -76,6 +78,15 @@ export function Hero() {
               <span className="relative">Pay / book</span>
             </a>
           </div>
+          <p className="animate-rise-delay-3 mt-4 text-[0.65rem] tracking-[0.2em] text-pearl/40 uppercase sm:text-xs">
+            Shopping for a costume?{" "}
+            <a
+              href={SITE.shopUrl}
+              className="text-gold-bright underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold-hot"
+            >
+              Visit the shop
+            </a>
+          </p>
         </div>
       </div>
     </section>
