@@ -24,12 +24,6 @@ export function SiteFooter() {
           >
             {SITE.shopLabel}
           </a>
-          <a
-            href={SITE.shopUrl}
-            className="transition-colors hover:text-gold-bright"
-          >
-            {SITE.shopLabel}
-          </a>
           <a href={`tel:${SITE.phoneTel}`} className="transition-colors hover:text-gold-bright">
             {SITE.phoneDisplay}
           </a>
