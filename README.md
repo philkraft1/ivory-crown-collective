@@ -11,6 +11,20 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Shopify retail arm
+
+The children's storybook and stage-costume retail arm is being prepared on
+Shopify. Start with the audit and migration runbook in
+[`docs/shopify/README.md`](docs/shopify/README.md).
+
+```bash
+cp .env.example .env.local
+npm run shopify:audit
+```
+
+Catalog scripts are dry-run by default. Never commit `.env.local` or the
+generated `shopify-data/` snapshots.
+
 ## Brand notes
 
 - Temporary mark: `public/brand/mark.svg` — replace with your logo when ready (e.g. `public/brand/logo.png`) and update `SiteHeader`.
