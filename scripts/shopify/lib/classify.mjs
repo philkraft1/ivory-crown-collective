@@ -539,8 +539,15 @@ function pickBucketByAge(age) {
   return bucket.label;
 }
 
+/** "Adult" and "Child" are wearer roles on family sets, not age brackets. */
 export function ageTagsForSizes(sizeLabels) {
-  return [...new Set(sizeLabels.filter(Boolean).map((label) => `age:${label}`))];
+  return [
+    ...new Set(
+      sizeLabels
+        .filter((label) => label && !["Adult", "Child"].includes(label))
+        .map((label) => `age:${label}`),
+    ),
+  ];
 }
 
 // ---------------------------------------------------------------------------
