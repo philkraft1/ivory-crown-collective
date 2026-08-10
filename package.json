@@ -6,10 +6,25 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:shopify": "node --test scripts/shopify/test/*.test.mjs",
+    "shopify:audit": "node scripts/shopify/01-audit-export.mjs",
+    "shopify:vendor": "node scripts/shopify/02-vendor-brand.mjs",
+    "shopify:prune": "node scripts/shopify/03-prune.mjs",
+    "shopify:taxonomy": "node scripts/shopify/04-taxonomy.mjs",
+    "shopify:titles": "node scripts/shopify/05-titles.mjs",
+    "shopify:descriptions": "node scripts/shopify/06-descriptions.mjs",
+    "shopify:sizing": "node scripts/shopify/07-sizing.mjs",
+    "shopify:pricing": "node scripts/shopify/08-pricing.mjs",
+    "shopify:alt-text": "node scripts/shopify/09-alt-text.mjs",
+    "shopify:image-audit": "node scripts/shopify/10-image-audit.mjs",
+    "shopify:collections": "node scripts/shopify/11-collections.mjs",
+    "shopify:pages": "node scripts/shopify/12-pages.mjs",
+    "shopify:navigation": "node scripts/shopify/13-navigation.mjs",
+    "shopify:articles": "node scripts/shopify/14-articles.mjs"
   },
   "dependencies": {
-    "next": "16.2.12",
+    "next": "^16.3.0",
     "react": "19.2.4",
     "react-dom": "19.2.4"
   },
@@ -19,7 +34,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.2.12",
+    "eslint-config-next": "^16.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
