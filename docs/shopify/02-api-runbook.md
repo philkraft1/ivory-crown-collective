@@ -15,6 +15,8 @@ In Shopify Admin:
    - `write_products`
    - `read_files`
    - `write_files`
+   - `read_online_store_pages`
+   - `write_online_store_pages`
 5. Install the app.
 6. Reveal the Admin API access token once.
 
@@ -63,6 +65,8 @@ npm run shopify:sizing
 npm run shopify:pricing
 npm run shopify:alt-text
 npm run shopify:image-audit
+npm run shopify:collections
+npm run shopify:pages
 ```
 
 Each command writes a timestamped JSON report and makes no changes. Review:
@@ -88,9 +92,13 @@ npm run shopify:descriptions -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
 npm run shopify:sizing -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
 npm run shopify:pricing -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
 npm run shopify:alt-text -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
+npm run shopify:collections -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
+npm run shopify:pages -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
 ```
 
-Step 10 is report-only.
+Step 10 is report-only. Steps 11 and 12 create unpublished resources so a
+merchant can review collection membership, images, page content, links, and
+theme rendering before publication.
 
 After each command:
 
@@ -114,6 +122,8 @@ After each command:
 | 08 | Rounds prices upward to `.95`/`.99`; preserves existing compare-at prices and never fabricates discounts. |
 | 09 | Adds alt text to blank product-image fields. |
 | 10 | Reports retained products with fewer than five images. |
+| 11 | Creates missing automated collections from structured tags; existing handles are never overwritten and new collections remain unpublished. |
+| 12 | Creates missing About, FAQ, Size Guide, and Costume by Date pages as drafts; existing pages are never overwritten. |
 
 ## Product category
 

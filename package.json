@@ -17,7 +17,9 @@
     "shopify:sizing": "node scripts/shopify/07-sizing.mjs",
     "shopify:pricing": "node scripts/shopify/08-pricing.mjs",
     "shopify:alt-text": "node scripts/shopify/09-alt-text.mjs",
-    "shopify:image-audit": "node scripts/shopify/10-image-audit.mjs"
+    "shopify:image-audit": "node scripts/shopify/10-image-audit.mjs",
+    "shopify:collections": "node scripts/shopify/11-collections.mjs",
+    "shopify:pages": "node scripts/shopify/12-pages.mjs"
   },
   "dependencies": {
     "next": "^16.3.0",

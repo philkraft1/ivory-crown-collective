@@ -36,9 +36,10 @@ fashion and adult-only costumes are archived. Dry-run report
 
 ## Automated collections
 
-After step 04 applies structured tags, create the following automated
-collections under **Products > Collections**. Use “Product tag is equal to”
-the tag shown.
+After step 04 applies structured tags, step 11 can create the following
+automated collections as unpublished drafts. Review them under **Products >
+Collections** before publishing. Each uses “Product tag is equal to” the tag
+shown.
 
 | Navigation label | Collection title | Tag |
 | --- | --- | --- |
@@ -147,6 +148,9 @@ Do not use fake scarcity (“Only 2 left”) unless Shopify inventory is real an
 supplier-synchronized.
 
 ## Required pages
+
+Step 12 creates these as unpublished drafts without overwriting an existing
+page. Review and publish them before adding them to navigation.
 
 ### About
 

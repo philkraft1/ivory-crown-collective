@@ -87,6 +87,45 @@ const SHOP_QUERY = `#graphql
   }
 `;
 
+const COLLECTIONS_QUERY = `#graphql
+  query StoreCollections($after: String) {
+    collections(first: 100, after: $after, sortKey: TITLE) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        id
+        title
+        handle
+        descriptionHtml
+        seo {
+          title
+          description
+        }
+      }
+    }
+  }
+`;
+
+const PAGES_QUERY = `#graphql
+  query StorePages($after: String) {
+    pages(first: 100, after: $after, sortKey: TITLE) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        id
+        title
+        handle
+        body
+        isPublished
+      }
+    }
+  }
+`;
+
 const PRODUCT_UPDATE_MUTATION = `#graphql
   mutation UpdateProduct($product: ProductUpdateInput!) {
     productUpdate(product: $product) {
@@ -94,6 +133,39 @@ const PRODUCT_UPDATE_MUTATION = `#graphql
         id
         title
         status
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+const COLLECTION_CREATE_MUTATION = `#graphql
+  mutation CreateCollection($collection: CollectionCreateInput!) {
+    collectionCreate(collection: $collection) {
+      collection {
+        id
+        title
+        handle
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+const PAGE_CREATE_MUTATION = `#graphql
+  mutation CreatePage($page: PageCreateInput!) {
+    pageCreate(page: $page) {
+      page {
+        id
+        title
+        handle
+        isPublished
       }
       userErrors {
         field
@@ -251,8 +323,46 @@ export async function fetchProducts() {
   return products;
 }
 
+export async function fetchCollections() {
+  const collections = [];
+  let after = null;
+
+  do {
+    const data = await adminGraphql(COLLECTIONS_QUERY, { after });
+    collections.push(...data.collections.nodes);
+    after = data.collections.pageInfo.hasNextPage
+      ? data.collections.pageInfo.endCursor
+      : null;
+  } while (after);
+
+  return collections;
+}
+
+export async function fetchPages() {
+  const pages = [];
+  let after = null;
+
+  do {
+    const data = await adminGraphql(PAGES_QUERY, { after });
+    pages.push(...data.pages.nodes);
+    after = data.pages.pageInfo.hasNextPage
+      ? data.pages.pageInfo.endCursor
+      : null;
+  } while (after);
+
+  return pages;
+}
+
 export async function updateProduct(product) {
   return adminGraphql(PRODUCT_UPDATE_MUTATION, { product });
+}
+
+export async function createCollection(collection) {
+  return adminGraphql(COLLECTION_CREATE_MUTATION, { collection });
+}
+
+export async function createPage(page) {
+  return adminGraphql(PAGE_CREATE_MUTATION, { page });
 }
 
 export async function updateVariants(productId, variants) {
