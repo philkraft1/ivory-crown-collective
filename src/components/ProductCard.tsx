@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { isAllowedProductUrl } from "@/lib/security/schemas";
 import type { StoreProduct } from "@/lib/shopify";
 
 function Monogram({ title }: { title: string }) {
@@ -25,7 +26,7 @@ export function ProductCard({
   product: StoreProduct;
   index: number;
 }) {
-  const isLink = product.url && product.url !== "#";
+  const isLink = Boolean(product.url && isAllowedProductUrl(product.url));
   const delayClass = [
     "animate-rise",
     "animate-rise-delay-1",

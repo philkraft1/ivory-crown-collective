@@ -1,0 +1,64 @@
+export type PayOffering = {
+  id: string;
+  serviceId: "web-design" | "entertainment" | "it-solutions" | "consult";
+  title: string;
+  description: string;
+  amountCents: number;
+  label: string;
+};
+
+export const PAY_OFFERINGS: PayOffering[] = [
+  {
+    id: "web-design-deposit",
+    serviceId: "web-design",
+    title: "Web Design Deposit",
+    description: "Project kickoff deposit applied to your web design engagement.",
+    amountCents: 50000,
+    label: "$500 deposit",
+  },
+  {
+    id: "entertainment-deposit",
+    serviceId: "entertainment",
+    title: "Entertainment Booking Deposit",
+    description: "Hold your date with a DJ / entertainment booking deposit.",
+    amountCents: 15000,
+    label: "$150 deposit",
+  },
+  {
+    id: "it-solutions-deposit",
+    serviceId: "it-solutions",
+    title: "IT Solutions Deposit",
+    description: "Kickoff deposit for software, systems, or IT project work.",
+    amountCents: 30000,
+    label: "$300 deposit",
+  },
+  {
+    id: "consult-retainer",
+    serviceId: "consult",
+    title: "Strategy Consult",
+    description: "Paid consult with Philip S. Kraft — credited toward larger work if you proceed.",
+    amountCents: 10000,
+    label: "$100 consult",
+  },
+];
+
+export function getOffering(id: string): PayOffering | undefined {
+  return PAY_OFFERINGS.find((item) => item.id === id);
+}
+
+export function formatUsd(cents: number): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(cents / 100);
+}
+
+export function randomIntegrationSuffix(length = 8): string {
+  const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let out = "";
+  for (let i = 0; i < length; i += 1) {
+    out += alphabet[Math.floor(Math.random() * alphabet.length)];
+  }
+  return out;
+}
