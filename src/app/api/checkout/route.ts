@@ -1,23 +1,25 @@
 import { NextResponse } from "next/server";
 import { getOffering, randomIntegrationSuffix } from "@/lib/payments";
+import { checkoutBodySchema, isAllowedStripeCheckoutUrl } from "@/lib/security/schemas";
 import { SITE } from "@/lib/site";
 import { getSiteUrl, getStripe } from "@/lib/stripe";
 
-type CheckoutBody = {
-  offeringId?: string;
-  email?: string;
-};
-
 export async function POST(request: Request) {
-  let body: CheckoutBody;
+  let json: unknown;
 
   try {
-    body = (await request.json()) as CheckoutBody;
+    json = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const offering = body.offeringId ? getOffering(body.offeringId) : undefined;
+  const parsed = checkoutBodySchema.safeParse(json);
+  if (!parsed.success) {
+    const message = parsed.error.issues[0]?.message || "Invalid request.";
+    return NextResponse.json({ error: message }, { status: 400 });
+  }
+
+  const offering = getOffering(parsed.data.offeringId);
   if (!offering) {
     return NextResponse.json({ error: "Unknown payment option." }, { status: 400 });
   }
@@ -29,8 +31,15 @@ export async function POST(request: Request) {
     );
   }
 
-  const origin = getSiteUrl(request);
-  const email = body.email?.trim();
+  let origin: string;
+  try {
+    origin = getSiteUrl(request);
+  } catch {
+    return NextResponse.json(
+      { error: "Payments are not configured yet. Contact us directly to pay." },
+      { status: 503 },
+    );
+  }
 
   try {
     const stripe = getStripe();
@@ -55,7 +64,7 @@ export async function POST(request: Request) {
       ],
       success_url: `${origin}/pay/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/pay/cancel`,
-      customer_email: email || undefined,
+      customer_email: parsed.data.email,
       billing_address_collection: "auto",
       allow_promotion_codes: true,
       metadata: {
@@ -63,11 +72,10 @@ export async function POST(request: Request) {
         serviceId: offering.serviceId,
         founder: `${SITE.founder.name}, ${SITE.founder.title}`,
       },
-      // Stripe API 2026-03-25+ tracking label
       integration_identifier: `icc-${offering.serviceId}-${randomIntegrationSuffix()}`,
     });
 
-    if (!session.url) {
+    if (!session.url || !isAllowedStripeCheckoutUrl(session.url)) {
       return NextResponse.json({ error: "Could not start Checkout." }, { status: 502 });
     }
 

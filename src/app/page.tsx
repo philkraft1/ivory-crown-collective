@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Landing } from "@/components/Landing";
 import { StorePreview, StorePreviewSkeleton } from "@/components/StorePreview";
+import { sanitizeCollectionHandle } from "@/lib/security/schemas";
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -18,11 +19,12 @@ export default async function Home({
 
   // Tailor the feed to the ad that referred the visitor. Ad platforms append
   // these params on click, so we can surface a relevant collection without any
-  // per-user tracking.
-  const collection =
+  // per-user tracking. Handles are allowlisted before hitting Shopify.
+  const collection = sanitizeCollectionHandle(
     firstParam(params.collection) ??
-    firstParam(params.utm_content) ??
-    firstParam(params.utm_campaign);
+      firstParam(params.utm_content) ??
+      firstParam(params.utm_campaign),
+  );
 
   return (
     <>

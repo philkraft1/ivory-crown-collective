@@ -1,3 +1,4 @@
+import { isAllowedProductUrl, sanitizeCollectionHandle } from "@/lib/security/schemas";
 import { SITE } from "@/lib/site";
 
 export type StoreProduct = {
@@ -57,11 +58,19 @@ function formatPrice(money: ShopifyMoney): string {
 }
 
 function mapNode(node: ShopifyProductNode, storeUrl: string): StoreProduct {
+  const fallback = `${storeUrl.replace(/\/$/, "")}/products/${node.handle}`;
+  const candidate = node.onlineStoreUrl || fallback;
+  const url = isAllowedProductUrl(candidate)
+    ? candidate
+    : isAllowedProductUrl(fallback)
+      ? fallback
+      : "#";
+
   return {
     id: node.id,
     title: node.title,
     handle: node.handle,
-    url: node.onlineStoreUrl ?? `${storeUrl}/products/${node.handle}`,
+    url,
     imageUrl: node.featuredImage?.url ?? null,
     imageAlt: node.featuredImage?.altText ?? node.title,
     priceLabel: formatPrice(node.priceRange.minVariantPrice),
@@ -104,13 +113,16 @@ export async function getStorePreview(
   limit: number = DEFAULT_LIMIT,
 ): Promise<StorePreviewResult> {
   const { domain, token, apiVersion, storeUrl } = getConfig();
+  const safeCollection = sanitizeCollectionHandle(collection);
 
   if (!token) {
-    return { ...getMockPreview(collection, limit), storeUrl };
+    return { ...getMockPreview(safeCollection, limit), storeUrl };
   }
 
-  const query = collection ? COLLECTION_QUERY : FEATURED_QUERY;
-  const variables = collection ? { handle: collection, limit } : { limit };
+  const query = safeCollection ? COLLECTION_QUERY : FEATURED_QUERY;
+  const variables = safeCollection
+    ? { handle: safeCollection, limit }
+    : { limit };
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
@@ -146,26 +158,26 @@ export async function getStorePreview(
       throw new Error(`Shopify GraphQL error: ${JSON.stringify(json.errors)}`);
     }
 
-    const nodes = collection
+    const nodes = safeCollection
       ? (json.data?.collection?.products.nodes ?? [])
       : (json.data?.products?.nodes ?? []);
 
     if (nodes.length === 0) {
-      return { ...getMockPreview(collection, limit), storeUrl };
+      return { ...getMockPreview(safeCollection, limit), storeUrl };
     }
 
     return {
       products: nodes.slice(0, limit).map((node) => mapNode(node, storeUrl)),
       storeUrl,
       isMock: false,
-      collection,
+      collection: safeCollection,
     };
   } catch (error) {
     console.warn(
       "[shopify] Falling back to mock preview:",
       error instanceof Error ? error.message : error,
     );
-    return { ...getMockPreview(collection, limit), storeUrl };
+    return { ...getMockPreview(safeCollection, limit), storeUrl };
   } finally {
     clearTimeout(timeout);
   }

@@ -1,7 +1,8 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useCallback, useState } from "react";
 import { ContactIdentity } from "@/components/ContactIdentity";
+import { Turnstile } from "@/components/Turnstile";
 import { SITE } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -9,6 +10,8 @@ type Status = "idle" | "sending" | "sent" | "error";
 export function Contact() {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const onToken = useCallback((token: string) => setTurnstileToken(token), []);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,6 +32,7 @@ export function Contact() {
           interest: data.get("interest"),
           message: data.get("message"),
           company: data.get("company"),
+          turnstileToken,
         }),
       });
 
@@ -114,6 +118,7 @@ export function Contact() {
               required
               name="name"
               type="text"
+              maxLength={100}
               className="w-full border border-gold/25 bg-transparent px-4 py-3 text-pearl outline-none transition focus:border-gold-bright"
             />
           </label>
@@ -125,6 +130,7 @@ export function Contact() {
                 required
                 name="email"
                 type="email"
+                maxLength={254}
                 className="w-full border border-gold/25 bg-transparent px-4 py-3 text-pearl outline-none transition focus:border-gold-bright"
               />
             </label>
@@ -133,6 +139,7 @@ export function Contact() {
               <input
                 name="phone"
                 type="tel"
+                maxLength={40}
                 className="w-full border border-gold/25 bg-transparent px-4 py-3 text-pearl outline-none transition focus:border-gold-bright"
               />
             </label>
@@ -158,9 +165,12 @@ export function Contact() {
               required
               name="message"
               rows={5}
+              maxLength={4000}
               className="w-full resize-y border border-gold/25 bg-transparent px-4 py-3 text-pearl outline-none transition focus:border-gold-bright"
             />
           </label>
+
+          <Turnstile onToken={onToken} />
 
           <button
             type="submit"

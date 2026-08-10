@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SITE } from "@/lib/site";
 
 export function SiteFooter() {
@@ -13,9 +14,9 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-pearl/45">
-          <a href="/#pay" className="transition-colors hover:text-gold-bright">
+          <Link href="/#pay" className="transition-colors hover:text-gold-bright">
             Pay / book
-          </a>
+          </Link>
           <a
             href={SITE.shopUrl}
             className="transition-colors hover:text-gold-bright"

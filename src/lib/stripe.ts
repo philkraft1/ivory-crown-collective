@@ -1,4 +1,5 @@
 import Stripe from "stripe";
+import { getConfiguredSiteOrigin, isProduction } from "@/lib/security/env";
 
 let stripeClient: Stripe | null = null;
 
@@ -19,10 +20,21 @@ export function getStripe(): Stripe {
   return stripeClient;
 }
 
+/**
+ * Canonical site URL for Checkout success/cancel redirects.
+ * Production never falls back to the request Host (closes open-redirect phishing).
+ */
 export function getSiteUrl(request?: Request): string {
-  const fromEnv = process.env.NEXT_PUBLIC_SITE_URL || process.env.VERCEL_PROJECT_PRODUCTION_URL;
-  if (fromEnv) {
-    return fromEnv.startsWith("http") ? fromEnv : `https://${fromEnv}`;
+  const configured = getConfiguredSiteOrigin();
+  if (configured) return configured;
+
+  if (isProduction()) {
+    throw new Error("Missing NEXT_PUBLIC_SITE_URL in production.");
+  }
+
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (vercel) {
+    return vercel.startsWith("http") ? vercel : `https://${vercel}`;
   }
 
   if (request) {

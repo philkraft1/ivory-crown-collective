@@ -14,14 +14,15 @@ const contentSecurityPolicy = [
   "object-src 'none'",
   "img-src 'self' data: https://cdn.shopify.com https://*.stripe.com",
   "font-src 'self' data:",
-  "style-src 'self' 'unsafe-inline' https://*.stripe.com",
-  "frame-src 'self' https://*.stripe.com",
+  "style-src 'self' 'unsafe-inline'",
+  // Stripe Checkout + Cloudflare Turnstile
+  "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://checkout.stripe.com https://challenges.cloudflare.com",
   isProd
-    ? "script-src 'self' 'unsafe-inline' https://*.stripe.com"
-    : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.stripe.com",
+    ? "script-src 'self' 'unsafe-inline' https://js.stripe.com https://challenges.cloudflare.com"
+    : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://challenges.cloudflare.com",
   isProd
-    ? "connect-src 'self' https://*.myshopify.com https://*.stripe.com"
-    : "connect-src 'self' https://*.myshopify.com https://*.stripe.com ws: wss:",
+    ? "connect-src 'self' https://api.stripe.com https://*.myshopify.com https://challenges.cloudflare.com"
+    : "connect-src 'self' https://api.stripe.com https://*.myshopify.com https://challenges.cloudflare.com ws: wss:",
   ...(isProd ? ["upgrade-insecure-requests"] : []),
 ]
   .join("; ")
@@ -34,8 +35,25 @@ const securityHeaders = [
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   {
     key: "Permissions-Policy",
-    value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+    value: [
+      "camera=()",
+      "microphone=()",
+      "geolocation=()",
+      "browsing-topics=()",
+      "payment=()",
+      "usb=()",
+      "bluetooth=()",
+      "midi=()",
+      "interest-cohort=()",
+      "accelerometer=()",
+      "gyroscope=()",
+      "magnetometer=()",
+      "display-capture=()",
+    ].join(", "),
   },
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin" },
+  { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
+  { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
   {
     key: "Strict-Transport-Security",

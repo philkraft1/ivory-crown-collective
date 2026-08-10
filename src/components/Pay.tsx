@@ -24,7 +24,20 @@ export function Pay() {
         throw new Error(payload.error || "Unable to start checkout.");
       }
 
-      window.location.href = payload.url;
+      let checkoutHost = "";
+      try {
+        checkoutHost = new URL(payload.url).hostname;
+      } catch {
+        throw new Error("Unable to start checkout.");
+      }
+      if (
+        checkoutHost !== "checkout.stripe.com" &&
+        !checkoutHost.endsWith(".stripe.com")
+      ) {
+        throw new Error("Unable to start checkout.");
+      }
+
+      window.location.assign(payload.url);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unable to start checkout.");
       setLoadingId(null);
