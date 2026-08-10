@@ -1,0 +1,7 @@
+{
+  "plugins": {
+    "shopify-plugin": {
+      "enabled": true
+    }
+  }
+}

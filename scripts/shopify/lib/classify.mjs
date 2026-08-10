@@ -1112,7 +1112,6 @@ function deriveOccasions(product, character) {
   if (/st\.? patrick|irish/i.test(text)) found.add(OCCASIONS.ST_PATRICKS);
   if (/stage|drama|play|theatre|theater|pantomime/i.test(text)) found.add(OCCASIONS.SCHOOL_PLAY);
   if (/dance|ballet|recital|catwalk|cheerlead/i.test(text)) found.add(OCCASIONS.RECITAL);
-  if (/cosplay|role.?play/i.test(text)) found.add(OCCASIONS.HALLOWEEN);
 
   if (!found.size) found.add(OCCASIONS.SCHOOL_PLAY);
 
