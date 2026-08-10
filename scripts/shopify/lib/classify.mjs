@@ -117,20 +117,22 @@ export const CHARACTERS = [
     occasions: [OCCASIONS.SCHOOL_PLAY, OCCASIONS.BOOK_CHARACTER_DAY],
   },
   {
-    id: "red-riding-hood",
-    name: "Little Red Riding Hood",
-    work: "Brothers Grimm",
-    match: /red riding hood/i,
-    theme: THEMES.STORYBOOK,
-    occasions: [OCCASIONS.SCHOOL_PLAY, OCCASIONS.BOOK_CHARACTER_DAY],
-  },
-  {
+    // Ordered above red-riding-hood on purpose: supplier titles bundle both names
+    // ("Big Bad Wolf and Little Red Riding Hood") on what is actually a wolf costume.
     id: "big-bad-wolf",
     name: "Big Bad Wolf",
     work: "Brothers Grimm",
     match: /big bad wolf|werewolf|wolf/i,
     theme: THEMES.ANIMALS,
     occasions: [OCCASIONS.SCHOOL_PLAY, OCCASIONS.BOOK_CHARACTER_DAY, OCCASIONS.HALLOWEEN],
+  },
+  {
+    id: "red-riding-hood",
+    name: "Little Red Riding Hood",
+    work: "Brothers Grimm",
+    match: /red riding hood/i,
+    theme: THEMES.STORYBOOK,
+    occasions: [OCCASIONS.SCHOOL_PLAY, OCCASIONS.BOOK_CHARACTER_DAY],
   },
   {
     id: "street-urchin",
@@ -347,9 +349,35 @@ export const CHARACTERS = [
   },
 ];
 
+/**
+ * First match wins, so CHARACTERS is ordered most-specific first. Supplier titles
+ * routinely name two characters at once ("Big Bad Wolf and Little Red Riding
+ * Hood"), and array order is more predictable to reason about than scoring.
+ */
 export function detectCharacter(text) {
   return CHARACTERS.find((c) => c.match.test(text)) ?? null;
 }
+
+/**
+ * Category labels rather than actual titles. These don't earn a `story:` tag,
+ * because "story:sci-fi" is not something a shopper would ever browse by.
+ */
+const GENERIC_WORKS = new Set([
+  "Animals",
+  "Decades",
+  "World cultures",
+  "Sci-fi",
+  "Christmas",
+  "Fairy tale",
+  "Pantomime",
+  "Medieval",
+  "Church and choral",
+  "Gothic fiction",
+  "Irish folklore",
+  "Greek mythology",
+  "Ancient Greece and Rome",
+  "Nativity",
+]);
 
 // ---------------------------------------------------------------------------
 // Cut and safety rules
@@ -464,6 +492,10 @@ export const SIZE_BUCKETS = [
 export function mapSizeLabel(rawLabel) {
   const label = String(rawLabel ?? "").trim();
   if (!label) return null;
+
+  // Family matching sets size by wearer, not measurement: "Adult" / "Children".
+  if (/^adults?$/i.test(label)) return "Adult";
+  if (/^(kids?|child(ren)?)$/i.test(label)) return "Child";
 
   const ageRange = label.match(/(\d{1,2})\s*-\s*(\d{1,2})\s*(?:yrs?|years?|y\b)/i);
   if (ageRange) {
@@ -648,35 +680,51 @@ function withInches(cell) {
 // Title generation
 // ---------------------------------------------------------------------------
 
+/**
+ * Multi-piece indicators are tested before individual garments. Otherwise a
+ * Sherlock Holmes costume that happens to include a cape gets titled
+ * "Sherlock Holmes Cape", which undersells a four-piece set.
+ */
+const SET_INDICATORS = /\bset\b|includes?\b|complete|with cape|with hat|\bwith .*(and|&)/i;
+
 const GARMENT_WORDS = [
+  ["tulle skirt", "Tutu"],
+  ["ballet skirt", "Tutu"],
+  ["tutu", "Tutu"],
   ["jumpsuit", "Jumpsuit"],
   ["onesie", "Onesie"],
   ["pajama", "Onesie"],
   ["ball gown", "Gown"],
+  ["court gown", "Gown"],
   ["gown", "Gown"],
+  ["overalls", "Overalls"],
   ["dress", "Dress"],
   ["robe", "Robe"],
-  ["cape", "Cape"],
-  ["cloak", "Cape"],
   ["tunic", "Tunic"],
   ["toga", "Toga"],
   ["trench coat", "Coat"],
-  ["coat", "Coat"],
-  ["overalls", "Overalls"],
   ["apron", "Apron Set"],
-  ["skirt", "Skirt"],
-  ["tutu", "Tutu"],
-  ["shirt", "Shirt"],
   ["uniform", "Uniform"],
-  ["outfit", "Costume"],
-  ["set", "Costume Set"],
+  ["skirt", "Skirt"],
+  ["shirt", "Shirt"],
+  // Accessory-only garments last: they are usually one piece of a larger costume.
+  ["cape", "Cape"],
+  ["cloak", "Cape"],
+  ["coat", "Coat"],
 ];
 
 function detectGarment(text) {
   const lower = text.toLowerCase();
+
   for (const [needle, label] of GARMENT_WORDS) {
-    if (lower.includes(needle)) return label;
+    if (lower.includes(needle)) {
+      // A cape or coat named alongside set language means it's a bundle.
+      if (["Cape", "Coat"].includes(label) && SET_INDICATORS.test(text)) return "Costume Set";
+      return label;
+    }
   }
+
+  if (SET_INDICATORS.test(text)) return "Costume Set";
   return "Costume";
 }
 
