@@ -7,8 +7,10 @@ export const SITE = {
   phoneTel: "+17322338516",
   // Normalized from phil@ivorycrowncollective@gmail.com (invalid double-@)
   email: "phil@ivorycrowncollective.com",
+  // Prefer the public shop URL from env. Keep myshopify as the safe default
+  // until shop.ivorycrowncollective.com DNS + Shopify primary domain are live.
   shopUrl:
-    process.env.NEXT_PUBLIC_SHOP_URL || "https://shop.ivorycrowncollective.com",
+    process.env.NEXT_PUBLIC_SHOP_URL || "https://1wtpc0-c2.myshopify.com",
   shopLabel: "Costume shop",
   founder: {
     name: "Philip S. Kraft",
