@@ -815,7 +815,9 @@ export function buildTags(product, classification) {
 
   if (character) {
     tags.push(`character:${character.id}`);
-    if (character.work) tags.push(`story:${slug(character.work)}`);
+    if (character.work && !GENERIC_WORKS.has(character.work)) {
+      tags.push(`story:${slug(character.work)}`);
+    }
   }
 
   // Merchandising flags the storefront and automated collections rely on.
