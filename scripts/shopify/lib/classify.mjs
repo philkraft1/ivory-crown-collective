@@ -791,15 +791,11 @@ function fallbackSubject(title) {
 // Tags and product type
 // ---------------------------------------------------------------------------
 
-/** Shopify standard product taxonomy paths, used for Google Shopping mapping. */
-export const PRODUCT_TYPES = {
-  COSTUME: "Costumes & Accessories > Costumes",
-  COSTUME_SET: "Costumes & Denim > Costume Sets",
-  ACCESSORY: "Costumes & Accessories > Costume Accessories",
-};
+/** Shopify standard product taxonomy path, which Google Shopping maps from. */
+export const PRODUCT_TYPE_COSTUME = "Costumes & Accessories > Costumes";
 
 export function buildProductType() {
-  return "Costumes & Accessories > Costumes";
+  return PRODUCT_TYPE_COSTUME;
 }
 
 export function buildTags(product, classification) {
@@ -902,9 +898,10 @@ export function buildDescriptionHtml(product, classification) {
 
   const parts = [];
 
-  const intro = work
-    ? `<p>A ${subject.toLowerCase()} costume for ${audienceWord}, cut for the stage. ${work === "Animals" || work === "Decades" || work === "World cultures" ? "" : `Instantly recognisable as ${subject} from <em>${work}</em>, `}so your child walks out and everyone knows exactly who they are.</p>`
-    : `<p>A stage-ready costume for ${audienceWord}, built to read clearly from the back row of an auditorium.</p>`;
+  const namesRealWork = work && !GENERIC_WORKS.has(work);
+  const intro = namesRealWork
+    ? `<p>A ${subject.toLowerCase()} costume for ${audienceWord}, cut for the stage. Instantly recognizable as ${subject} from <em>${work}</em>, so your child walks out and everyone knows exactly who they are.</p>`
+    : `<p>A ${subject.toLowerCase()} costume for ${audienceWord}, built to read clearly from the back row of an auditorium.</p>`;
   parts.push(intro.replace(/\s{2,}/g, " "));
 
   const occasionList = occasions
@@ -912,7 +909,9 @@ export function buildDescriptionHtml(product, classification) {
     .filter(Boolean)
     .slice(0, 3);
   if (occasionList.length) {
-    parts.push(`<p><strong>Made for:</strong> ${formatList(occasionList)}.</p>`);
+    // Comma-joined rather than "a, b and c": the occasion phrases already contain
+    // "and" internally, so an Oxford-style join reads as a run-on.
+    parts.push(`<p><strong>Made for:</strong> ${occasionList.join("; ")}.</p>`);
   }
 
   const bullets = [];
@@ -978,11 +977,6 @@ function escapeHtml(text) {
     .replace(/>/g, "&gt;");
 }
 
-function formatList(items) {
-  if (items.length === 1) return items[0];
-  return `${items.slice(0, -1).join(", ")} and ${items.at(-1)}`;
-}
-
 // ---------------------------------------------------------------------------
 // Alt text
 // ---------------------------------------------------------------------------
@@ -1012,19 +1006,33 @@ export function buildAltText(product, classification, index) {
 
 /**
  * Supplier prices are raw markup output: $36.54, $37.82, $21.22, $228.04.
- * Round to charm endings and set a compare-at anchor, since zero of the 891
- * live variants currently have one.
+ * Rounds to charm endings.
+ *
+ * `compareAtPrice` is deliberately opt-in. A compare-at price represents a
+ * former or regular price, and the FTC treats a reference price the seller never
+ * actually charged as deceptive advertising. So the default here only tidies the
+ * price, and an anchor is written solely when you are running a real, time-bound
+ * promotion at a genuine list price you have held.
+ *
+ * The honest sequence is: set the list price now, sell at it, then discount it
+ * during a sale. Not: invent a higher price that never existed.
  */
-export function repriceVariant(currentPrice, { anchorMultiplier = 1.3 } = {}) {
+export function repriceVariant(currentPrice, { promo = false, anchorMultiplier = 1.3 } = {}) {
   const price = Number(currentPrice);
   if (!Number.isFinite(price) || price <= 0) return null;
 
   const charm = charmPrice(price);
-  const anchor = charmPrice(charm * anchorMultiplier, { anchor: true });
 
+  if (!promo) {
+    return { price: charm.toFixed(2), compareAtPrice: null };
+  }
+
+  // Promotion mode: the charm price becomes the list price and the sale price
+  // sits below it, so the compare-at is a price actually being asked.
+  const listPrice = charmPrice(charm * anchorMultiplier, { anchor: true });
   return {
     price: charm.toFixed(2),
-    compareAtPrice: anchor.toFixed(2),
+    compareAtPrice: listPrice.toFixed(2),
   };
 }
 
@@ -1045,6 +1053,72 @@ function floorTo(value, cents, step) {
 // ---------------------------------------------------------------------------
 
 export const DECISION = { KEEP: "keep", CUT: "cut", REVIEW: "review" };
+
+/**
+ * Distinct products can collapse to the same generated title -- the catalog has
+ * both an "Alice in Wonderland Queen of Hearts" dress and a "Poker Queen with
+ * Crown" dress, and both resolve to the Queen of Hearts character. Duplicate
+ * titles are an SEO problem and confuse shoppers, so add a real differentiator
+ * pulled from the original supplier title.
+ *
+ * Mutates `newTitle` on the passed classifications and returns the count changed.
+ */
+const DIFFERENTIATORS = [
+  ["crown", "with Crown"],
+  ["necklace", "with Necklace"],
+  ["wig", "with Wig"],
+  ["glasses", "with Glasses"],
+  ["hat", "with Hat"],
+  ["cape", "with Cape"],
+  ["deluxe", "Deluxe"],
+  ["plush", "Plush"],
+  ["sequin", "Sequin"],
+  ["velvet", "Velvet"],
+  ["lace", "Lace"],
+];
+
+export function dedupeTitles(entries) {
+  const seen = new Map();
+  let changed = 0;
+
+  for (const entry of entries) {
+    const { product, classification } = entry;
+    if (classification.decision === DECISION.CUT) continue;
+
+    const current = classification.newTitle;
+    if (!seen.has(current)) {
+      seen.set(current, 1);
+      continue;
+    }
+
+    const differentiator = DIFFERENTIATORS.find(
+      ([needle, label]) =>
+        new RegExp(`\\b${needle}\\b`, "i").test(product.title) &&
+        !current.toLowerCase().includes(label.toLowerCase()),
+    );
+
+    let next;
+    if (differentiator) {
+      // Insert before the " - Occasion" suffix so the suffix stays last.
+      const [head, ...tail] = current.split(" - ");
+      next = [`${head} ${differentiator[1]}`, ...tail].join(" - ");
+    } else {
+      const count = seen.get(current) + 1;
+      next = `${current} (Style ${count})`;
+    }
+
+    if (next.length > TITLE_MAX) {
+      next = next.split(" - ")[0].slice(0, TITLE_MAX).trimEnd();
+    }
+
+    seen.set(current, seen.get(current) + 1);
+    seen.set(next, (seen.get(next) ?? 0) + 1);
+    classification.newTitle = next;
+    changed++;
+  }
+
+  return changed;
+}
 
 export function classify(product) {
   const haystack = `${product.title} ${stripHtml(product.descriptionHtml).slice(0, 400)}`;

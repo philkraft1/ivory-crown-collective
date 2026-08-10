@@ -14,6 +14,7 @@ import {
   classify,
   classifyOptionValue,
   DECISION,
+  dedupeTitles,
   hasSupplierCdn,
   repriceVariant,
   buildAltText,
@@ -30,6 +31,9 @@ const results = FIXTURE_PRODUCTS.map((product) => ({
   product,
   classification: classify(product),
 }));
+
+const deduped = dedupeTitles(results);
+if (deduped) log.warn(`${deduped} duplicate generated title(s) disambiguated`);
 
 const groups = {
   keep: results.filter((r) => r.classification.decision === DECISION.KEEP),
@@ -118,14 +122,19 @@ for (const { product, classification } of groups.keep) {
 // ---------------------------------------------------------------------------
 
 log.blank();
-log.step("Pricing");
+log.step("Pricing (charm rounding only; compare-at is opt-in)");
 for (const { product } of groups.keep) {
   const current = product.variants[0].price;
-  const next = repriceVariant(current);
+  const tidy = repriceVariant(current);
+  const promo = repriceVariant(current, { promo: true });
   log.info(
-    `${clip(product.title, 50).padEnd(52)} $${current}  ->  $${next.price}  (compare-at $${next.compareAtPrice})`,
+    `${clip(product.title, 50).padEnd(52)} $${current}  ->  $${tidy.price}` +
+      `   ${"\x1b[2m"}(if promo: list $${promo.compareAtPrice})${"\x1b[0m"}`,
   );
 }
+log.detail(
+  "compare-at prices are only written with --promo, because advertising a former price you never charged is FTC-deceptive.",
+);
 
 // ---------------------------------------------------------------------------
 // Descriptions
