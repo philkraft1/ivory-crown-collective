@@ -33,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} ${cinzel.variable} h-svh overflow-hidden antialiased`}>
-      <body className="h-svh overflow-hidden bg-void text-pearl [font-family:var(--font-outfit),sans-serif]">
+    <html lang="en" className={`${outfit.variable} ${cinzel.variable} min-h-svh antialiased`}>
+      <body className="min-h-svh bg-void text-pearl [font-family:var(--font-outfit),sans-serif]">
         {children}
       </body>
     </html>
