@@ -81,7 +81,7 @@ same option across the catalog:
 [scripts/shopify/README.md](../../scripts/shopify/README.md)):
 
 ```bash
-node scripts/shopify/11-find-emergency-issues.mjs
+node scripts/shopify/find-issues.mjs
 ```
 
 That prints product IDs, handles, and the offending option values so you don't have to hunt.
@@ -200,5 +200,5 @@ curl -s -o /dev/null -w "%{http_code}" https://1wtpc0-c2.myshopify.com/policies/
 Or once the token is set, just run:
 
 ```bash
-node scripts/shopify/12-verify.mjs
+node scripts/shopify/verify.mjs
 ```

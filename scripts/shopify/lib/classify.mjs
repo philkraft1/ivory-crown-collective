@@ -392,7 +392,10 @@ export const CUT_RULES = [
   {
     id: "culturally-appropriative",
     severity: "liability",
-    match: /indian chief|indigenous|aboriginal|savage|native (american )?(performance )?costume|tribal/i,
+    // Require clear Native American / chief / tribal signals — bare "indigenous"
+    // alone false-positives on unrelated costumes whose descriptions mention the word.
+    match:
+      /indian chief|native american|aboriginal|savage costume|tribal (fringe|dress|costume|wear)|indigenous (indian|outfit|costume|fringe|performance|clothing)|male indian chief|native\s+performance|wild forest hunter/i,
     reason:
       "Native American headdress/chief costume. Widely considered cultural appropriation and explicitly banned by most US school districts, which are exactly this store's customers. Cut, do not rename.",
   },
@@ -823,7 +826,10 @@ export function buildTags(product, classification) {
   if (occasions.includes(OCCASIONS.CHRISTMAS_PAGEANT)) tags.push("collection:pageants");
   if (occasions.includes(OCCASIONS.RECITAL)) tags.push("collection:recitals");
   if (occasions.includes(OCCASIONS.HALLOWEEN)) tags.push("collection:halloween");
+  // Family sets and the adult teacher/parent line share one collection, since a
+  // shopper looking for either is the adult in the room wanting to match.
   if (audience === AUDIENCE.FAMILY) tags.push("collection:family-matching");
+  if (audience === AUDIENCE.ADULT) tags.push("collection:family-matching", "line:teacher");
 
   return [...new Set(tags)].sort();
 }
@@ -1126,7 +1132,7 @@ export function classify(product) {
   const character = detectCharacter(product.title) ?? detectCharacter(haystack);
   const audience = detectAudience(haystack);
   const gender = detectGender(haystack);
-  const cutRule = findCutRule(product.title) ?? findCutRule(haystack);
+  let cutRule = findCutRule(product.title) ?? findCutRule(haystack);
 
   const sizeChart = parseSizeChart(product.descriptionHtml);
   const sizeLabels = collectSizeLabels(product);
@@ -1141,11 +1147,24 @@ export function classify(product) {
     decision = DECISION.CUT;
     reasons.push(`[${cutRule.id}] ${cutRule.reason}`);
   } else if (audience === AUDIENCE.ADULT) {
-    // Adult costumes survive only as the parent/teacher and family-matching line.
-    decision = DECISION.REVIEW;
-    reasons.push(
-      "Adult-only costume. Keep only if it supports the parent/teacher or family-matching line.",
-    );
+    // Adult costumes survive as the parent/teacher line, but only when they are a
+    // recognizable character. A teacher in a Tin Man costume on Book Character Day
+    // is on-niche; a generic adult costume is just inventory.
+    if (character) {
+      decision = DECISION.KEEP;
+      reasons.push(
+        `Adult costume of a known character (${character.name}); kept as the parent/teacher line.`,
+      );
+    } else {
+      decision = DECISION.CUT;
+      cutRule = {
+        id: "adult-generic",
+        severity: "off-niche",
+        reason:
+          "Adult costume with no recognizable character. Does not serve the parent/teacher line and dilutes the children's niche.",
+      };
+      reasons.push(`[${cutRule.id}] ${cutRule.reason}`);
+    }
   }
 
   if (!product.images?.length) {
