@@ -43,6 +43,18 @@ While you're on this screen, also set:
 - **Billing/business address** → your real business address (required for the Contact Information
   policy in step 6, and for Google Merchant Center later)
 
+Then go to **Online Store → Preferences** and set:
+
+```text
+Homepage title:
+Children's Storybook & Stage Costumes | Ivory Crown Collective
+
+Meta description:
+Shop children's costumes for school plays, book character day, recitals,
+pageants, and Halloween. Clear sizing and family-ready service from Ivory Crown
+Collective.
+```
+
 ---
 
 ## 2. Remove the `Black girl` colour option — do this first if you only do one thing

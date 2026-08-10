@@ -1,7 +1,62 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
+// Content Security Policy. Next.js injects inline bootstrap scripts/styles and
+// Tailwind emits inline styles, so 'unsafe-inline' is required for those.
+// Development additionally needs 'unsafe-eval' and websocket connections for
+// hot module replacement, so those are only relaxed outside production.
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  "object-src 'none'",
+  "img-src 'self' data: https://cdn.shopify.com https://*.stripe.com",
+  "font-src 'self' data:",
+  "style-src 'self' 'unsafe-inline' https://*.stripe.com",
+  "frame-src 'self' https://*.stripe.com",
+  isProd
+    ? "script-src 'self' 'unsafe-inline' https://*.stripe.com"
+    : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.stripe.com",
+  isProd
+    ? "connect-src 'self' https://*.myshopify.com https://*.stripe.com"
+    : "connect-src 'self' https://*.myshopify.com https://*.stripe.com ws: wss:",
+  ...(isProd ? ["upgrade-insecure-requests"] : []),
+]
+  .join("; ")
+  .concat(";");
+
+const securityHeaders = [
+  { key: "Content-Security-Policy", value: contentSecurityPolicy },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  {
+    key: "Permissions-Policy",
+    value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
+  },
+  { key: "X-DNS-Prefetch-Control", value: "on" },
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains; preload",
+  },
+];
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "cdn.shopify.com" },
+    ],
+  },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: securityHeaders,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

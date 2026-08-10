@@ -7,6 +7,9 @@ export const SITE = {
   phoneTel: "+17322338516",
   // Normalized from phil@ivorycrowncollective@gmail.com (invalid double-@)
   email: "phil@ivorycrowncollective.com",
+  shopUrl:
+    process.env.NEXT_PUBLIC_SHOP_URL || "https://1wtpc0-c2.myshopify.com",
+  shopLabel: "Costume shop",
   founder: {
     name: "Philip S. Kraft",
     title: "CEO",
