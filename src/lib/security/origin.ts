@@ -12,7 +12,20 @@ function normalizeOrigin(value: string): string | null {
 export function allowedOrigins(): string[] {
   const origins = new Set<string>();
   const configured = getConfiguredSiteOrigin();
-  if (configured) origins.add(configured);
+  if (configured) {
+    origins.add(configured);
+    // Accept www even when canonical is apex (redirect should make this rare).
+    try {
+      const url = new URL(configured);
+      if (url.hostname.startsWith("www.")) {
+        origins.add(`${url.protocol}//${url.hostname.slice(4)}`);
+      } else {
+        origins.add(`${url.protocol}//www.${url.hostname}`);
+      }
+    } catch {
+      /* ignore */
+    }
+  }
 
   if (!isProduction()) {
     origins.add("http://localhost:3000");

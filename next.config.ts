@@ -85,6 +85,18 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "cdn.shopify.com" },
     ],
   },
+  async redirects() {
+    return [
+      // Keep a single canonical origin so CSRF Origin checks and Stripe
+      // success URLs stay aligned with NEXT_PUBLIC_SITE_URL.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.ivorycrowncollective.com" }],
+        destination: "https://ivorycrowncollective.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
