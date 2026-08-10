@@ -55,7 +55,7 @@ export function Hero() {
         <div className="relative shrink-0 bg-gradient-to-t from-void via-void/90 to-transparent px-5 pb-8 pt-4 text-center sm:px-8 sm:pb-10">
           <div className="animate-line mx-auto mb-4 h-px w-28 bg-gradient-to-r from-transparent via-gold-bright to-transparent sm:mb-5 sm:w-40" />
           <p className="animate-rise-delay-1 animate-breathe font-[family-name:var(--font-cinzel)] text-lg font-semibold uppercase text-gold-hot sm:text-2xl md:text-3xl">
-            Launching soon..
+            Now booking
           </p>
           <p className="animate-rise-delay-2 mt-2 text-[0.65rem] tracking-[0.28em] text-pearl/50 uppercase sm:mt-3 sm:text-xs">
             Web design · Entertainment · IT solutions
