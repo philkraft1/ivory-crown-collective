@@ -52,7 +52,7 @@ export function Portfolio() {
           {PORTFOLIO.map((item) => (
             <li
               key={item.category}
-              className="grid gap-2 py-8 sm:grid-cols-[10rem_1fr_auto] sm:items-center sm:gap-8"
+              className="grid gap-2 py-8 sm:grid-cols-[10rem_1fr] sm:items-start sm:gap-8"
             >
               <span className="text-xs tracking-[0.22em] text-gold-bright uppercase">
                 {item.category}
@@ -61,9 +61,10 @@ export function Portfolio() {
                 <h3 className="font-[family-name:var(--font-cinzel)] text-xl font-semibold text-pearl sm:text-2xl">
                   {item.title}
                 </h3>
-                <p className="mt-1 text-sm text-pearl/45">{item.status}</p>
+                <p className="mt-1 max-w-xl text-sm leading-relaxed text-pearl/45">
+                  {item.status}
+                </p>
               </div>
-              <span className="text-xs tracking-[0.18em] text-pearl/35 uppercase">Soon</span>
             </li>
           ))}
         </ul>

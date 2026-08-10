@@ -1,12 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { Turnstile } from "@/components/Turnstile";
 import { formatUsd, PAY_OFFERINGS } from "@/lib/payments";
 import { SITE } from "@/lib/site";
 
 export function Pay() {
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [error, setError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const onToken = useCallback((token: string) => setTurnstileToken(token), []);
 
   async function startCheckout(offeringId: string) {
     setLoadingId(offeringId);
@@ -16,7 +19,7 @@ export function Pay() {
       const response = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ offeringId }),
+        body: JSON.stringify({ offeringId, turnstileToken }),
       });
       const payload = (await response.json()) as { url?: string; error?: string };
 
@@ -101,6 +104,10 @@ export function Pay() {
           ))}
         </div>
 
+        <div className="mt-8">
+          <Turnstile onToken={onToken} />
+        </div>
+
         {error && (
           <p className="mt-6 text-sm text-red-300" role="alert">
             {error} Or reach {SITE.founder.name} at{" "}
@@ -112,7 +119,7 @@ export function Pay() {
         )}
 
         <p className="mt-8 text-xs tracking-[0.16em] text-pearl/35 uppercase">
-          Powered by Stripe · Test mode while the site is under construction
+          Powered by Stripe · Secure checkout
         </p>
       </div>
     </section>

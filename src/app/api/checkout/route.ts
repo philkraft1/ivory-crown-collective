@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { getOffering, randomIntegrationSuffix } from "@/lib/payments";
-import { checkoutBodySchema, isAllowedStripeCheckoutUrl } from "@/lib/security/schemas";
+import { checkoutIdempotencyKey } from "@/lib/security/idempotency";
+import { clientIp } from "@/lib/security/rate-limit";
+import {
+  checkoutBodySchema,
+  isAllowedStripeCheckoutUrl,
+} from "@/lib/security/schemas";
+import { verifyTurnstile } from "@/lib/security/turnstile";
 import { SITE } from "@/lib/site";
 import { getSiteUrl, getStripe } from "@/lib/stripe";
 
@@ -17,6 +23,14 @@ export async function POST(request: Request) {
   if (!parsed.success) {
     const message = parsed.error.issues[0]?.message || "Invalid request.";
     return NextResponse.json({ error: message }, { status: 400 });
+  }
+
+  const turnstile = await verifyTurnstile(
+    parsed.data.turnstileToken,
+    clientIp(request),
+  );
+  if (!turnstile.ok) {
+    return NextResponse.json({ error: turnstile.error }, { status: 403 });
   }
 
   const offering = getOffering(parsed.data.offeringId);
@@ -43,37 +57,42 @@ export async function POST(request: Request) {
 
   try {
     const stripe = getStripe();
-    const session = await stripe.checkout.sessions.create({
-      mode: "payment",
-      line_items: [
-        {
-          quantity: 1,
-          price_data: {
-            currency: "usd",
-            unit_amount: offering.amountCents,
-            product_data: {
-              name: offering.title,
-              description: offering.description,
-              metadata: {
-                offeringId: offering.id,
-                serviceId: offering.serviceId,
+    const session = await stripe.checkout.sessions.create(
+      {
+        mode: "payment",
+        line_items: [
+          {
+            quantity: 1,
+            price_data: {
+              currency: "usd",
+              unit_amount: offering.amountCents,
+              product_data: {
+                name: offering.title,
+                description: offering.description,
+                metadata: {
+                  offeringId: offering.id,
+                  serviceId: offering.serviceId,
+                },
               },
             },
           },
+        ],
+        success_url: `${origin}/pay/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${origin}/pay/cancel`,
+        customer_email: parsed.data.email,
+        billing_address_collection: "auto",
+        allow_promotion_codes: true,
+        metadata: {
+          offeringId: offering.id,
+          serviceId: offering.serviceId,
+          founder: `${SITE.founder.name}, ${SITE.founder.title}`,
         },
-      ],
-      success_url: `${origin}/pay/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${origin}/pay/cancel`,
-      customer_email: parsed.data.email,
-      billing_address_collection: "auto",
-      allow_promotion_codes: true,
-      metadata: {
-        offeringId: offering.id,
-        serviceId: offering.serviceId,
-        founder: `${SITE.founder.name}, ${SITE.founder.title}`,
+        integration_identifier: `icc-${offering.serviceId}-${randomIntegrationSuffix()}`,
       },
-      integration_identifier: `icc-${offering.serviceId}-${randomIntegrationSuffix()}`,
-    });
+      {
+        idempotencyKey: checkoutIdempotencyKey(offering.id, request),
+      },
+    );
 
     if (!session.url || !isAllowedStripeCheckoutUrl(session.url)) {
       return NextResponse.json({ error: "Could not start Checkout." }, { status: 502 });

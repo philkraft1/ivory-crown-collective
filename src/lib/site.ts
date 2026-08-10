@@ -53,11 +53,13 @@ export const PORTFOLIO = [
   {
     category: "Entertainment",
     title: "Event & nightlife sets",
-    status: "Booking calendar opening soon",
+    status:
+      "DJ sets and live energy for private events, parties, and nights that need a locked-in room.",
   },
   {
     category: "IT Solutions",
     title: "Product & tooling",
-    status: "Case notes coming soon",
+    status:
+      "Light software, automations, and stack decisions that keep small operations sharp.",
   },
 ] as const;

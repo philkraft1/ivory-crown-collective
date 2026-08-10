@@ -6,7 +6,7 @@ const isProd = process.env.NODE_ENV === "production";
 // Tailwind emits inline styles, so 'unsafe-inline' is required for those.
 // Development additionally needs 'unsafe-eval' and websocket connections for
 // hot module replacement, so those are only relaxed outside production.
-const contentSecurityPolicy = [
+const cspDirectives = [
   "default-src 'self'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -23,13 +23,27 @@ const contentSecurityPolicy = [
   isProd
     ? "connect-src 'self' https://api.stripe.com https://*.myshopify.com https://challenges.cloudflare.com"
     : "connect-src 'self' https://api.stripe.com https://*.myshopify.com https://challenges.cloudflare.com ws: wss:",
+  "report-uri /api/csp-report",
+  "report-to csp-endpoint",
   ...(isProd ? ["upgrade-insecure-requests"] : []),
-]
-  .join("; ")
-  .concat(";");
+];
+
+const contentSecurityPolicy = cspDirectives.join("; ").concat(";");
+
+const reportingEndpoints = { group: "csp-endpoint", max_age: 86400, endpoints: [{ url: "/api/csp-report" }] };
 
 const securityHeaders = [
   { key: "Content-Security-Policy", value: contentSecurityPolicy },
+  // Twin report-only policy for visibility without breaking the page.
+  { key: "Content-Security-Policy-Report-Only", value: contentSecurityPolicy },
+  {
+    key: "Reporting-Endpoints",
+    value: 'csp-endpoint="/api/csp-report"',
+  },
+  {
+    key: "Report-To",
+    value: JSON.stringify(reportingEndpoints),
+  },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
@@ -55,10 +69,14 @@ const securityHeaders = [
   { key: "Cross-Origin-Resource-Policy", value: "same-origin" },
   { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
   { key: "X-DNS-Prefetch-Control", value: "on" },
-  {
-    key: "Strict-Transport-Security",
-    value: "max-age=63072000; includeSubDomains; preload",
-  },
+  ...(isProd
+    ? [
+        {
+          key: "Strict-Transport-Security",
+          value: "max-age=63072000; includeSubDomains; preload",
+        },
+      ]
+    : []),
 ];
 
 const nextConfig: NextConfig = {

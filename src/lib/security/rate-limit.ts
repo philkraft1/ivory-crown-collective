@@ -26,13 +26,13 @@ function getLimiter(kind: LimitKind): Ratelimit | null {
     kind === "contact"
       ? new Ratelimit({
           redis: client,
-          limiter: Ratelimit.slidingWindow(5, "10 m"),
+          limiter: Ratelimit.slidingWindow(3, "10 m"),
           prefix: "icc:rl:contact",
           analytics: false,
         })
       : new Ratelimit({
           redis: client,
-          limiter: Ratelimit.slidingWindow(10, "10 m"),
+          limiter: Ratelimit.slidingWindow(5, "10 m"),
           prefix: "icc:rl:checkout",
           analytics: false,
         });

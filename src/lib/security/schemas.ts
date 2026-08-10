@@ -51,6 +51,7 @@ export const checkoutBodySchema = z.object({
     ])
     .transform((v) => (v ? v : undefined))
     .optional(),
+  turnstileToken: z.string().optional().default(""),
 });
 
 export const COLLECTION_HANDLE_RE = /^[a-z0-9][a-z0-9-]{0,100}$/;

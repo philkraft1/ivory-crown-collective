@@ -3,11 +3,12 @@ import { isAllowedBrowserOrigin } from "@/lib/security/origin";
 import { enforceRateLimit } from "@/lib/security/rate-limit";
 import { getConfiguredSiteOrigin, isProduction } from "@/lib/security/env";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Stripe webhooks authenticate via signature — skip browser Origin checks.
-  if (pathname === "/api/stripe/webhook") {
+  // CSP reports are browser-initiated and may omit Origin; handle in-route.
+  if (pathname === "/api/stripe/webhook" || pathname === "/api/csp-report") {
     return NextResponse.next();
   }
 
