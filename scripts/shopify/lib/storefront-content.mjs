@@ -175,3 +175,136 @@ export const PAGE_BLUEPRINTS = [
   ...page,
   body: page.body.replace(/^\s+/gmu, "").trim(),
 }));
+
+export const MENU_BLUEPRINT = {
+  handle: "icc-kids-navigation",
+  title: "ICC Kids Navigation (Review Before Assignment)",
+  groups: [
+    {
+      title: "Shop by Occasion",
+      fallbackUrl: "/collections/all",
+      links: [
+        ["School Plays", "collection", "school-play-costumes"],
+        ["Book Character Day", "collection", "book-character-day-costumes"],
+        ["Christmas & Church", "collection", "christmas-pageant-costumes"],
+        ["Dance & Recital", "collection", "dance-recital-costumes"],
+        ["Halloween", "collection", "kids-halloween-costumes"],
+      ],
+    },
+    {
+      title: "Shop by Character",
+      fallbackUrl: "/collections/all",
+      links: [
+        ["Storybook", "collection", "storybook-character-costumes"],
+        ["Historical", "collection", "historical-character-costumes"],
+        ["Greek & Mythology", "collection", "greek-mythology-costumes"],
+        ["Animals & Creatures", "collection", "animal-character-costumes"],
+      ],
+    },
+    {
+      title: "Shop by Age",
+      fallbackUrl: "/collections/all",
+      links: [
+        ["Ages 2–4", "collection", "costumes-ages-2-4"],
+        ["Ages 4–7", "collection", "costumes-ages-4-7"],
+        ["Ages 8–12", "collection", "costumes-ages-8-12"],
+        [
+          "Family & Teacher Matching",
+          "collection",
+          "family-teacher-matching-costumes",
+        ],
+      ],
+    },
+  ],
+  pages: [
+    ["Size Guide", "costume-size-guide"],
+    ["FAQ", "frequently-asked-costume-questions"],
+    ["About", "about-ivory-crown-kids"],
+    ["Order by Date", "costume-by-date"],
+  ],
+};
+
+export const ARTICLE_BLUEPRINTS = [
+  {
+    handle: "book-character-day-costume-ideas-for-kids",
+    title: "Book Character Day Costume Ideas for Kids",
+    summary:
+      "A practical way to choose a recognizable, school-ready book character costume without leaving sizing or delivery until the last minute.",
+    tags: ["Book Character Day", "School Costumes", "Parent Guides"],
+    body: `
+      <p>Book character day works best when a child can name the character, carry the book, and move comfortably through a normal school day. Start with the story rather than the costume: ask which books the class has read, which character the child actually knows, and whether the school has rules about masks, toy weapons, makeup, or floor-length clothing.</p>
+      <h2>Recognizable character directions</h2>
+      <ul>
+        <li><strong>Wonderland characters:</strong> Alice, the Queen of Hearts, and the Cheshire Cat are recognizable from color and silhouette.</li>
+        <li><strong>Classic adventure:</strong> Robin Hood, Peter Pan, detectives, pirates, and explorers can work with a simple signature accessory.</li>
+        <li><strong>Fairy-tale roles:</strong> Cinderella, farm-maid characters, princes, princesses, and wolves connect to books children can bring with them.</li>
+        <li><strong>Animal characters:</strong> Rabbits, cats, lions, wolves, and forest animals are useful when the class is reading fables or picture books.</li>
+        <li><strong>Historical fiction:</strong> Period dresses, robes, and uniforms can support a specific book when the child can explain the connection.</li>
+      </ul>
+      <h2>Choose for a full school day</h2>
+      <p>A visually accurate costume is not useful if the child cannot sit, use the restroom, eat lunch, or walk safely. Check garment length, closures, headpieces, and whether layers can be removed. Avoid relying on an age label alone: measure height, chest, waist, and a similar garment that already fits.</p>
+      <h2>Work backward from the event</h2>
+      <p>Use the latest delivery estimate, include processing time, and leave at least seven extra days for a try-on. When the costume arrives, confirm every included piece immediately and practice wearing it with the shoes and base layers planned for school.</p>
+      <p>The strongest final touch is not another accessory—it is the book. Label it with the child's name and help the child prepare one sentence about the character.</p>
+    `,
+  },
+  {
+    handle: "wizard-of-oz-school-play-costume-guide",
+    title: "Wizard of Oz School Play Costume Guide",
+    summary:
+      "A role-by-role checklist for choosing Wizard of Oz costumes that read clearly from the audience and still work for rehearsals.",
+    tags: ["Wizard of Oz", "School Plays", "Costume Guides"],
+    body: `
+      <p>Wizard of Oz costumes have to do two jobs: identify the character from the back of the room and let the performer move through rehearsals and scene changes. Before buying, ask the director for the production's color palette, required footwear, microphone needs, and whether accessories are supplied by the school.</p>
+      <h2>Tin Man</h2>
+      <p>Look for a clear silver or gray silhouette with enough room at the shoulders, elbows, hips, and knees. Confirm whether the headpiece, bow tie, axe, or face paint is part of the production plan; photo props are not automatically included with a costume.</p>
+      <h2>Scarecrow</h2>
+      <p>Patchwork, a pointed or floppy hat, and straw-like trim create the character. Secure loose trim so it cannot shed on stage or catch under shoes. A separate base layer makes quick changes and repeated rehearsals easier.</p>
+      <h2>Dorothy and storybook dresses</h2>
+      <p>Check dress length against the performer's height and planned shoes. If a petticoat, apron, hair bows, basket, or socks are required, verify each piece separately instead of assuming it appears in the package.</p>
+      <h2>Lion, witches, and ensemble characters</h2>
+      <p>Animal hoods and full costumes can become hot under stage lights. Ask whether the performer can remove the headpiece between scenes. For robes and gowns, rehearse stairs and choreography in the final hem length.</p>
+      <h2>Fit and timing checklist</h2>
+      <ul>
+        <li>Measure the actor rather than ordering from age alone.</li>
+        <li>Choose the larger size when measurements fall between sizes.</li>
+        <li>Leave room for a base layer and microphone pack when required.</li>
+        <li>Order using the latest delivery estimate plus a seven-day try-on buffer.</li>
+        <li>Label every separate piece before the first dress rehearsal.</li>
+      </ul>
+    `,
+  },
+  {
+    handle: "christmas-pageant-costume-checklist",
+    title: "Christmas Pageant Costume Checklist",
+    summary:
+      "A straightforward costume and logistics checklist for families, choir leaders, and pageant directors.",
+    tags: ["Christmas Pageant", "Church Programs", "Costume Checklists"],
+    body: `
+      <p>A pageant costume plan should be settled before the final rehearsal week. Directors can reduce last-minute confusion by listing each role, required garment, supplied prop, approved color, and the person responsible for every item.</p>
+      <h2>Role planning</h2>
+      <ul>
+        <li><strong>Shepherds:</strong> robe, shawl or head covering, belt, neutral base layer, and only director-approved props.</li>
+        <li><strong>Choir and speaking roles:</strong> garments that leave microphones and faces unobstructed.</li>
+        <li><strong>Angels and seasonal characters:</strong> secure wings, halos, or headpieces separately and test doorway clearance.</li>
+        <li><strong>Animal roles:</strong> confirm visibility, ventilation, and whether a hood can be removed between scenes.</li>
+        <li><strong>Family or adult roles:</strong> coordinate color and period with the children's costumes instead of assuming every supplier set matches.</li>
+      </ul>
+      <h2>Measure and rehearse</h2>
+      <p>Use the measurements on the individual product page. Age labels vary between suppliers. Check height, chest, waist, sleeve length, and total garment length, then leave room for clothing worn underneath. Rehearse walking, kneeling, sitting, stairs, and any choreography in the complete costume.</p>
+      <h2>Delivery and organization</h2>
+      <p>Order using the latest delivery estimate and leave at least seven extra days for a try-on. When items arrive, photograph and label every piece. Store each performer's costume in a separate garment bag or bin with the role and name visible.</p>
+      <h2>Final rehearsal check</h2>
+      <ul>
+        <li>Every performer can see, hear, move, and use stairs safely.</li>
+        <li>Hems and loose accessories are secured.</li>
+        <li>Props follow the venue's rules.</li>
+        <li>A repair kit and approved backup basics are available.</li>
+        <li>Families know what must be returned after the program.</li>
+      </ul>
+    `,
+  },
+].map((article) => ({
+  ...article,
+  body: article.body.replace(/^\s+/gmu, "").trim(),
+}));

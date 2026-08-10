@@ -27,9 +27,10 @@ traffic dominated by Amazon and national party chains.
 2. Configure Admin API access and run every script in dry-run mode by following
    [02-api-runbook.md](02-api-runbook.md).
 3. Review the generated JSON reports in the ignored `shopify-data/` directory.
-4. Apply scripts 02–12 one at a time, checking the storefront after each step.
-5. Review and publish the new collection/page drafts, then rebuild navigation
-   and the homepage using
+4. Apply scripts 02–14 one at a time, checking the generated resources after
+   each step.
+5. Review and publish the new collection/page/article drafts, assign the
+   review navigation menu, then rebuild the homepage using
    [01-store-rebuild.md](01-store-rebuild.md).
 6. Connect the domain and analytics using
    [03-domain-and-growth.md](03-domain-and-growth.md).

@@ -126,6 +126,47 @@ const PAGES_QUERY = `#graphql
   }
 `;
 
+const MENUS_QUERY = `#graphql
+  query StoreMenus($after: String) {
+    menus(first: 100, after: $after, sortKey: TITLE) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        id
+        title
+        handle
+        isDefault
+      }
+    }
+  }
+`;
+
+const BLOGS_QUERY = `#graphql
+  query StoreBlogs($after: String) {
+    blogs(first: 50, after: $after) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      nodes {
+        id
+        title
+        handle
+        articles(first: 100) {
+          nodes {
+            id
+            title
+            handle
+            isPublished
+          }
+        }
+      }
+    }
+  }
+`;
+
 const PRODUCT_UPDATE_MUTATION = `#graphql
   mutation UpdateProduct($product: ProductUpdateInput!) {
     productUpdate(product: $product) {
@@ -162,6 +203,43 @@ const PAGE_CREATE_MUTATION = `#graphql
   mutation CreatePage($page: PageCreateInput!) {
     pageCreate(page: $page) {
       page {
+        id
+        title
+        handle
+        isPublished
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+const MENU_CREATE_MUTATION = `#graphql
+  mutation CreateMenu(
+    $title: String!
+    $handle: String!
+    $items: [MenuItemCreateInput!]!
+  ) {
+    menuCreate(title: $title, handle: $handle, items: $items) {
+      menu {
+        id
+        title
+        handle
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+`;
+
+const ARTICLE_CREATE_MUTATION = `#graphql
+  mutation CreateArticle($article: ArticleCreateInput!) {
+    articleCreate(article: $article) {
+      article {
         id
         title
         handle
@@ -353,6 +431,36 @@ export async function fetchPages() {
   return pages;
 }
 
+export async function fetchMenus() {
+  const menus = [];
+  let after = null;
+
+  do {
+    const data = await adminGraphql(MENUS_QUERY, { after });
+    menus.push(...data.menus.nodes);
+    after = data.menus.pageInfo.hasNextPage
+      ? data.menus.pageInfo.endCursor
+      : null;
+  } while (after);
+
+  return menus;
+}
+
+export async function fetchBlogs() {
+  const blogs = [];
+  let after = null;
+
+  do {
+    const data = await adminGraphql(BLOGS_QUERY, { after });
+    blogs.push(...data.blogs.nodes);
+    after = data.blogs.pageInfo.hasNextPage
+      ? data.blogs.pageInfo.endCursor
+      : null;
+  } while (after);
+
+  return blogs;
+}
+
 export async function updateProduct(product) {
   return adminGraphql(PRODUCT_UPDATE_MUTATION, { product });
 }
@@ -363,6 +471,14 @@ export async function createCollection(collection) {
 
 export async function createPage(page) {
   return adminGraphql(PAGE_CREATE_MUTATION, { page });
+}
+
+export async function createMenu(title, handle, items) {
+  return adminGraphql(MENU_CREATE_MUTATION, { title, handle, items });
+}
+
+export async function createArticle(article) {
+  return adminGraphql(ARTICLE_CREATE_MUTATION, { article });
 }
 
 export async function updateVariants(productId, variants) {

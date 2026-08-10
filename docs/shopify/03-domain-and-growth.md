@@ -138,7 +138,9 @@ worked around with inaccurate feed data.
 
 ## Initial SEO content
 
-Publish useful, original pages rather than thin keyword posts:
+Step 14 creates the first three guides below as unpublished drafts. Add original
+images, verify every claim and internal link, then publish useful articles
+rather than thin keyword posts:
 
 1. `25 Book Character Day Costume Ideas for Kids`
 2. `Wizard of Oz School Play Costume Guide`

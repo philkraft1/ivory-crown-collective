@@ -17,6 +17,8 @@ In Shopify Admin:
    - `write_files`
    - `read_online_store_pages`
    - `write_online_store_pages`
+   - `read_online_store_navigation`
+   - `write_online_store_navigation`
 5. Install the app.
 6. Reveal the Admin API access token once.
 
@@ -67,6 +69,8 @@ npm run shopify:alt-text
 npm run shopify:image-audit
 npm run shopify:collections
 npm run shopify:pages
+npm run shopify:navigation
+npm run shopify:articles
 ```
 
 Each command writes a timestamped JSON report and makes no changes. Review:
@@ -94,11 +98,15 @@ npm run shopify:pricing -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
 npm run shopify:alt-text -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
 npm run shopify:collections -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
 npm run shopify:pages -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
+npm run shopify:navigation -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
+npm run shopify:articles -- --apply --confirm=SHOPIFY-STORE-OVERHAUL
 ```
 
 Step 10 is report-only. Steps 11 and 12 create unpublished resources so a
 merchant can review collection membership, images, page content, links, and
-theme rendering before publication.
+theme rendering before publication. Step 13 creates a separate, unassigned
+navigation menu and never replaces the live menu. Step 14 creates draft
+articles in the existing `news` blog.
 
 After each command:
 
@@ -124,6 +132,8 @@ After each command:
 | 10 | Reports retained products with fewer than five images. |
 | 11 | Creates missing automated collections from structured tags; existing handles are never overwritten and new collections remain unpublished. |
 | 12 | Creates missing About, FAQ, Size Guide, and Costume by Date pages as drafts; existing pages are never overwritten. |
+| 13 | Creates an unassigned nested navigation menu after every required collection/page exists; existing menus are never overwritten. |
+| 14 | Creates three original SEO guide articles as drafts in the existing News blog; existing article handles are never overwritten. |
 
 ## Product category
 

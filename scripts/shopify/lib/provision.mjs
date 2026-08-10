@@ -1,15 +1,21 @@
 import { executionMode, getConfig } from "./config.mjs";
 import {
+  createArticle,
   createCollection,
+  createMenu,
   createPage,
+  fetchBlogs,
   fetchCollections,
+  fetchMenus,
   fetchPages,
   fetchStoreIdentity,
   timestamp,
   writeJson,
 } from "./shopify.mjs";
 import {
+  ARTICLE_BLUEPRINTS,
   COLLECTION_BLUEPRINTS,
+  MENU_BLUEPRINT,
   PAGE_BLUEPRINTS,
 } from "./storefront-content.mjs";
 
@@ -106,6 +112,151 @@ export function planPages(existingPages, blueprints) {
   );
 }
 
+export function planMenu(
+  existingMenus,
+  collections,
+  pages,
+  blueprint,
+) {
+  const existing = existingMenus.find(
+    (menu) => menu.handle === blueprint.handle,
+  );
+  if (existing) {
+    return {
+      existing,
+      missingResources: [],
+      toCreate: null,
+      action: "No automatic overwrite; assign or edit the existing menu manually.",
+    };
+  }
+
+  const collectionsByHandle = new Map(
+    collections.map((collection) => [collection.handle, collection]),
+  );
+  const pagesByHandle = new Map(pages.map((page) => [page.handle, page]));
+  const missingResources = [];
+
+  const groups = blueprint.groups.map((group) => ({
+    title: group.title,
+    type: "CATALOG",
+    url: group.fallbackUrl,
+    items: group.links.flatMap(([title, kind, handle]) => {
+      const resource =
+        kind === "collection"
+          ? collectionsByHandle.get(handle)
+          : pagesByHandle.get(handle);
+      if (!resource) {
+        missingResources.push(`${kind}:${handle}`);
+        return [];
+      }
+      return [
+        {
+          title,
+          type: kind === "collection" ? "COLLECTION" : "PAGE",
+          resourceId: resource.id,
+          url:
+            kind === "collection"
+              ? `/collections/${resource.handle}`
+              : `/pages/${resource.handle}`,
+          items: [],
+        },
+      ];
+    }),
+  }));
+
+  const pageItems = blueprint.pages.flatMap(([title, handle]) => {
+    const page = pagesByHandle.get(handle);
+    if (!page) {
+      missingResources.push(`page:${handle}`);
+      return [];
+    }
+    return [
+      {
+        title,
+        type: "PAGE",
+        resourceId: page.id,
+        url: `/pages/${page.handle}`,
+        items: [],
+      },
+    ];
+  });
+
+  return {
+    existing: null,
+    missingResources,
+    toCreate:
+      missingResources.length === 0
+        ? {
+            title: blueprint.title,
+            handle: blueprint.handle,
+            items: [
+              ...groups,
+              ...pageItems,
+              {
+                title: "Contact",
+                type: "HTTP",
+                url: "/pages/contact",
+                items: [],
+              },
+            ],
+          }
+        : null,
+    action:
+      missingResources.length === 0
+        ? "Create an unassigned review menu; it does not replace the live main menu."
+        : "Create collections/pages first, then rerun.",
+  };
+}
+
+export function planArticles(blogs, blueprints) {
+  const blog = blogs.find((candidate) => candidate.handle === "news") || blogs[0];
+  if (!blog) {
+    return {
+      blog: null,
+      toCreate: [],
+      existing: [],
+      action: "Create a blog container in Shopify Admin, then rerun.",
+    };
+  }
+
+  const existingByHandle = new Map(
+    blog.articles.nodes.map((article) => [article.handle, article]),
+  );
+  return blueprints.reduce(
+    (plan, blueprint) => {
+      const existing = existingByHandle.get(blueprint.handle);
+      if (existing) {
+        plan.existing.push({
+          id: existing.id,
+          title: existing.title,
+          handle: existing.handle,
+          isPublished: existing.isPublished,
+          action: "No automatic overwrite; preserve merchant-edited article.",
+        });
+        return plan;
+      }
+
+      plan.toCreate.push({
+        blogId: blog.id,
+        title: blueprint.title,
+        handle: blueprint.handle,
+        summary: blueprint.summary,
+        body: blueprint.body,
+        tags: blueprint.tags,
+        author: { name: "Ivory Crown Collective" },
+        isPublished: false,
+      });
+      return plan;
+    },
+    {
+      blog: { id: blog.id, title: blog.title, handle: blog.handle },
+      toCreate: [],
+      existing: [],
+      action: "Create missing articles as drafts.",
+    },
+  );
+}
+
 async function verifiedShop() {
   const config = getConfig();
   const shop = await fetchStoreIdentity();
@@ -172,8 +323,54 @@ async function provisionPages(mode) {
   console.log(`APPLY: created ${plan.toCreate.length} unpublished pages.`);
 }
 
+async function provisionMenu(mode) {
+  const [shop, existingMenus, collections, pages] = await Promise.all([
+    verifiedShop(),
+    fetchMenus(),
+    fetchCollections(),
+    fetchPages(),
+  ]);
+  const plan = planMenu(
+    existingMenus,
+    collections,
+    pages,
+    MENU_BLUEPRINT,
+  );
+  await report("13-navigation", mode, shop, {
+    ...plan,
+    assignment:
+      "The new menu is not assigned to Horizon. Review it, then select it in the theme header settings.",
+  });
+  if (!mode.apply || !plan.toCreate) return;
+
+  await createMenu(
+    plan.toCreate.title,
+    plan.toCreate.handle,
+    plan.toCreate.items,
+  );
+  console.log("APPLY: created one unassigned review navigation menu.");
+}
+
+async function provisionArticles(mode) {
+  const [shop, blogs] = await Promise.all([verifiedShop(), fetchBlogs()]);
+  const plan = planArticles(blogs, ARTICLE_BLUEPRINTS);
+  await report("14-articles", mode, shop, {
+    ...plan,
+    publication:
+      "Articles are drafts without hero images. Review claims, add original images and internal links, then publish intentionally.",
+  });
+  if (!mode.apply || !plan.blog) return;
+
+  for (const article of plan.toCreate) {
+    await createArticle(article);
+  }
+  console.log(`APPLY: created ${plan.toCreate.length} draft articles.`);
+}
+
 const PROVISIONERS = {
+  articles: provisionArticles,
   collections: provisionCollections,
+  menu: provisionMenu,
   pages: provisionPages,
 };
 

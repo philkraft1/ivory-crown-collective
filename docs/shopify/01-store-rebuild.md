@@ -62,7 +62,10 @@ image with descriptive alt text. Do not publish empty placeholders.
 
 ## Header navigation
 
-Replace `Home / Catalog / Contact / Search` with:
+Step 13 creates this structure as a separate menu named `ICC Kids Navigation
+(Review Before Assignment)`. Review every link, then assign that menu in
+**Online Store > Themes > Customize > Header**. It does not replace the live
+menu automatically.
 
 ```text
 Shop by Occasion
