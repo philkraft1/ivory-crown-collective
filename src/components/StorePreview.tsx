@@ -70,7 +70,7 @@ export async function StorePreview({
 
           {isMock ? (
             <p className="text-[0.6rem] uppercase tracking-[0.22em] text-pearl/30">
-              Preview products · connect Shopify to go live
+              Preview placeholders · unlock Online Store + Storefront API to show live products
             </p>
           ) : null}
         </div>
