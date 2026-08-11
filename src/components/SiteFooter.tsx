@@ -17,13 +17,6 @@ export function SiteFooter() {
           <Link href="/#pay" className="transition-colors hover:text-gold-bright">
             Pay / book
           </Link>
-          <a
-            href={SITE.shopUrl}
-            className="transition-colors hover:text-gold-bright"
-            rel="noopener noreferrer"
-          >
-            {SITE.shopLabel}
-          </a>
           <a href={`tel:${SITE.phoneTel}`} className="transition-colors hover:text-gold-bright">
             {SITE.phoneDisplay}
           </a>
