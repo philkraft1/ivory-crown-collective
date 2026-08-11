@@ -24,7 +24,6 @@ affected API to **fail closed** (HTTP 503 / 403), not open.
 3. **Zod validation** — length caps, interest allowlist, offering ID enum, header-injection stripping
 4. **Turnstile** — bot check on contact **and** checkout (skipped in local dev when keys are absent)
 5. **Stripe integrity** — pinned success/cancel URLs, webhook signature verify, success page retrieves the session before claiming payment, Checkout idempotency keys (offering + IP + 2-minute bucket)
-6. **Shopify sanitization** — collection handles must match `^[a-z0-9][a-z0-9-]{0,100}$`; product links must be `https` on allowlisted shop hosts
 
 ## Setup recipes
 
@@ -67,5 +66,4 @@ header mirrors the enforcing policy for visibility.
 - Checkout / contact without Turnstile in prod → 403
 - Fake `/pay/success?session_id=cs_test_fake` → does **not** show “Payment received”
 - Webhook with bad signature → 400
-- `?collection=../../evil` → ignored; preview falls back to featured/mock
 - Homepage has no construction banner

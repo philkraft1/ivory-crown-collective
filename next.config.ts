@@ -12,7 +12,7 @@ const cspDirectives = [
   "form-action 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "img-src 'self' data: https://cdn.shopify.com https://*.stripe.com",
+  "img-src 'self' data: https://*.stripe.com",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
   // Stripe Checkout + Cloudflare Turnstile
@@ -21,8 +21,8 @@ const cspDirectives = [
     ? "script-src 'self' 'unsafe-inline' https://js.stripe.com https://challenges.cloudflare.com"
     : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://challenges.cloudflare.com",
   isProd
-    ? "connect-src 'self' https://api.stripe.com https://*.myshopify.com https://challenges.cloudflare.com"
-    : "connect-src 'self' https://api.stripe.com https://*.myshopify.com https://challenges.cloudflare.com ws: wss:",
+    ? "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com"
+    : "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com ws: wss:",
   "report-uri /api/csp-report",
   "report-to csp-endpoint",
   ...(isProd ? ["upgrade-insecure-requests"] : []),
@@ -80,11 +80,6 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  images: {
-    remotePatterns: [
-      { protocol: "https", hostname: "cdn.shopify.com" },
-    ],
-  },
   async redirects() {
     return [
       // Keep a single canonical origin so CSRF Origin checks and Stripe

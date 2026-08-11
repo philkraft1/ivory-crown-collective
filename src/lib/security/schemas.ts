@@ -54,30 +54,6 @@ export const checkoutBodySchema = z.object({
   turnstileToken: z.string().optional().default(""),
 });
 
-export const COLLECTION_HANDLE_RE = /^[a-z0-9][a-z0-9-]{0,100}$/;
-
-export function sanitizeCollectionHandle(value: string | null | undefined): string | null {
-  if (!value) return null;
-  const handle = value.trim().toLowerCase();
-  return COLLECTION_HANDLE_RE.test(handle) ? handle : null;
-}
-
-const ALLOWED_SHOP_HOSTS = new Set([
-  "shop.ivorycrowncollective.com",
-  "1wtpc0-c2.myshopify.com",
-]);
-
-export function isAllowedProductUrl(url: string): boolean {
-  try {
-    const parsed = new URL(url);
-    if (parsed.protocol !== "https:") return false;
-    if (ALLOWED_SHOP_HOSTS.has(parsed.hostname)) return true;
-    return parsed.hostname.endsWith(".myshopify.com");
-  } catch {
-    return false;
-  }
-}
-
 export function isAllowedStripeCheckoutUrl(url: string): boolean {
   try {
     const parsed = new URL(url);
