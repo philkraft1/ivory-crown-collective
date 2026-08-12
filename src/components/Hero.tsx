@@ -42,7 +42,7 @@ export function Hero() {
         <div className="animate-rise relative min-h-0 flex-1 px-3 py-2 sm:px-8 sm:py-4">
           <Image
             src="/brand/logo.png"
-            alt="Ivory Crown Collective — Web Design, IT Solutions & Software Development"
+            alt="Ivory Crown Collective — Web Design, Software & Apps, and IT Solutions"
             fill
             priority
             sizes="100vw"
@@ -56,7 +56,7 @@ export function Hero() {
             Now booking
           </p>
           <p className="animate-rise-delay-2 mt-2 text-[0.65rem] tracking-[0.28em] text-pearl/50 uppercase sm:mt-3 sm:text-xs">
-            Web design · Entertainment · IT solutions
+            Web design · Software & apps · IT solutions
           </p>
           <div className="animate-rise-delay-3 mt-5 flex flex-wrap items-center justify-center gap-3 sm:mt-6">
             <a

@@ -1,6 +1,6 @@
 export type PayOffering = {
   id: string;
-  serviceId: "web-design" | "entertainment" | "it-solutions" | "consult";
+  serviceId: "web-design" | "software-apps" | "it-solutions" | "consult";
   title: string;
   description: string;
   amountCents: number;
@@ -17,18 +17,18 @@ export const PAY_OFFERINGS: PayOffering[] = [
     label: "$500 deposit",
   },
   {
-    id: "entertainment-deposit",
-    serviceId: "entertainment",
-    title: "Entertainment Booking Deposit",
-    description: "Hold your date with a DJ / entertainment booking deposit.",
-    amountCents: 15000,
-    label: "$150 deposit",
+    id: "software-apps-deposit",
+    serviceId: "software-apps",
+    title: "Software & Apps Deposit",
+    description: "Kickoff deposit for custom web apps, product UI, or software work.",
+    amountCents: 30000,
+    label: "$300 deposit",
   },
   {
     id: "it-solutions-deposit",
     serviceId: "it-solutions",
     title: "IT Solutions Deposit",
-    description: "Kickoff deposit for software, systems, or IT project work.",
+    description: "Kickoff deposit for systems, integrations, or IT project work.",
     amountCents: 30000,
     label: "$300 deposit",
   },

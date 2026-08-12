@@ -2,7 +2,7 @@ export const SITE = {
   name: "Ivory Crown Collective",
   url: "https://ivorycrowncollective.com",
   description:
-    "Ivory Crown Collective — web design, entertainment, and IT solutions. Book a project or gig.",
+    "Ivory Crown Collective — web design, software & apps, and IT solutions. Book a project.",
   phoneDisplay: "(732) 233-8516",
   phoneTel: "+17322338516",
   // Normalized from phil@ivorycrowncollective@gmail.com (invalid double-@)
@@ -20,19 +20,19 @@ export const SERVICES = [
     id: "web-design",
     title: "Web Design",
     blurb:
-      "Sites and interfaces that feel intentional — brand-first pages, product UI, and digital presence built to convert.",
+      "Brand-first sites and interfaces built to convert — marketing pages, product UI, and digital presence with clear structure.",
   },
   {
-    id: "entertainment",
-    title: "Entertainment",
+    id: "software-apps",
+    title: "Software & Apps",
     blurb:
-      "DJ sets and live energy for events that need presence. Clean transitions, reading the room, locking the vibe.",
+      "Custom web apps and lightweight software — workflows, dashboards, and tools shaped around how your business actually runs.",
   },
   {
     id: "it-solutions",
     title: "IT Solutions",
     blurb:
-      "Practical software and systems work — from light tooling to stack decisions that keep your operation sharp.",
+      "Practical systems work — stack decisions, integrations, and tooling that keep your operation sharp and maintainable.",
   },
 ] as const;
 
@@ -48,15 +48,15 @@ export const FEATURED_PROJECT = {
 
 export const PORTFOLIO = [
   {
-    category: "Entertainment",
-    title: "Event & nightlife sets",
+    category: "Software & Apps",
+    title: "Product UI & tooling",
     status:
-      "DJ sets and live energy for private events, parties, and nights that need a locked-in room.",
+      "Custom interfaces and light app work that turn messy processes into clear, usable software.",
   },
   {
     category: "IT Solutions",
-    title: "Product & tooling",
+    title: "Systems & integrations",
     status:
-      "Light software, automations, and stack decisions that keep small operations sharp.",
+      "Stack decisions, automations, and integrations that keep small operations sharp.",
   },
 ] as const;
