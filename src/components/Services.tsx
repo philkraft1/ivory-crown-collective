@@ -11,7 +11,7 @@ export function Services() {
           Three practices. One standard.
         </h2>
         <p className="mt-4 max-w-lg text-base leading-relaxed text-pearl/55">
-          Design, entertainment, and IT — offered under one collective, with equal care for craft.
+          Web design, software & apps, and IT — one studio, the same standard of craft.
         </p>
 
         <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-0">

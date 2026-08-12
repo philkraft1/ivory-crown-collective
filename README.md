@@ -1,6 +1,6 @@
 # Ivory Crown Collective
 
-Main website for **Ivory Crown Collective LLC** — web design, entertainment, and IT solutions.
+Main website for **Ivory Crown Collective LLC** — web design, software & apps, and IT solutions.
 
 ## Run locally
 
@@ -15,7 +15,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 - Logo: `public/brand/logo.png`
 - Visual system lives in `src/app/globals.css` (ink / pearl / gold tokens).
-- Homepage pillars: **Web Design**, **Entertainment**, and **IT Solutions**.
+- Homepage pillars: **Web Design**, **Software & Apps**, and **IT Solutions**.
 
 ## Stack
 

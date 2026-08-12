@@ -3,7 +3,7 @@ import { PAY_OFFERINGS } from "@/lib/payments";
 
 export const CONTACT_INTERESTS = [
   "Web Design",
-  "Entertainment",
+  "Software & Apps",
   "IT Solutions",
   "Multiple / Other",
   "General",

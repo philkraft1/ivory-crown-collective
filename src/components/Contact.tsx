@@ -61,8 +61,8 @@ export function Contact() {
             Let’s build something.
           </h2>
           <p className="mt-4 max-w-md text-base leading-relaxed text-pearl/55">
-            Web design, entertainment bookings, or IT help — message {SITE.founder.name} and you’ll
-            hear back directly. Prefer to start with a deposit?{" "}
+            Web design, software & apps, or IT help — message {SITE.founder.name} and you’ll hear
+            back directly. Prefer to start with a deposit?{" "}
             <a href="#pay" className="text-gold-bright underline underline-offset-4 hover:text-gold-hot">
               Pay securely with Stripe
             </a>
@@ -153,7 +153,7 @@ export function Contact() {
               className="w-full border border-gold/25 bg-void px-4 py-3 text-pearl outline-none transition focus:border-gold-bright"
             >
               <option>Web Design</option>
-              <option>Entertainment</option>
+              <option>Software & Apps</option>
               <option>IT Solutions</option>
               <option>Multiple / Other</option>
             </select>

@@ -25,8 +25,9 @@ export const metadata: Metadata = {
   keywords: [
     "Ivory Crown Collective",
     "web design",
-    "entertainment",
-    "DJ",
+    "software",
+    "web apps",
+    "app development",
     "IT solutions",
     "New Jersey",
   ],
