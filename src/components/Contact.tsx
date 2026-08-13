@@ -170,7 +170,7 @@ export function Contact() {
             />
           </label>
 
-          <Turnstile onToken={onToken} />
+          <Turnstile action="contact" onToken={onToken} />
 
           <button
             type="submit"

@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useId,
+  useImperativeHandle,
+  useRef,
+} from "react";
 
 declare global {
   interface Window {
@@ -13,6 +19,7 @@ declare global {
           "expired-callback"?: () => void;
           "error-callback"?: () => void;
           theme?: "dark" | "light" | "auto";
+          action?: string;
         },
       ) => string;
       reset: (widgetId?: string) => void;
@@ -22,17 +29,34 @@ declare global {
   }
 }
 
+export type TurnstileHandle = {
+  reset: () => void;
+};
+
 type Props = {
   onToken: (token: string) => void;
   onExpire?: () => void;
+  action?: string;
 };
 
 const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
-export function Turnstile({ onToken, onExpire }: Props) {
+export const Turnstile = forwardRef<TurnstileHandle, Props>(function Turnstile(
+  { onToken, onExpire, action },
+  ref,
+) {
   const hostRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const reactId = useId();
+
+  useImperativeHandle(ref, () => ({
+    reset: () => {
+      if (widgetIdRef.current && window.turnstile) {
+        window.turnstile.reset(widgetIdRef.current);
+      }
+      onToken("");
+    },
+  }));
 
   useEffect(() => {
     if (!SITE_KEY || !hostRef.current) return;
@@ -46,6 +70,7 @@ export function Turnstile({ onToken, onExpire }: Props) {
       widgetIdRef.current = window.turnstile.render(hostRef.current, {
         sitekey: SITE_KEY,
         theme: "dark",
+        ...(action ? { action } : {}),
         callback: (token) => onToken(token),
         "expired-callback": () => {
           onToken("");
@@ -84,11 +109,11 @@ export function Turnstile({ onToken, onExpire }: Props) {
         widgetIdRef.current = null;
       }
     };
-  }, [onExpire, onToken, reactId]);
+  }, [action, onExpire, onToken, reactId]);
 
   if (!SITE_KEY) {
     return null;
   }
 
   return <div ref={hostRef} className="min-h-[65px]" />;
-}
+});
