@@ -25,7 +25,8 @@ declare global {
       reset: (widgetId?: string) => void;
       remove: (widgetId?: string) => void;
     };
-    onTurnstileLoad?: () => void;
+    __turnstileReadyQueue?: Array<() => void>;
+    __turnstileScriptLoading?: boolean;
   }
 }
 
@@ -40,6 +41,55 @@ type Props = {
 };
 
 const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+const SCRIPT_SRC =
+  "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+
+function whenTurnstileReady(callback: () => void) {
+  if (typeof window === "undefined") return;
+
+  if (window.turnstile) {
+    callback();
+    return;
+  }
+
+  const queue = (window.__turnstileReadyQueue ??= []);
+  queue.push(callback);
+
+  if (window.__turnstileScriptLoading) return;
+  window.__turnstileScriptLoading = true;
+
+  const existing = document.querySelector<HTMLScriptElement>(
+    `script[src^="https://challenges.cloudflare.com/turnstile/v0/api.js"]`,
+  );
+
+  const flush = () => {
+    const pending = window.__turnstileReadyQueue ?? [];
+    window.__turnstileReadyQueue = [];
+    for (const fn of pending) fn();
+  };
+
+  if (existing) {
+    // Script tag exists but API may still be loading.
+    const poll = window.setInterval(() => {
+      if (window.turnstile) {
+        window.clearInterval(poll);
+        flush();
+      }
+    }, 50);
+    window.setTimeout(() => window.clearInterval(poll), 10000);
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.src = SCRIPT_SRC;
+  script.async = true;
+  script.onload = flush;
+  script.onerror = () => {
+    window.__turnstileScriptLoading = false;
+    window.__turnstileReadyQueue = [];
+  };
+  document.head.appendChild(script);
+}
 
 export const Turnstile = forwardRef<TurnstileHandle, Props>(function Turnstile(
   { onToken, onExpire, action },
@@ -47,14 +97,19 @@ export const Turnstile = forwardRef<TurnstileHandle, Props>(function Turnstile(
 ) {
   const hostRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
+  const onTokenRef = useRef(onToken);
+  const onExpireRef = useRef(onExpire);
   const reactId = useId();
+
+  onTokenRef.current = onToken;
+  onExpireRef.current = onExpire;
 
   useImperativeHandle(ref, () => ({
     reset: () => {
       if (widgetIdRef.current && window.turnstile) {
         window.turnstile.reset(widgetIdRef.current);
       }
-      onToken("");
+      onTokenRef.current("");
     },
   }));
 
@@ -71,36 +126,18 @@ export const Turnstile = forwardRef<TurnstileHandle, Props>(function Turnstile(
         sitekey: SITE_KEY,
         theme: "dark",
         ...(action ? { action } : {}),
-        callback: (token) => onToken(token),
+        callback: (token) => onTokenRef.current(token),
         "expired-callback": () => {
-          onToken("");
-          onExpire?.();
+          onTokenRef.current("");
+          onExpireRef.current?.();
         },
         "error-callback": () => {
-          onToken("");
+          onTokenRef.current("");
         },
       });
     };
 
-    if (window.turnstile) {
-      render();
-    } else {
-      const existing = document.querySelector<HTMLScriptElement>(
-        'script[src^="https://challenges.cloudflare.com/turnstile/v0/api.js"]',
-      );
-      if (!existing) {
-        const script = document.createElement("script");
-        script.src =
-          "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onTurnstileLoad";
-        script.async = true;
-        window.onTurnstileLoad = () => render();
-        document.head.appendChild(script);
-      } else {
-        window.onTurnstileLoad = () => render();
-        // Script may already be loaded.
-        if (window.turnstile) render();
-      }
-    }
+    whenTurnstileReady(render);
 
     return () => {
       cancelled = true;
@@ -109,7 +146,7 @@ export const Turnstile = forwardRef<TurnstileHandle, Props>(function Turnstile(
         widgetIdRef.current = null;
       }
     };
-  }, [action, onExpire, onToken, reactId]);
+  }, [action, reactId]);
 
   if (!SITE_KEY) {
     return null;
