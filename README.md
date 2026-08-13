@@ -2,6 +2,9 @@
 
 Main website for **Ivory Crown Collective LLC** — web design, software & apps, and IT solutions.
 
+- **Live:** https://ivorycrowncollective.com
+- **Secrets** (Stripe, Resend, Upstash, Turnstile) live in Vercel environment variables, never in git.
+
 ## Run locally
 
 ```bash

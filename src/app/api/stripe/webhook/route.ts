@@ -33,7 +33,6 @@ export async function POST(request: Request) {
         payment_status: session.payment_status,
         offeringId: session.metadata?.offeringId,
         serviceId: session.metadata?.serviceId,
-        customer_email: session.customer_details?.email ?? session.customer_email,
       });
       break;
     }

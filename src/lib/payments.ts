@@ -56,9 +56,11 @@ export function formatUsd(cents: number): string {
 
 export function randomIntegrationSuffix(length = 8): string {
   const alphabet = "abcdefghijklmnopqrstuvwxyz";
+  const bytes = new Uint8Array(length);
+  crypto.getRandomValues(bytes);
   let out = "";
   for (let i = 0; i < length; i += 1) {
-    out += alphabet[Math.floor(Math.random() * alphabet.length)];
+    out += alphabet[bytes[i]! % alphabet.length];
   }
   return out;
 }
