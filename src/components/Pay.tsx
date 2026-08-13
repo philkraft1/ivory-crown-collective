@@ -1,7 +1,7 @@
 "use client";
 
-import { useCallback, useState } from "react";
-import { Turnstile } from "@/components/Turnstile";
+import { useCallback, useRef, useState } from "react";
+import { Turnstile, type TurnstileHandle } from "@/components/Turnstile";
 import { formatUsd, PAY_OFFERINGS } from "@/lib/payments";
 import { SITE } from "@/lib/site";
 
@@ -9,9 +9,17 @@ export function Pay() {
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [error, setError] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
+  const turnstileRef = useRef<TurnstileHandle>(null);
   const onToken = useCallback((token: string) => setTurnstileToken(token), []);
 
+  const canPay = Boolean(turnstileToken.trim());
+
   async function startCheckout(offeringId: string) {
+    if (!canPay) {
+      setError("Complete the check below to enable payment.");
+      return;
+    }
+
     setLoadingId(offeringId);
     setError("");
 
@@ -24,7 +32,12 @@ export function Pay() {
       const payload = (await response.json()) as { url?: string; error?: string };
 
       if (!response.ok || !payload.url) {
-        throw new Error(payload.error || "Unable to start checkout.");
+        const message = payload.error || "Unable to start checkout.";
+        if (response.status === 403) {
+          setTurnstileToken("");
+          turnstileRef.current?.reset();
+        }
+        throw new Error(message);
       }
 
       let checkoutHost = "";
@@ -66,14 +79,25 @@ export function Pay() {
           other local methods when available.
         </p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 space-y-3">
+          <p className="text-xs tracking-[0.2em] text-pearl/45 uppercase">
+            {canPay
+              ? "Verified — choose a package to pay"
+              : "Complete the check below to enable payment"}
+          </p>
+          <Turnstile ref={turnstileRef} action="checkout" onToken={onToken} />
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
           {PAY_OFFERINGS.map((offering) => (
             <article
               key={offering.id}
               className="flex flex-col border border-gold/20 px-6 py-7 transition-colors hover:border-gold/40"
             >
               <p className="text-xs tracking-[0.22em] text-gold-bright uppercase">
-                {offering.serviceId === "consult" ? "Consult" : offering.serviceId.replace("-", " ")}
+                {offering.serviceId === "consult"
+                  ? "Consult"
+                  : offering.serviceId.replace("-", " ")}
               </p>
               <h3 className="mt-3 font-[family-name:var(--font-cinzel)] text-2xl font-semibold text-pearl">
                 {offering.title}
@@ -87,9 +111,9 @@ export function Pay() {
                 </p>
                 <button
                   type="button"
-                  disabled={loadingId === offering.id}
+                  disabled={!canPay || loadingId === offering.id}
                   onClick={() => startCheckout(offering.id)}
-                  className="group relative inline-flex min-w-[9.5rem] items-center justify-center overflow-hidden px-6 py-3 font-[family-name:var(--font-cinzel)] text-xs font-semibold tracking-[0.22em] text-ink uppercase disabled:opacity-70"
+                  className="group relative inline-flex min-w-[9.5rem] items-center justify-center overflow-hidden px-6 py-3 font-[family-name:var(--font-cinzel)] text-xs font-semibold tracking-[0.22em] text-ink uppercase disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <span
                     aria-hidden="true"
@@ -102,10 +126,6 @@ export function Pay() {
               </div>
             </article>
           ))}
-        </div>
-
-        <div className="mt-8">
-          <Turnstile onToken={onToken} />
         </div>
 
         {error && (
