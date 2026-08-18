@@ -24,13 +24,15 @@ Shoppers never see costumes. The agency Next.js site must stay on the apex; the 
 
 ## Steps (do in order)
 
-### 1. Primary domain
+### 1. Demote apex (exact clicks)
 
 1. Open [Settings → Domains](https://admin.shopify.com/store/1wtpc0-c2/settings/domains)
-2. Find `1wtpc0-c2.myshopify.com`
-3. Open the domain menu (⋯) → **Change primary domain** / **Make primary**
-4. Confirm primary is **`1wtpc0-c2.myshopify.com`** (or `shop.ivorycrowncollective.com` once DNS works)
-5. Leave `ivorycrowncollective.com` **disconnected** from this store if it was wrongly attached as primary. The apex must stay on Vercel for the agency site — do not keep it as Shopify primary.
+2. Click **`ivorycrowncollective.com`** (current primary)
+3. Choose **Change domain type** / **Set as redirect** (demote) — Shopify will make `1wtpc0-c2.myshopify.com` primary automatically
+4. Optionally disconnect **`ivorycrowncollective.com`** and **`www.ivorycrowncollective.com`** from this store entirely (apex must stay on Vercel for the agency site)
+5. Prefer keeping **`ivorycrowncollective.store`** (or later `shop.ivorycrowncollective.com`) as the customer-facing costume domain once primary is fixed
+
+There is **no Admin API mutation** for primary domain — this step is UI-only.
 
 ### 2. Custom shop subdomain (when ready)
 
