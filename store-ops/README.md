@@ -8,41 +8,48 @@ This folder is **Shopify Admin / catalog ops only**. It must never be wired into
 
 | Path | Purpose |
 |------|---------|
-| `UNLOCK.md` | Fix primary-domain redirect + password (Admin UI; domain primary cannot be changed via API) |
+| `UNLOCK.md` | Fix primary-domain redirect (password already off) |
 | `TAXONOMY.md` | Collections, tags, navigation model |
+| `NAV.md` | Main/footer menu setup (needs navigation scope or Admin UI) |
 | `UX.md` | Horizon homepage / purchase-path checklist |
-| `reports/category-gaps.md` | Competitive category-gap recommendations (product *types* only) |
-| `reports/research-checklist.md` | Reusable checklist for later gap research runs |
+| `IMPORT.md` | Legal CSV import path |
+| `reports/category-gaps.md` | Competitive category-gap recommendations (types only) |
+| `reports/research-checklist.md` | Reusable checklist for later gap research |
 | `templates/shopify-products-import.csv` | Legal CSV import template + replaceable stubs |
-| `scripts/apply-taxonomy.mjs` | Admin API: collections + menus (needs token) |
+| `scripts/apply-taxonomy.mjs` | Create smart collections (+ menus if scoped) |
+| `scripts/tag-products.mjs` | Map catalog → taxonomy tags |
+| `scripts/refresh-token.sh` | Refresh expiring CLI Admin token |
 | `scripts/verify-storefront.sh` | Confirms myshopify no longer redirects to agency |
-| `scripts/graphql.sh` | Helper curl wrapper for Admin GraphQL |
+
+## Live status (this run)
+
+- Smart collections created; **157 products** tagged for age / occasion / type
+- Horizon homepage: hero CTA → Book Character Day + age/occasion sections
+- Product trust links; Shipping / Returns / Size Guide pages published
+- Password protection: **already off**
+- **Shopper blocker:** primary domain is still `ivorycrowncollective.com` → myshopify **301s** to the agency site until demoted in Admin (`UNLOCK.md`)
+- Menus: set in Admin per `NAV.md` (token lacks `write_online_store_navigation`)
 
 ## Auth
 
 ```bash
-export SHOPIFY_SHOP=1wtpc0-c2.myshopify.com
-export SHOPIFY_ADMIN_TOKEN=shpat_...   # Custom app Admin API token
+./scripts/refresh-token.sh
+set -a; source .secrets/admin.env; set +a
+./scripts/verify-storefront.sh
+node scripts/apply-taxonomy.mjs
+node scripts/tag-products.mjs
 ```
 
-Or locally (Cloud VMs often fail Cloudflare on `admin.shopify.com`):
+For menus automation, re-auth locally with navigation scopes (Cloudflare blocks cloud VMs):
 
 ```bash
 shopify store auth -s 1wtpc0-c2.myshopify.com \
-  --scopes read_products,write_products,write_content,write_online_store_navigation,read_themes,write_themes
-```
-
-Then:
-
-```bash
-./scripts/verify-storefront.sh
-node scripts/apply-taxonomy.mjs
+  --scopes write_products,write_content,write_themes,write_online_store_navigation
 ```
 
 ## Execution order
 
-1. Complete `UNLOCK.md` in Admin (human; Cloudflare blocks cloud automation)
-2. Run `apply-taxonomy.mjs` (or follow `TAXONOMY.md` in Admin UI)
-3. Apply `UX.md` in theme editor
-4. Use `reports/category-gaps.md` when sourcing inventory
-5. Fill `templates/shopify-products-import.csv` with **your** supplier SKUs/images/prices → Products → Import
+1. Complete domain demote in `UNLOCK.md` (one Admin click)
+2. Set menus per `NAV.md`
+3. Use `reports/category-gaps.md` when sourcing inventory
+4. Fill `templates/shopify-products-import.csv` with supplier SKUs/images/prices → Products → Import

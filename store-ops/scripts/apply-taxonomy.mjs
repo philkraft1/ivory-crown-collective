@@ -229,42 +229,49 @@ async function main() {
     resourceId: created[h].id,
   }));
 
-  await upsertMenu("main-menu", "Main menu", [
-    {
-      title: "Shop by Age",
-      type: "HTTP",
-      url: "/collections/little-kids",
-      items: ageChildren,
-    },
-    {
-      title: "Shop by Occasion",
-      type: "HTTP",
-      url: "/collections/book-character-day",
-      items: occasionChildren,
-    },
-    {
-      title: "Costumes",
-      type: "COLLECTION",
-      resourceId: created.costumes.id,
-    },
-    {
-      title: "Accessories",
-      type: "COLLECTION",
-      resourceId: created.accessories.id,
-    },
-    {
-      title: "Best Sellers",
-      type: "COLLECTION",
-      resourceId: created["best-sellers"].id,
-    },
-  ]);
+  try {
+    await upsertMenu("main-menu", "Main menu", [
+      {
+        title: "Shop by Age",
+        type: "HTTP",
+        url: "/collections/little-kids",
+        items: ageChildren,
+      },
+      {
+        title: "Shop by Occasion",
+        type: "HTTP",
+        url: "/collections/book-character-day",
+        items: occasionChildren,
+      },
+      {
+        title: "Costumes",
+        type: "COLLECTION",
+        resourceId: created.costumes.id,
+      },
+      {
+        title: "Accessories",
+        type: "COLLECTION",
+        resourceId: created.accessories.id,
+      },
+      {
+        title: "Best Sellers",
+        type: "COLLECTION",
+        resourceId: created["best-sellers"].id,
+      },
+    ]);
 
-  await upsertMenu("footer", "Footer", [
-    { title: "Shipping", type: "HTTP", url: "/pages/shipping" },
-    { title: "Returns", type: "HTTP", url: "/pages/returns" },
-    { title: "Size Guide", type: "HTTP", url: "/pages/size-guide" },
-    { title: "Contact", type: "HTTP", url: "/pages/contact" },
-  ]);
+    await upsertMenu("footer", "Footer", [
+      { title: "Shipping", type: "HTTP", url: "/pages/shipping" },
+      { title: "Returns", type: "HTTP", url: "/pages/returns" },
+      { title: "Size Guide", type: "HTTP", url: "/pages/size-guide" },
+      { title: "Contact", type: "HTTP", url: "/pages/contact" },
+    ]);
+  } catch (err) {
+    console.warn(
+      "Menus skipped (need write_online_store_navigation). Set menus in Admin → Online Store → Navigation.",
+      String(err.message || err),
+    );
+  }
 
   console.log("\nDone. Apply UX.md in the theme editor next.");
   console.log(

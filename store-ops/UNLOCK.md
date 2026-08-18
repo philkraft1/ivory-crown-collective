@@ -1,5 +1,13 @@
 # Unlock storefront (hard blocker)
 
+## Status (API check)
+
+| Check | Status |
+|-------|--------|
+| Storefront password | **Off** (`onlineStore.passwordProtection.enabled = false`) |
+| Primary domain | **Still wrong:** `ivorycrowncollective.com` (must demote) |
+| Reachable storefront | **Blocked** until primary is `1wtpc0-c2.myshopify.com` or `shop.…` / `ivorycrowncollective.store` |
+
 ## Symptom (confirmed)
 
 `https://1wtpc0-c2.myshopify.com` returns **301** → `https://ivorycrowncollective.com/` with header:
