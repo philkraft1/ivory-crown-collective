@@ -21,14 +21,15 @@ This folder is **Shopify Admin / catalog ops only**. It must never be wired into
 | `scripts/refresh-token.sh` | Refresh expiring CLI Admin token |
 | `scripts/verify-storefront.sh` | Confirms myshopify no longer redirects to agency |
 
-## Live status (this run)
+## Live status
 
-- Smart collections created; **157 products** tagged for age / occasion / type
+- **Storefront live:** https://www.ivorycrowncollective.store (primary domain)
+- Smart collections published to Online Store; products tagged for age / occasion / type
 - Horizon homepage: hero CTA → Book Character Day + age/occasion sections
-- Product trust links; Shipping / Returns / Size Guide pages published
-- Password protection: **already off**
-- **Shopper blocker:** primary domain is still `ivorycrowncollective.com` → myshopify **301s** to the agency site until demoted in Admin (`UNLOCK.md`)
-- Menus: set in Admin per `NAV.md` (token lacks `write_online_store_navigation`)
+- Product trust links; Shipping / Returns / Size Guide pages
+- Password protection: off
+- Agency apex `ivorycrowncollective.com` remains the Next.js site (separate)
+- Menus: set in Admin per `NAV.md` if Main menu still needs age/occasion links
 
 ## Auth
 

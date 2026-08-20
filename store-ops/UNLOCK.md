@@ -4,9 +4,10 @@
 
 | Check | Status |
 |-------|--------|
-| Storefront password | **Off** (`onlineStore.passwordProtection.enabled = false`) |
-| Primary domain | **Still wrong:** `ivorycrowncollective.com` (must demote) |
-| Reachable storefront | **Blocked** until primary is `1wtpc0-c2.myshopify.com` or `shop.…` / `ivorycrowncollective.store` |
+| Storefront password | **Off** |
+| Primary domain | **`www.ivorycrowncollective.store`** |
+| Reachable storefront | **Yes** — `https://www.ivorycrowncollective.store` (myshopify redirects here) |
+| Agency apex | Still on Vercel (`ivorycrowncollective.com`) — separate from the shop |
 
 ## Symptom (confirmed)
 
