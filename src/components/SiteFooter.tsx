@@ -17,12 +17,22 @@ export function SiteFooter() {
           <Link href="/#pay" className="transition-colors hover:text-gold-bright">
             Pay / book
           </Link>
+          <a
+            href={SITE.shopUrl}
+            className="transition-colors hover:text-gold-bright"
+            rel="noopener noreferrer"
+          >
+            {SITE.shopLabel}
+          </a>
           <a href={`tel:${SITE.phoneTel}`} className="transition-colors hover:text-gold-bright">
             {SITE.phoneDisplay}
           </a>
           <a href={`mailto:${SITE.email}`} className="transition-colors hover:text-gold-bright">
             {SITE.email}
           </a>
+          <Link href="/privacy" className="transition-colors hover:text-gold-bright">
+            Privacy Policy
+          </Link>
         </div>
         <p className="text-xs tracking-[0.14em] text-pearl/35 uppercase">
           © {new Date().getFullYear()}
