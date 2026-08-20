@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useCallback, useState } from "react";
+import Link from "next/link";
 import { ContactIdentity } from "@/components/ContactIdentity";
 import { Turnstile } from "@/components/Turnstile";
 import { SITE } from "@/lib/site";
@@ -185,6 +186,14 @@ export function Contact() {
               {status === "sending" ? "Sending…" : status === "sent" ? "Sent" : "Send message"}
             </span>
           </button>
+
+          <p className="text-xs text-pearl/40">
+            By sending, you agree to our{" "}
+            <Link href="/privacy" className="text-gold-bright underline underline-offset-4 hover:text-gold-hot">
+              Privacy Policy
+            </Link>
+            .
+          </p>
 
           {status === "sent" && (
             <p className="text-sm text-gold-bright" role="status">

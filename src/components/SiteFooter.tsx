@@ -30,7 +30,10 @@ export function SiteFooter() {
           <a href={`mailto:${SITE.email}`} className="transition-colors hover:text-gold-bright">
             {SITE.email}
           </a>
-          <Link href="/privacy" className="transition-colors hover:text-gold-bright">
+          <Link
+            href="/privacy"
+            className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.18em] text-gold-bright uppercase transition-colors hover:text-gold-hot"
+          >
             Privacy Policy
           </Link>
         </div>
