@@ -1,106 +1,60 @@
-# Taxonomy: age / occasion / type
+# Taxonomy: clothing shop departments
 
-Goal: kids & costume shopping without hunting. Prefer **automated collections** (tag rules) so new imports land correctly.
+Three equal departments. Prefer **smart collections** (tag rules).
 
-## Tag vocabulary (apply on every product)
+## Department tags
 
-### Age (`age:*`)
+| Tag | Use |
+|-----|-----|
+| `dept:women` | Women apparel, accessories, beauty |
+| `dept:men` | Men apparel / accessories |
+| `dept:kids` | Kids costumes & dress-up |
+| `dept:beauty` | Helper on beauty SKUs (with `type:beauty`) |
 
-| Tag | Meaning |
-|-----|---------|
-| `age:toddler` | ~2–4 / 2T–5T |
-| `age:little-kids` | ~4–8 / XS–M kids |
-| `age:big-kids` | ~8–14 / L–XL kids / juniors |
+## Type tags + Product type
 
-### Occasion (`occasion:*`)
+| Tag | Product type |
+|-----|--------------|
+| `type:apparel` | Apparel |
+| `type:accessory` | Accessory |
+| `type:beauty` | Beauty |
+| `type:costume` | Costume |
 
-| Tag | Meaning |
-|-----|---------|
-| `occasion:book-character` | Book Character Day / literacy week |
-| `occasion:halloween` | Halloween / fall events |
-| `occasion:stage` | Recital, theater, performance |
-| `occasion:everyday` | Dress-up play, not event-specific |
+Do **not** leave beauty / everyday apparel on `type:costume`.
 
-### Type (`type:*`) — also set Shopify **Product type** field
+## Kids costume tags (unchanged)
 
-| Tag / Product type | Meaning |
-|--------------------|---------|
-| `type:costume` / `Costume` | Full costume sets |
-| `type:accessory` / `Accessory` | Hats, wands, masks, packs |
-| `type:footwear` / `Footwear` | Boots, slippers, character shoes |
+- Age: `age:toddler` | `age:little-kids` | `age:big-kids`
+- Occasion: `occasion:book-character` | `occasion:halloween` | `occasion:stage` | `occasion:everyday`
 
-### Merchandising (optional)
+## Collections
 
-- `merch:best-seller`
-- `merch:new`
-- `merch:under-25` / `merch:under-40` (maintain manually or via price rules)
-
-## Collections to create
-
-### By Age (smart)
+### Departments
 
 | Title | Handle | Rule |
 |-------|--------|------|
-| Toddler | `toddler` | Tag `age:toddler` |
-| Little Kids | `little-kids` | Tag `age:little-kids` |
-| Big Kids | `big-kids` | Tag `age:big-kids` |
+| Women | `women` | `dept:women` |
+| Women Apparel | `women-apparel` | `dept:women` + `type:apparel` |
+| Women Accessories | `women-accessories` | `dept:women` + `type:accessory` |
+| Beauty | `beauty` | `type:beauty` |
+| Men | `men` | `dept:men` |
+| Men Apparel | `men-apparel` | `dept:men` + `type:apparel` |
+| Men Accessories | `men-accessories` | `dept:men` + `type:accessory` |
+| Kids & Costumes | `kids-costumes` | `dept:kids` |
+| Costumes | `costumes` | `dept:kids` + `type:costume` |
 
-### By Occasion (smart)
+### Kids age / occasion
 
-| Title | Handle | Rule |
-|-------|--------|------|
-| Book Character Day | `book-character-day` | Tag `occasion:book-character` |
-| Halloween | `halloween` | Tag `occasion:halloween` |
-| Stage & Recital | `stage-recital` | Tag `occasion:stage` |
-| Everyday Dress-up | `everyday-dress-up` | Tag `occasion:everyday` |
+Toddler, Little Kids, Big Kids, Book Character Day, Halloween, Stage & Recital, Everyday Dress-up — same as before.
 
-### By Type (smart)
+## Scripts
 
-| Title | Handle | Rule |
-|-------|--------|------|
-| Costumes | `costumes` | Product type `Costume` **or** tag `type:costume` |
-| Accessories | `accessories` | Product type `Accessory` **or** tag `type:accessory` |
-| Footwear | `footwear` | Product type `Footwear` **or** tag `type:footwear` |
-
-### Merchandising (manual or smart)
-
-| Title | Handle | Notes |
-|-------|--------|-------|
-| Best Sellers | `best-sellers` | Tag `merch:best-seller` or manual |
-| New Arrivals | `new-arrivals` | Tag `merch:new` or created_at sort |
-| Under $40 | `under-40` | Price `< 40` if plan allows; else tag |
+```bash
+source store-ops/.secrets/admin.env   # or refresh-token.sh
+node store-ops/scripts/tag-departments.mjs
+node store-ops/scripts/apply-departments.mjs
+```
 
 ## Navigation
 
-### Main menu (`main-menu`)
-
-- Shop by Age → Toddler | Little Kids | Big Kids
-- Shop by Occasion → Book Character Day | Halloween | Stage & Recital | Everyday Dress-up
-- Costumes
-- Accessories
-- Best Sellers (optional)
-
-### Footer (`footer`)
-
-- Shipping
-- Returns
-- Size Guide
-- Contact
-
-Create matching pages (Online Store → Pages) for Shipping / Returns / Size Guide if missing; link those URLs in the footer menu.
-
-## Admin UI path (if no API token)
-
-1. Products → open each product → set **Product type** + tags from vocabulary
-2. Products → Collections → Create (smart) per tables above
-3. Online Store → Navigation → edit Main menu + Footer as above
-
-## API path
-
-```bash
-export SHOPIFY_SHOP=1wtpc0-c2.myshopify.com
-export SHOPIFY_ADMIN_TOKEN=shpat_...
-node scripts/apply-taxonomy.mjs
-```
-
-Script creates smart collections + rebuilds main/footer menus. It does **not** invent product tags — after import, tag products (or include tags in the CSV).
+See `NAV.md`.

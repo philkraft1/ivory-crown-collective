@@ -1,30 +1,25 @@
-# Navigation (Admin UI — required scope)
-
-Collections and tags were applied via Admin API. **Menus need** `write_online_store_navigation`, which the current CLI token does not include.
+# Navigation — clothing shop
 
 ## Main menu
 
-Online Store → Navigation → **Main menu**:
-
-1. Shop by Age → Toddler, Little Kids, Big Kids (`/collections/toddler` etc.)
-2. Shop by Occasion → Book Character Day, Halloween, Stage & Recital, Everyday Dress-up
-3. Costumes → `/collections/costumes`
-4. Accessories → `/collections/accessories`
+- **Women** → `/collections/women`
+  - Apparel → `/collections/women-apparel`
+  - Accessories → `/collections/women-accessories`
+  - Beauty → `/collections/beauty`
+- **Men** → `/collections/men`
+  - Apparel → `/collections/men-apparel`
+  - Accessories → `/collections/men-accessories`
+- **Kids & Costumes** → `/collections/kids-costumes`
+  - Toddler | Little Kids | Big Kids
+  - Book Character Day | Halloween
 
 ## Footer
 
-Link to pages already created:
+- Shipping `/pages/shipping`
+- Returns `/pages/returns`
+- Size Guide `/pages/size-guide`
+- Women `/pages/women` · Men `/pages/men` · Kids `/pages/kids-costumes`
 
-- `/pages/shipping`
-- `/pages/returns`
-- `/pages/size-guide`
+## API note
 
-(Footer theme also includes a Shipping · Returns · Size Guide liquid row.)
-
-## Re-auth for automation
-
-```bash
-shopify store auth -s 1wtpc0-c2.myshopify.com \
-  --scopes write_products,write_content,write_themes,write_online_store_navigation
-node store-ops/scripts/apply-taxonomy.mjs
-```
+Menus need `write_online_store_navigation`. If the CLI token lacks it, set the Main menu in Admin → Online Store → Navigation.

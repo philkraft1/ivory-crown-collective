@@ -17,7 +17,9 @@ This folder is **Shopify Admin / catalog ops only**. It must never be wired into
 | `reports/research-checklist.md` | Reusable checklist for later gap research |
 | `templates/shopify-products-import.csv` | Legal CSV import template + replaceable stubs |
 | `scripts/apply-taxonomy.mjs` | Create smart collections (+ menus if scoped) |
-| `scripts/tag-products.mjs` | Map catalog → taxonomy tags |
+| `scripts/tag-products.mjs` | Map catalog → kids taxonomy tags |
+| `scripts/tag-departments.mjs` | Classify women/men/kids/beauty |
+| `scripts/apply-departments.mjs` | Department collections + pages |
 | `scripts/refresh-token.sh` | Refresh expiring CLI Admin token |
 | `scripts/verify-storefront.sh` | Confirms myshopify no longer redirects to agency |
 
@@ -25,7 +27,8 @@ This folder is **Shopify Admin / catalog ops only**. It must never be wired into
 
 - **Storefront live:** https://www.ivorycrowncollective.store (primary domain)
 - Smart collections published to Online Store; products tagged for age / occasion / type
-- Horizon homepage: hero CTA → Book Character Day + age/occasion sections
+- Horizon homepage: department carousel (Women · Men · Kids · Beauty) + kids sections
+- Women / Beauty / Kids collections published; Men ready (inventory thin)
 - Product trust links; Shipping / Returns / Size Guide pages
 - Password protection: off
 - Agency apex `ivorycrowncollective.com` remains the Next.js site (separate)
