@@ -2,14 +2,14 @@ import { FEATURED_PROJECT, PORTFOLIO } from "@/lib/site";
 
 export function Portfolio() {
   return (
-    <section id="portfolio" className="relative border-t border-gold/15 px-5 py-20 sm:px-8 sm:py-28">
+    <section id="about" className="relative border-t border-gold/15 px-5 py-20 sm:px-8 sm:py-28">
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(232,185,35,0.08)_0%,transparent_50%)]"
         aria-hidden="true"
       />
       <div className="relative mx-auto max-w-6xl">
         <p className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.35em] text-gold uppercase">
-          Portfolio
+          About
         </p>
         <h2 className="mt-3 max-w-xl font-[family-name:var(--font-cinzel)] text-3xl font-semibold tracking-[-0.02em] text-pearl sm:text-4xl md:text-5xl">
           Recent work.
