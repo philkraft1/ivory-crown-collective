@@ -8,7 +8,8 @@ export const SITE = {
   // Normalized from phil@ivorycrowncollective@gmail.com (invalid double-@)
   email: "phil@ivorycrowncollective.com",
   shopUrl: "https://ivorycrowncollective.store",
-  shopLabel: "Costume shop",
+  shopLabel: "Grab your fall needs",
+  shopCta: "Shop",
   founder: {
     name: "Philip S. Kraft",
     title: "CEO",
