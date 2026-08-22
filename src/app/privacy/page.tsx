@@ -282,22 +282,11 @@ export default function PrivacyPage() {
                 6. Cookies and similar tech
               </h2>
               <p className="mt-4">
-                This site uses Google Analytics to understand how people use the site (for example,
-                pages visited and approximate traffic). Google may set cookies or similar storage
-                for that measurement. Stripe Checkout, Cloudflare Turnstile, and Vercel may also set
-                strictly necessary cookies or similar storage to complete a payment, verify you are
-                not a bot, or keep the site secure. You can control cookies in your browser; blocking
-                necessary ones may stop checkout or the contact form from working. You can learn more
-                about Google&apos;s practices at{" "}
-                <a
-                  href="https://policies.google.com/privacy"
-                  className="text-champagne underline decoration-champagne/40 underline-offset-2 hover:decoration-champagne"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Google&apos;s Privacy Policy
-                </a>
-                .
+                This site does not use advertising cookies. Stripe Checkout, Cloudflare Turnstile,
+                and Vercel may set strictly necessary cookies or similar storage to complete a
+                payment, verify you are not a bot, or keep the site secure. You can control cookies
+                in your browser; blocking necessary ones may stop checkout or the contact form from
+                working.
               </p>
             </section>
 

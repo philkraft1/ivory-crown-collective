@@ -10,7 +10,6 @@ export const SITE = {
   shopUrl: "https://ivorycrowncollective.store",
   shopLabel: "Grab your fall needs",
   shopCta: "Shop",
-  gaMeasurementId: "G-0B672ZN217",
   founder: {
     name: "Philip S. Kraft",
     title: "CEO",
