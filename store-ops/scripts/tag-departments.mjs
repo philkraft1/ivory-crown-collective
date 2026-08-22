@@ -37,7 +37,7 @@ async function gql(query, variables = {}) {
 const BEAUTY_RE =
   /\b(beauty|skincare|skin care|soap|makeup|perfume|eau de|fragrance|serum|lotion|moisturizer|sunscreen|spf|toner|kojic|turmeric|tallow|lip\b|filler|mousse|tanning|shampoo|cosmetic|hand soap)\b/i;
 const SUPPLEMENT_RE =
-  /\b(protein|collagen|spirulina|mushroom complex|supplement|electrolyte|hydration multiplier|mre\b|energybits|meal booster|cheddar|cheesy cheese)\b/i;
+  /\b(protein|collagen|spirulina|mushroom complex|supplement|electrolyte|hydration multiplier|mre\b|energybits|meal booster|cheddar|cheesy cheese|phorm|level-1 bar|grocery)\b/i;
 const COSTUME_RE =
   /\b(costume|cosplay|school play|halloween|book character|dress-up|dress up|toga|recital|nativity|masquerade)\b/i;
 const KIDS_RE =
