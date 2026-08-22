@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel, Outfit } from "next/font/google";
+import Script from "next/script";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteNav } from "@/components/SiteNav";
 import { SITE } from "@/lib/site";
@@ -74,6 +75,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${cinzel.variable} min-h-svh antialiased`}>
       <body className="flex min-h-svh flex-col bg-void text-pearl [font-family:var(--font-outfit),sans-serif]">
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaMeasurementId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${SITE.gaMeasurementId}');
+          `}
+        </Script>
         <SiteNav />
         <div className="flex-1">{children}</div>
         <SiteFooter />
