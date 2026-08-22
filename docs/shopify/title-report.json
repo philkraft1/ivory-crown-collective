@@ -1,0 +1,761 @@
+{
+  "generatedAt": "2026-08-10T20:31:51.119Z",
+  "titles": [
+    {
+      "id": "gid://shopify/Product/9785953517813",
+      "handle": "halloween-kids-alien-robot-costume-cheerleader-dance-ballet-skirt-ai-gradient-tulle-skirt",
+      "before": "Robot Tutu for Kids - School Play Costume",
+      "after": "Robot Tutu for Kids - School Play Costume",
+      "beforeLength": 41,
+      "afterLength": 41,
+      "character": "robot"
+    },
+    {
+      "id": "gid://shopify/Product/9785953550581",
+      "handle": "toy-story-jessie-cosplay-costume-jessie-short-skirt-set-anime-movie-character-cosplay-outfit",
+      "before": "Toy Story Jessie Skirt for Kids - School Play Costume",
+      "after": "Toy Story Jessie Skirt for Kids - School Play Costume",
+      "beforeLength": 53,
+      "afterLength": 53,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785953583349",
+      "handle": "flight-attendant-cosplay-britney-spears-dress-uniform-set-stage-performance-costume",
+      "before": "Flight Attendant Britney Dress for Kids - School Play Costume",
+      "after": "Flight Attendant Britney Dress for Kids - School Play Costume",
+      "beforeLength": 61,
+      "afterLength": 61,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785953616117",
+      "handle": "robin-cosplay-costume-two-years-later-nico-robin-swimsuit-set-cosplay-clothing",
+      "before": "Robin Cosplay Costume Two Years Later Nico Robin Swimsuit Set Cosplay Clothing",
+      "after": "Robin Two Years Costume Set for Kids - School Play Costume",
+      "beforeLength": 78,
+      "afterLength": 58,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785953681653",
+      "handle": "childrens-scottish-style-outfit-boys-plaid-skirt-vintage-clothing-halloween-stage-costume-party-wear",
+      "before": "Children's Scottish Style Outfit Boys Plaid Skirt Vintage Clothing Halloween Stage Costume Party Wear",
+      "after": "Scottish Highlander Skirt for Kids - School Play Costume",
+      "beforeLength": 101,
+      "afterLength": 56,
+      "character": "scottish"
+    },
+    {
+      "id": "gid://shopify/Product/9785953747189",
+      "handle": "halloween-costume-stage-performance-outfit-little-lion-cosplay-animal-costume-role-play",
+      "before": "Halloween Costume Stage Performance Outfit Little Lion Cosplay Animal Costume Role Play",
+      "after": "Lion Costume for Family - School Play Costume",
+      "beforeLength": 87,
+      "afterLength": 45,
+      "character": "lion"
+    },
+    {
+      "id": "gid://shopify/Product/9785953779957",
+      "handle": "childrens-halloween-parent-child-monster-party-costume-animal-costume-king-kong-plush-gorilla",
+      "before": "Children's Halloween Parent-Child Monster Party Costume Animal Costume King Kong Plush Gorilla",
+      "after": "Parent-child Monster Animal Costume for Family - Halloween Costume",
+      "beforeLength": 94,
+      "afterLength": 66,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785953812725",
+      "handle": "lolita-style-british-cosplay-costume-childrens-detective-sherlock-holmes-outfit-with-cape-and-glasses",
+      "before": "Lolita Style British Cosplay Costume Children's Detective Sherlock Holmes Outfit with Cape and Glasses",
+      "after": "Sherlock Holmes Costume Set for Kids - School Play Costume",
+      "beforeLength": 102,
+      "afterLength": 58,
+      "character": "sherlock-holmes"
+    },
+    {
+      "id": "gid://shopify/Product/9785953845493",
+      "handle": "halloween-costume-teacher-movie-character-vintage-maid-servant-mistress-cosplay-outfit-set",
+      "before": "Halloween Costume  Teacher Movie Character Vintage Maid Servant Mistress Cosplay Outfit Set",
+      "after": "Teacher Movie Character Costume Set for Kids - School Play Costume",
+      "beforeLength": 91,
+      "afterLength": 66,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785953878261",
+      "handle": "halloween-childrens-black-nun-costume-cosplay-dress-for-girls-fairy-tale-play-performance-outfit",
+      "before": "Halloween Children's Black Nun Costume Cosplay Dress for Girls, Fairy Tale Play Performance Outfit",
+      "after": "Nun Dress for Kids - School Play Costume",
+      "beforeLength": 98,
+      "afterLength": 40,
+      "character": "nun"
+    },
+    {
+      "id": "gid://shopify/Product/9785953911029",
+      "handle": "traditional-ethnic-clothing-baglia-child-cosplay-beer-costume-embroidered-brown-strap-long-dress",
+      "before": "Traditional Ethnic Clothing Baglia Child Cosplay Beer Costume Embroidered Brown Strap Long Dress",
+      "after": "Traditional Ethnic Baglia Dress for Kids - School Play Costume",
+      "beforeLength": 96,
+      "afterLength": 62,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785953943797",
+      "handle": "halloween-costume-for-girls-bat-costume-cosplay-childrens-stage-performance-outfit-party-dress",
+      "before": "Halloween Costume for Girls Bat Costume Cosplay Children's Stage Performance Outfit Party Dress",
+      "after": "Bat Dress for Kids - School Play Costume",
+      "beforeLength": 95,
+      "afterLength": 40,
+      "character": "bat"
+    },
+    {
+      "id": "gid://shopify/Product/9785953976565",
+      "handle": "halloween-costume-western-ethnic-festival-st-patricks-day-childrens-irish-fairy-dwarf-dress",
+      "before": "Halloween Costume Western  Ethnic Festival St. Patrick's Day Children's Irish Fairy Dwarf Dress",
+      "after": "Irish Fairy Dress for Kids - School Play Costume",
+      "beforeLength": 95,
+      "afterLength": 48,
+      "character": "irish-fairy"
+    },
+    {
+      "id": "gid://shopify/Product/9785954009333",
+      "handle": "pantomime-clown-costume-for-kids-halloween-comedy-performance-outfit-for-childrens-stage-play",
+      "before": "Pantomime Clown Costume for Kids - Halloween Comedy Performance Outfit for Children's Stage Play",
+      "after": "Pantomime Clown Costume for Kids - School Play Costume",
+      "beforeLength": 96,
+      "afterLength": 54,
+      "character": "pantomime-clown"
+    },
+    {
+      "id": "gid://shopify/Product/9785954042101",
+      "handle": "five-colored-mexican-ethnic-skirt-dress-for-stage-performance",
+      "before": "Five colored Mexican ethnic skirt dress for stage performance",
+      "after": "Five Colored Mexican Dress for Kids - School Play Costume",
+      "beforeLength": 61,
+      "afterLength": 57,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785954074869",
+      "handle": "cinderella-maid-costume-for-childrens-day-stage-performance-rustic-farm-maid-outfit-for-poor-commoner-role",
+      "before": "Cinderella Maid Costume for Children's Day, Stage Performance, Rustic Farm Maid Outfit for Poor Commoner Role",
+      "after": "Cinderella Costume for Family - School Play Costume",
+      "beforeLength": 109,
+      "afterLength": 51,
+      "character": "cinderella"
+    },
+    {
+      "id": "gid://shopify/Product/9785954107637",
+      "handle": "cute-cat-paw-printed-dress-for-kids-purple-striped-smiling-cat-design-childrens-performance-outfit",
+      "before": "Cute Cat Paw Printed Dress for Kids - Purple Striped Smiling Cat Design, Children's Performance Outfit",
+      "after": "Cheshire Cat Dress for Kids - School Play Costume",
+      "beforeLength": 102,
+      "afterLength": 49,
+      "character": "cheshire-cat"
+    },
+    {
+      "id": "gid://shopify/Product/9785954140405",
+      "handle": "childrens-little-match-girl-costume-farm-maid-lolita-cosplay-dress",
+      "before": "Children's Little Match Girl Costume Farm Maid Lolita Cosplay Dress",
+      "after": "Little Match Girl Dress for Kids - School Play Costume",
+      "beforeLength": 67,
+      "afterLength": 54,
+      "character": "little-match-girl"
+    },
+    {
+      "id": "gid://shopify/Product/9785954173173",
+      "handle": "christmas-unisex-cosplay-animal-costume-deer-reindeer-childrens-performance-costume",
+      "before": "Christmas Unisex Cosplay Animal Costume Deer Reindeer Children's Performance Costume",
+      "after": "Reindeer Costume for Kids - School Play Costume",
+      "beforeLength": 84,
+      "afterLength": 47,
+      "character": "reindeer"
+    },
+    {
+      "id": "gid://shopify/Product/9785954205941",
+      "handle": "wonderland-theme-park-purple-childrens-cosplay-costume-for-girls-smiling-cat-party-dress-up-halloween-outfit",
+      "before": "Wonderland Theme Park Purple Children's Cosplay Costume for Girls - Smiling Cat Party Dress-Up Halloween Outfit",
+      "after": "Cheshire Cat Dress for Kids - School Play Costume (Style 2)",
+      "beforeLength": 111,
+      "afterLength": 59,
+      "character": "cheshire-cat"
+    },
+    {
+      "id": "gid://shopify/Product/9785954238709",
+      "handle": "halloween-greek-mythology-goddess-cosplay-costume-white-off-shoulder-dress-stage-wear",
+      "before": "Halloween Greek Mythology Goddess Cosplay Costume White Off-Shoulder Dress Stage Wear",
+      "after": "Greek Toga Dress for Kids - School Play Costume",
+      "beforeLength": 85,
+      "afterLength": 47,
+      "character": "greek-toga"
+    },
+    {
+      "id": "gid://shopify/Product/9785954304245",
+      "handle": "halloween-costume-little-red-riding-hood-farm-cosplay-costume-for-stage-play-based-on-grimms-fairy-tale",
+      "before": "Halloween Costume Little Red Riding Hood Farm Cosplay Costume for Stage Play Based on Grimm's Fairy Tale",
+      "after": "Little Red Riding Hood Costume for Kids - School Play Costume",
+      "beforeLength": 104,
+      "afterLength": 61,
+      "character": "red-riding-hood"
+    },
+    {
+      "id": "gid://shopify/Product/9785954337013",
+      "handle": "halloween-costume-for-girls-children-cosplay-dress-stage-drama-performance-costume-blue-checkered-skirt-with-headscarf",
+      "before": "Halloween Costume for Girls Children Cosplay Dress Stage Drama Performance Costume Blue Checkered Skirt with Headscarf",
+      "after": "Dress Drama Blue for Kids - School Play Costume",
+      "beforeLength": 118,
+      "afterLength": 47,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785954369781",
+      "handle": "halloween-costume-shepherd-sleeveless-long-robe-shawl-ancient-parent-child-beige-blue-clothing",
+      "before": "Halloween Costume Shepherd Sleeveless Long Robe Shawl Ancient Parent-Child Beige Blue Clothing",
+      "after": "Nativity Shepherd Robe for Family - School Play Costume",
+      "beforeLength": 94,
+      "afterLength": 55,
+      "character": "shepherd"
+    },
+    {
+      "id": "gid://shopify/Product/9785954402549",
+      "handle": "brown-grandpa-halloween-costume-shepherd-elder-outfit",
+      "before": "Brown Grandpa Halloween Costume Shepherd Elder Outfit",
+      "after": "Nativity Shepherd Costume for Kids - School Play Costume",
+      "beforeLength": 53,
+      "afterLength": 56,
+      "character": "shepherd"
+    },
+    {
+      "id": "gid://shopify/Product/9785954435317",
+      "handle": "halloween-costume-kids-cute-plush-rabbit-animal-outfit-forest-stage-performance-costume-onesie-pajamas",
+      "before": "Halloween Costume Kids Cute Plush Rabbit Animal Outfit Forest Stage Performance Costume Onesie Pajamas",
+      "after": "Rabbit Onesie for Kids - School Play Costume",
+      "beforeLength": 102,
+      "afterLength": 44,
+      "character": "rabbit"
+    },
+    {
+      "id": "gid://shopify/Product/9785954468085",
+      "handle": "retro-hippie-girls-outfit-with-fringe-vest-and-long-dress-halloween-retro-disco-theme-party-costume",
+      "before": "Retro Hippie Girls' Outfit with Fringe Vest and Long Dress, Halloween Retro Disco Theme Party Costume",
+      "after": "70s Disco Dress for Kids - School Play Costume",
+      "beforeLength": 101,
+      "afterLength": 46,
+      "character": "disco-70s"
+    },
+    {
+      "id": "gid://shopify/Product/9785954500853",
+      "handle": "performance-robe-wizard-cape-stage-costume-witch-costume-festival-costume-with-cosplay-badge",
+      "before": "Performance Robe Wizard Cape Stage Costume Witch Costume Festival Costume with Cosplay Badge",
+      "after": "Robe Wizard Cape for Kids - School Play Costume",
+      "beforeLength": 92,
+      "afterLength": 47,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785954533621",
+      "handle": "fleece-adult-and-kids-dark-green-family-christmas-costume-halloween-cosplay-christmas-tree-outfit",
+      "before": "Fleece Adult and Kids Dark Green Family Christmas Costume Halloween Cosplay Christmas Tree Outfit",
+      "after": "Christmas Tree Costume for Family - School Play Costume",
+      "beforeLength": 97,
+      "afterLength": 55,
+      "character": "christmas-tree"
+    },
+    {
+      "id": "gid://shopify/Product/9785954566389",
+      "handle": "children-red-and-white-checkered-cottage-maid-costume-apron-and-headscarf-set-farm-theme-stage-performance-costume",
+      "before": "Children Red and White Checkered Cottage Maid Costume Apron and Headscarf Set Farm Theme Stage Performance Costume",
+      "after": "Storybook Farm Girl Apron Set for Kids - School Play Costume",
+      "beforeLength": 114,
+      "afterLength": 60,
+      "character": "farm-maid"
+    },
+    {
+      "id": "gid://shopify/Product/9785954599157",
+      "handle": "halloween-st-patricks-day-irish-fairy-costume-cultural-childrens-elf-costume-kids-clothing",
+      "before": "Halloween St. Patrick's Day Irish Fairy Costume Cultural Children's Elf Costume Kids Clothing",
+      "after": "Irish Fairy Costume for Family - School Play Costume",
+      "beforeLength": 93,
+      "afterLength": 52,
+      "character": "irish-fairy"
+    },
+    {
+      "id": "gid://shopify/Product/9785954631925",
+      "handle": "halloween-kids-costume-cosplay-parent-child-outfit-mysterious-castle-bat-servant-dark-green-lace-dress",
+      "before": "Halloween Kids Costume Cosplay Parent-Child Outfit Mysterious Castle Bat Servant Dark Green Lace Dress",
+      "after": "Bat Dress for Family - School Play Costume",
+      "beforeLength": 102,
+      "afterLength": 42,
+      "character": "bat"
+    },
+    {
+      "id": "gid://shopify/Product/9785954664693",
+      "handle": "halloween-childrens-costume-twilight-princess-medieval-purple-court-gown",
+      "before": "Halloween Children's Costume Twilight Princess Medieval Purple Court Gown",
+      "after": "Medieval Knight Gown for Kids - School Play Costume",
+      "beforeLength": 73,
+      "afterLength": 51,
+      "character": "knight"
+    },
+    {
+      "id": "gid://shopify/Product/9785954697461",
+      "handle": "childrens-little-match-girl-costume-stage-play-performance-rustic-farm-maid-poor-commoner-clothing",
+      "before": "Children's Little Match Girl Costume Stage Play Performance Rustic Farm Maid Poor Commoner Clothing",
+      "after": "Little Match Girl Costume for Kids - School Play Costume",
+      "beforeLength": 99,
+      "afterLength": 56,
+      "character": "little-match-girl"
+    },
+    {
+      "id": "gid://shopify/Product/9785954730229",
+      "handle": "grandmothers-deep-brown-wolf-cosplay-maid-costume-with-lace-trim-colonial-girl-child-costume",
+      "before": "Grandmother's Deep Brown Wolf Cosplay Maid Costume with Lace Trim, Colonial Girl Child Costume",
+      "after": "Big Bad Wolf Costume for Kids - School Play Costume",
+      "beforeLength": 94,
+      "afterLength": 51,
+      "character": "big-bad-wolf"
+    },
+    {
+      "id": "gid://shopify/Product/9785954762997",
+      "handle": "halloween-pink-and-blue-vampire-costume-for-girls-party-cosplay-performance",
+      "before": "Halloween Pink and Blue Vampire Costume for Girls, Party Cosplay Performance",
+      "after": "Vampire Costume for Kids - School Play Costume",
+      "beforeLength": 76,
+      "afterLength": 46,
+      "character": "vampire"
+    },
+    {
+      "id": "gid://shopify/Product/9785954795765",
+      "handle": "halloween-ghost-princess-cosplay-skeleton-bride-costume-victorian-era-childrens-ball-gown-dress",
+      "before": "Halloween Ghost Princess Cosplay Skeleton Bride Costume Victorian Era Children's Ball Gown Dress",
+      "after": "Storybook Princess Gown for Kids - School Play Costume",
+      "beforeLength": 96,
+      "afterLength": 54,
+      "character": "princess"
+    },
+    {
+      "id": "gid://shopify/Product/9785954828533",
+      "handle": "halloween-costume-girls-fairy-tale-alice-in-wonderland-role-play-queen-of-hearts-performance-dress",
+      "before": "Halloween Costume Girls Fairy Tale Alice in Wonderland Role Play Queen of Hearts Performance Dress",
+      "after": "Queen of Hearts Dress for Kids - School Play Costume",
+      "beforeLength": 98,
+      "afterLength": 52,
+      "character": "queen-of-hearts"
+    },
+    {
+      "id": "gid://shopify/Product/9785954894069",
+      "handle": "halloween-animal-costume-cosplay-black-and-pink-cat-bow-kids-performance-outfit",
+      "before": "Halloween Animal Costume Cosplay Black and Pink Cat Bow Kids Performance Outfit",
+      "after": "Cat Costume for Kids - School Play Costume",
+      "beforeLength": 79,
+      "afterLength": 42,
+      "character": "cat"
+    },
+    {
+      "id": "gid://shopify/Product/9785954926837",
+      "handle": "childrens-day-stage-play-costume-for-boys-poor-man-role-play-performance-outfit-beggar-cosplay-clothing",
+      "before": "Children's Day Stage Play Costume for Boys - Poor Man Role Play Performance Outfit, Beggar Cosplay Clothing",
+      "after": "Victorian Street Urchin Costume for Kids - School Play Costume",
+      "beforeLength": 107,
+      "afterLength": 62,
+      "character": "street-urchin"
+    },
+    {
+      "id": "gid://shopify/Product/9785954992373",
+      "handle": "family-childrens-detective-costume-brain-teasing-puzzle-role-play-movie-style-long-trench-coat-set",
+      "before": "Family Children's Detective Costume, Brain Teasing Puzzle Role Play, Movie-Style Long Trench Coat Set",
+      "after": "Sherlock Holmes Costume Set for Family - School Play Costume",
+      "beforeLength": 101,
+      "afterLength": 60,
+      "character": "sherlock-holmes"
+    },
+    {
+      "id": "gid://shopify/Product/9785955025141",
+      "handle": "halloween-costume-cosplay-cute-little-lion-animal-fluffy-costume-childrens-stage-performance-outfit",
+      "before": "Halloween Costume Cosplay Cute Little Lion Animal Fluffy Costume Children's Stage Performance Outfit",
+      "after": "Lion Costume for Family - School Play Costume (Style 2)",
+      "beforeLength": 100,
+      "afterLength": 55,
+      "character": "lion"
+    },
+    {
+      "id": "gid://shopify/Product/9785955057909",
+      "handle": "cosplay-halloween-tin-man-costume-for-kids-the-wizard-of-oz-iron-man-outfit-childrens-costume-for-boys",
+      "before": "Cosplay Halloween Tin Man Costume for Kids, The Wizard of Oz Iron Man Outfit, Children's Costume for Boys",
+      "after": "Tin Man Costume for Kids - School Play Costume",
+      "beforeLength": 105,
+      "afterLength": 46,
+      "character": "tin-man"
+    },
+    {
+      "id": "gid://shopify/Product/9785955090677",
+      "handle": "halloween-costume-childrens-beer-festival-performance-dress-multi-color-short-skirt",
+      "before": "Halloween Costume Children's Beer Festival Performance Dress Multi-color Short Skirt",
+      "after": "Bavarian Folk Dress for Kids - School Play Costume",
+      "beforeLength": 84,
+      "afterLength": 50,
+      "character": "bavarian"
+    },
+    {
+      "id": "gid://shopify/Product/9785955123445",
+      "handle": "funny-halloween-kids-animal-role-play-cosplay-costume-mantis-costume",
+      "before": "Funny Halloween Kids Animal Role Play Cosplay Costume Mantis Costume",
+      "after": "Praying Mantis Costume for Kids - School Play Costume",
+      "beforeLength": 68,
+      "afterLength": 53,
+      "character": "mantis"
+    },
+    {
+      "id": "gid://shopify/Product/9785955156213",
+      "handle": "halloween-costume-for-boys-three-color-beer-outfit-overalls-with-plaid-shirt-set-matching-socks",
+      "before": "Halloween Costume for Boys, Three-Color Beer Outfit, Overalls with Plaid Shirt Set,Matching Socks",
+      "after": "Three-color Beer Overalls for Kids - Halloween Costume",
+      "beforeLength": 97,
+      "afterLength": 54,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785955221749",
+      "handle": "halloween-boys-70s-disco-sequin-singer-model-fashion-show-retro-hippie-performance-costume",
+      "before": "Halloween Boys 70s Disco Sequin Singer Model Fashion Show Retro Hippie Performance Costume",
+      "after": "70s Disco Costume for Kids - School Play Costume",
+      "beforeLength": 90,
+      "afterLength": 48,
+      "character": "disco-70s"
+    },
+    {
+      "id": "gid://shopify/Product/9785955287285",
+      "handle": "boys-foreign-fashion-halloween-costume-choir-outfit-pastor-black-role-play-cosplay-clothing",
+      "before": "Boy's Foreign Fashion Halloween Costume Choir Outfit Pastor Black Role Play Cosplay Clothing",
+      "after": "Choir Robe Costume for Kids - School Play Costume",
+      "beforeLength": 92,
+      "afterLength": 49,
+      "character": "choir"
+    },
+    {
+      "id": "gid://shopify/Product/9785955320053",
+      "handle": "halloween-costume-irish-fairy-party-outfit-green-clover-suit-dress-foreign-trade-style",
+      "before": "Halloween Costume Irish Fairy Party Outfit Green Clover Suit Dress Foreign Trade Style",
+      "after": "Irish Fairy Dress for Kids - School Play Costume (Style 2)",
+      "beforeLength": 86,
+      "afterLength": 58,
+      "character": "irish-fairy"
+    },
+    {
+      "id": "gid://shopify/Product/9785955352821",
+      "handle": "mens-vintage-black-robe-performance-costume-stage-drama-outfit-halloween-party-costume-masquerade-ball-cosplay-clothing",
+      "before": "Men's Vintage Black Robe Performance Costume Stage Drama Outfit, Halloween Party Costume, Masquerade Ball Cosplay Clothing",
+      "after": "Choir Robe for Adult - School Play Costume",
+      "beforeLength": 122,
+      "afterLength": 42,
+      "character": "choir"
+    },
+    {
+      "id": "gid://shopify/Product/9785955385589",
+      "handle": "halloween-costume-childrens-poker-queen-with-crown-necklace-girl-stage-performance-dress-fairy-princess-dress",
+      "before": "Halloween Costume Children's Poker Queen with Crown Necklace Girl Stage Performance Dress Fairy Princess Dress",
+      "after": "Queen of Hearts Dress for Kids with Crown - School Play Costume",
+      "beforeLength": 110,
+      "afterLength": 63,
+      "character": "queen-of-hearts"
+    },
+    {
+      "id": "gid://shopify/Product/9785955418357",
+      "handle": "halloween-costume-childrens-role-play-grandpa-jumpsuit-with-hat-and-glasses-set-plaid-pants",
+      "before": "Halloween Costume Children's Role Play Grandpa Jumpsuit with Hat and Glasses Set Plaid Pants",
+      "after": "Nativity Shepherd Jumpsuit for Kids - School Play Costume",
+      "beforeLength": 92,
+      "afterLength": 57,
+      "character": "shepherd"
+    },
+    {
+      "id": "gid://shopify/Product/9785955483893",
+      "handle": "halloween-zombie-costume-horror-chef-with-mask-bloody-butcher-outfit",
+      "before": "Halloween Zombie Costume Horror Chef with Mask Bloody Butcher Outfit",
+      "after": "Zombie Horror Chef Costume for Kids - Halloween Costume",
+      "beforeLength": 68,
+      "afterLength": 55,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785955516661",
+      "handle": "halloween-kids-costume-animal-werewolf-outfit-for-boys-and-girls-cosplay-big-bad-wolf-and-little-red-riding-hood",
+      "before": "Halloween Kids' Costume Animal Werewolf Outfit for Boys and Girls, Cosplay Big Bad Wolf and Little Red Riding Hood",
+      "after": "Big Bad Wolf Costume for Kids - School Play Costume (Style 2)",
+      "beforeLength": 114,
+      "afterLength": 61,
+      "character": "big-bad-wolf"
+    },
+    {
+      "id": "gid://shopify/Product/9785955549429",
+      "handle": "childrens-floral-maid-dress-vintage-farm-girl-stage-performance-costume-halloween-cosplay-outfit",
+      "before": "Children's Floral Maid Dress Vintage Farm Girl Stage Performance Costume Halloween Cosplay Outfit",
+      "after": "Storybook Farm Girl Dress for Kids - School Play Costume",
+      "beforeLength": 97,
+      "afterLength": 56,
+      "character": "farm-maid"
+    },
+    {
+      "id": "gid://shopify/Product/9785955582197",
+      "handle": "halloween-costume-brown-childrens-overalls-scarecrow-festival-party-stage-performance-costume-for-boys",
+      "before": "Halloween Costume Brown Children's Overalls Scarecrow Festival Party Stage Performance Costume for Boys",
+      "after": "Scarecrow Overalls for Kids - School Play Costume",
+      "beforeLength": 103,
+      "afterLength": 49,
+      "character": "scarecrow"
+    },
+    {
+      "id": "gid://shopify/Product/9785955680501",
+      "handle": "new-style-colorful-childrens-prince-king-costume-for-boys-parent-child-halloween-outfit",
+      "before": "New Style Colorful Children's Prince King Costume for Boys, Parent-Child Halloween Outfit",
+      "after": "Colorful Prince King Costume for Family - Halloween Costume",
+      "beforeLength": 89,
+      "afterLength": 59,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785955778805",
+      "handle": "colonial-farm-boy-outfit-for-kids-black-striped-overalls-for",
+      "before": "Colonial Farm Boy Outfit for Kids - Black Striped Overalls for",
+      "after": "Colonial Farm Black Overalls for Kids - School Play Costume",
+      "beforeLength": 62,
+      "afterLength": 59,
+      "character": null
+    },
+    {
+      "id": "gid://shopify/Product/9785955811573",
+      "handle": "halloween-costume-hunter-childrens-robin-hood-archer-role-play-peter-pan-stage-performance-outfit",
+      "before": "Halloween Costume Hunter Children's Robin Hood Archer Role Play Peter Pan Stage Performance Outfit",
+      "after": "Robin Hood Costume for Kids - School Play Costume",
+      "beforeLength": 98,
+      "afterLength": 49,
+      "character": "robin-hood"
+    },
+    {
+      "id": "gid://shopify/Product/9785955844341",
+      "handle": "halloween-costumes-foreign-trade-childrens-clothing-childrens-scarecrow-boys-cosplay-costumes-role-playing-costumes-color-grading",
+      "before": "Halloween costumes, foreign trade children's clothing, children's scarecrow, boys' cosplay costumes, role-playing costumes, color grading",
+      "after": "Scarecrow Costume for Kids - School Play Costume",
+      "beforeLength": 137,
+      "afterLength": 48,
+      "character": "scarecrow"
+    },
+    {
+      "id": "gid://shopify/Product/9785955909877",
+      "handle": "halloween-party-costume-st-patricks-day-irish-fairy-boy-performance-costume",
+      "before": "Halloween Party Costume St. Patrick's Day Irish Fairy Boy Performance Costume",
+      "after": "Irish Fairy Costume for Kids - School Play Costume",
+      "beforeLength": 77,
+      "afterLength": 50,
+      "character": "irish-fairy"
+    },
+    {
+      "id": "gid://shopify/Product/9785955942645",
+      "handle": "halloween-party-costume-st-patricks-day-irish-fairy-boy-performance-costume-1",
+      "before": "Halloween Party Costume St. Patrick's Day Irish Fairy Boy Performance Costume",
+      "after": "Irish Fairy Costume for Kids - School Play Costume (Style 2)",
+      "beforeLength": 77,
+      "afterLength": 60,
+      "character": "irish-fairy"
+    },
+    {
+      "id": "gid://shopify/Product/9785955975413",
+      "handle": "boys-greek-zeus-costume-halloween-party-role-play-costume",
+      "before": "Boy's Greek Zeus Costume Halloween Party Role Play Costume",
+      "after": "Zeus Costume for Kids - School Play Costume",
+      "beforeLength": 58,
+      "afterLength": 43,
+      "character": "zeus"
+    },
+    {
+      "id": "gid://shopify/Product/9785956008181",
+      "handle": "greek-goddess-cosplay-costume-adult-one-shoulder-white-athena-short-dress-halloween-party-outfit",
+      "before": "Greek Goddess Cosplay Costume Adult One-Shoulder White Athena Short Dress Halloween Party Outfit",
+      "after": "Athena Dress for Adult - School Play Costume",
+      "beforeLength": 96,
+      "afterLength": 44,
+      "character": "athena"
+    },
+    {
+      "id": "gid://shopify/Product/9785956040949",
+      "handle": "halloween-costume-childrens-detective-game-parent-child-boy-outfit-sherlock-holmes-role-play-costume",
+      "before": "Halloween Costume Children's Detective Game Parent-Child Boy Outfit Sherlock Holmes Role Play Costume",
+      "after": "Sherlock Holmes Costume for Family - School Play Costume",
+      "beforeLength": 101,
+      "afterLength": 56,
+      "character": "sherlock-holmes"
+    },
+    {
+      "id": "gid://shopify/Product/9785956106485",
+      "handle": "colonial-pioneer-costume-deep-brown-wolfcosplay-granny-maid-outfit-with-lace-trim",
+      "before": "Colonial Pioneer Costume Deep Brown WolfCosplay Granny Maid Outfit with Lace Trim",
+      "after": "Big Bad Wolf Costume for Kids Lace - School Play Costume",
+      "beforeLength": 81,
+      "afterLength": 56,
+      "character": "big-bad-wolf"
+    },
+    {
+      "id": "gid://shopify/Product/9785956204789",
+      "handle": "halloween-kids-black-robe-costume-for-boys-cosplay-stage-play-outfit",
+      "before": "Halloween Kids' Black Robe Costume for Boys, Cosplay Stage Play Outfit",
+      "after": "Choir Robe for Family - School Play Costume",
+      "beforeLength": 70,
+      "afterLength": 43,
+      "character": "choir"
+    },
+    {
+      "id": "gid://shopify/Product/9785956237557",
+      "handle": "queen-of-hearts-costume-halloween-cosplay-poker-queen-tuxedo-outfit",
+      "before": "Queen of Hearts Costume Halloween Cosplay Poker Queen Tuxedo Outfit",
+      "after": "Queen of Hearts Costume for Kids - School Play Costume",
+      "beforeLength": 67,
+      "afterLength": 54,
+      "character": "queen-of-hearts"
+    },
+    {
+      "id": "gid://shopify/Product/9785956270325",
+      "handle": "caribbean-pirates-costume-set-for-men-and-children-parent-child-matching-outfits-for-halloween-party-and-costume-ball",
+      "before": "Caribbean Pirates Costume Set for Men and Children, Parent-Child Matching Outfits for Halloween Party and Costume Ball",
+      "after": "Pirate Costume Set for Family - School Play Costume",
+      "beforeLength": 118,
+      "afterLength": 51,
+      "character": "pirate"
+    },
+    {
+      "id": "gid://shopify/Product/9785956368629",
+      "handle": "caribbean-pirates-costume-set-for-men-and-children-parent-child-matching-outfits-for-halloween-party-and-costume-ball-1",
+      "before": "Caribbean Pirates Costume Set for Men and Children, Parent-Child Matching Outfits for Halloween Party and Costume Ball",
+      "after": "Pirate Costume Set for Family - School Play Costume (Style 2)",
+      "beforeLength": 118,
+      "afterLength": 61,
+      "character": "pirate"
+    },
+    {
+      "id": "gid://shopify/Product/9785956401397",
+      "handle": "halloween-costume-prairie-colonial-brown-floral-dress-frontier-victorian-medieval-style-dress",
+      "before": "Halloween Costume Prairie Colonial Brown Floral Dress Frontier Victorian Medieval Style Dress",
+      "after": "Medieval Knight Dress for Kids - School Play Costume",
+      "beforeLength": 93,
+      "afterLength": 52,
+      "character": "knight"
+    },
+    {
+      "id": "gid://shopify/Product/9785956434165",
+      "handle": "ladies-floral-bavarian-dress-german-beer-festival-traditional-costume-adult-halloween-costume-new-style",
+      "before": "Ladies Floral Bavarian Dress German Beer Festival Traditional Costume Adult Halloween Costume New Style",
+      "after": "Bavarian Folk Dress for Adult - School Play Costume",
+      "beforeLength": 103,
+      "afterLength": 51,
+      "character": "bavarian"
+    },
+    {
+      "id": "gid://shopify/Product/9785956466933",
+      "handle": "family-wolf-costume-dress-for-adults-and-kids-gray-werewolf-cosplay-outfit-for-halloween-stage-animal-performance",
+      "before": "Family Wolf Costume Dress for Adults and Kids, Gray Werewolf Cosplay Outfit for Halloween Stage Animal Performance",
+      "after": "Big Bad Wolf Dress for Family - School Play Costume",
+      "beforeLength": 114,
+      "afterLength": 51,
+      "character": "big-bad-wolf"
+    },
+    {
+      "id": "gid://shopify/Product/9785956499701",
+      "handle": "halloween-costume-grandfather-shepherd-elder-clothing",
+      "before": "Halloween Costume Grandfather Shepherd Elder Clothing",
+      "after": "Nativity Shepherd Costume for Kids - School Play Costume (Style 2)",
+      "beforeLength": 53,
+      "afterLength": 66,
+      "character": "shepherd"
+    },
+    {
+      "id": "gid://shopify/Product/9785956565237",
+      "handle": "family-wolf-costume-dress-for-adults-and-kids-gray-werewolf-cosplay-outfit-for-halloween-stage-animal-performance-1",
+      "before": "Family Wolf Costume Dress for Adults and Kids, Gray Werewolf Cosplay Outfit for Halloween Stage Animal Performance",
+      "after": "Big Bad Wolf Dress for Family - School Play Costume (Style 2)",
+      "beforeLength": 114,
+      "afterLength": 61,
+      "character": "big-bad-wolf"
+    },
+    {
+      "id": "gid://shopify/Product/9785956598005",
+      "handle": "halloween-costume-animal-print-jumpsuit-for-carnival-party-performance-unisex-mantis-print-outfit",
+      "before": "Halloween Costume Animal Print Jumpsuit for Carnival Party Performance, Unisex Mantis Print Outfit",
+      "after": "Praying Mantis Jumpsuit for Kids - School Play Costume",
+      "beforeLength": 98,
+      "afterLength": 54,
+      "character": "mantis"
+    },
+    {
+      "id": "gid://shopify/Product/9785956630773",
+      "handle": "halloween-costume-animal-print-jumpsuit-for-carnival-party-performance-unisex-mantis-print-outfit-1",
+      "before": "Halloween Costume Animal Print Jumpsuit for Carnival Party Performance, Unisex Mantis Print Outfit",
+      "after": "Praying Mantis Jumpsuit for Kids - School Play Costume (Style 2)",
+      "beforeLength": 98,
+      "afterLength": 64,
+      "character": "mantis"
+    },
+    {
+      "id": "gid://shopify/Product/9785956663541",
+      "handle": "halloween-costume-alice-in-wonderland-cheshire-cat-cosplay-outfit-purple-striped-cat",
+      "before": "Halloween Costume Alice in Wonderland Cheshire Cat Cosplay Outfit Purple Striped Cat",
+      "after": "Cheshire Cat Costume for Kids - School Play Costume",
+      "beforeLength": 84,
+      "afterLength": 51,
+      "character": "cheshire-cat"
+    },
+    {
+      "id": "gid://shopify/Product/9785956860149",
+      "handle": "childrens-ancient-greek-mythology-cosplay-costume-roman-toga-playwear-for-boys",
+      "before": "Children's Ancient Greek Mythology Cosplay Costume Roman Toga Playwear for Boys",
+      "after": "Greek Toga for Kids - School Play Costume",
+      "beforeLength": 79,
+      "afterLength": 41,
+      "character": "greek-toga"
+    },
+    {
+      "id": "gid://shopify/Product/9785956925685",
+      "handle": "christmas-costume-cosplay-cute-deer-animal-outfit-khaki-spotted-fawn-stage-performance-clothing",
+      "before": "Christmas Costume Cosplay Cute Deer Animal Outfit Khaki Spotted Fawn Stage Performance Clothing",
+      "after": "Reindeer Costume for Kids - School Play Costume (Style 2)",
+      "beforeLength": 95,
+      "afterLength": 57,
+      "character": "reindeer"
+    },
+    {
+      "id": "gid://shopify/Product/9785956958453",
+      "handle": "halloween-kids-costume-vintage-plaid-70s-hippie-hip-hop-model-catwalk-performance-outfit",
+      "before": "Halloween Kids Costume Vintage Plaid 70s Hippie Hip Hop Model Catwalk Performance Outfit",
+      "after": "70s Disco Costume for Kids - School Play Costume (Style 2)",
+      "beforeLength": 88,
+      "afterLength": 58,
+      "character": "disco-70s"
+    },
+    {
+      "id": "gid://shopify/Product/9785957056757",
+      "handle": "halloween-kids-costume-vintage-plaid-70s-hippie-hip-hop-model-catwalk-performance-outfit-1",
+      "before": "Halloween Kids Costume Vintage Plaid 70s Hippie Hip Hop Model Catwalk Performance Outfit",
+      "after": "70s Disco Costume for Kids - School Play Costume (Style 3)",
+      "beforeLength": 88,
+      "afterLength": 58,
+      "character": "disco-70s"
+    },
+    {
+      "id": "gid://shopify/Product/9785957089525",
+      "handle": "cute-hollow-out-black-cat-womens-fitted-mini-skirt-halloween-theme-party-stage-cat-girl-cosplay-costume",
+      "before": "Cute Hollow-out Black Cat Women's  Fitted Mini Skirt Halloween Theme Party Stage Cat Girl Cosplay Costume",
+      "after": "Cat Skirt for Kids - School Play Costume",
+      "beforeLength": 105,
+      "afterLength": 40,
+      "character": "cat"
+    },
+    {
+      "id": "gid://shopify/Product/9785957155061",
+      "handle": "ladys-chinese-style-modified-zombie-dress-halloween-qing-dynasty-zombie-costume-movie-character-cosplay-outfit-guangzhou-pise",
+      "before": "Lady's Chinese-Style Modified Zombie Dress, Halloween Qing Dynasty Zombie Costume, Movie Character Cosplay Outfit, Guangzhou Pise",
+      "after": "Lady's Chinese- Modified Dress for Kids - School Play Costume",
+      "beforeLength": 129,
+      "afterLength": 61,
+      "character": null
+    }
+  ]
+}

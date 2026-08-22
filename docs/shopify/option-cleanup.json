@@ -1,0 +1,1036 @@
+{
+  "generatedAt": "2026-08-10T20:33:11.847Z",
+  "note": "Color option restructuring changes the variant matrix, so it is listed here for manual work in the admin rather than scripted.",
+  "colorWork": [
+    {
+      "title": "Robot Tutu for Kids - School Play Costume",
+      "value": "AI Robot Tulle Skirt",
+      "action": "move to Style"
+    },
+    {
+      "title": "Toy Story Jessie Skirt for Kids - School Play Costume",
+      "value": "Complete Set",
+      "action": "move to Set"
+    },
+    {
+      "title": "Flight Attendant Britney Dress for Kids - School Play Costume",
+      "value": "Britney",
+      "action": "move to Style"
+    },
+    {
+      "title": "Robin Two Years Costume Set for Kids - School Play Costume",
+      "value": "Complete Set",
+      "action": "move to Set"
+    },
+    {
+      "title": "Scottish Highlander Skirt for Kids - School Play Costume",
+      "value": "Red Checkered",
+      "action": "move to Pattern"
+    },
+    {
+      "title": "Parent-child Monster Animal Costume for Family - Halloween Costume",
+      "value": "Children",
+      "action": "move to Size"
+    },
+    {
+      "title": "Pantomime Clown Costume for Kids - School Play Costume",
+      "value": "Black and white stripes",
+      "action": "move to Pattern"
+    },
+    {
+      "title": "Pantomime Clown Costume for Kids - School Play Costume",
+      "value": "Including socks",
+      "action": "move to Set"
+    },
+    {
+      "title": "Cheshire Cat Dress for Kids - School Play Costume",
+      "value": "Pink blue stripes",
+      "action": "move to Pattern"
+    },
+    {
+      "title": "Dress Drama Blue for Kids - School Play Costume",
+      "value": "Blue Checkered",
+      "action": "move to Pattern"
+    },
+    {
+      "title": "Storybook Farm Girl Apron Set for Kids - School Play Costume",
+      "value": "Red Checkered",
+      "action": "move to Pattern"
+    },
+    {
+      "title": "Vampire Costume for Kids - School Play Costume",
+      "value": "Peacock Blue",
+      "action": "move to Style"
+    },
+    {
+      "title": "Victorian Street Urchin Costume for Kids - School Play Costume",
+      "value": "Green with packaging",
+      "action": "move to Set"
+    },
+    {
+      "title": "Tin Man Costume for Kids - School Play Costume",
+      "value": "Children",
+      "action": "move to Size"
+    },
+    {
+      "title": "Bavarian Folk Dress for Kids - School Play Costume",
+      "value": "Barbie Pink",
+      "action": "move to Style"
+    },
+    {
+      "title": "70s Disco Costume for Kids - School Play Costume",
+      "value": "Black Wig with Glasses",
+      "action": "move to Set"
+    },
+    {
+      "title": "Zombie Horror Chef Costume for Kids - Halloween Costume",
+      "value": "Bloodstain",
+      "action": "move to Pattern"
+    },
+    {
+      "title": "Storybook Farm Girl Dress for Kids - School Play Costume",
+      "value": "Floral Print",
+      "action": "move to Pattern"
+    },
+    {
+      "title": "Colorful Prince King Costume for Family - Halloween Costume",
+      "value": "Children's King",
+      "action": "move to Size"
+    },
+    {
+      "title": "Irish Fairy Costume for Kids - School Play Costume",
+      "value": "Children",
+      "action": "move to Size"
+    },
+    {
+      "title": "Irish Fairy Costume for Kids - School Play Costume",
+      "value": "Children",
+      "action": "move to Size"
+    },
+    {
+      "title": "Zeus Costume for Kids - School Play Costume",
+      "value": "White (without beard wig)",
+      "action": "move to Set"
+    },
+    {
+      "title": "Sherlock Holmes Costume for Family - School Play Costume",
+      "value": "Clothing + Hat (Props not included)",
+      "action": "move to Set"
+    },
+    {
+      "title": "Sherlock Holmes Costume for Family - School Play Costume",
+      "value": "Includes glasses + magnifier",
+      "action": "move to Set"
+    },
+    {
+      "title": "Pirate Costume Set for Family - School Play Costume",
+      "value": "Adult",
+      "action": "move to Size"
+    },
+    {
+      "title": "Pirate Costume Set for Family - School Play Costume",
+      "value": "Children",
+      "action": "move to Size"
+    },
+    {
+      "title": "Pirate Costume Set for Family - School Play Costume",
+      "value": "Adult",
+      "action": "move to Size"
+    },
+    {
+      "title": "Pirate Costume Set for Family - School Play Costume",
+      "value": "Children",
+      "action": "move to Size"
+    },
+    {
+      "title": "Bavarian Folk Dress for Kids - School Play Costume",
+      "value": "Floral Print",
+      "action": "move to Pattern"
+    },
+    {
+      "title": "Big Bad Wolf Dress for Family - School Play Costume",
+      "value": "Children",
+      "action": "move to Size"
+    },
+    {
+      "title": "Big Bad Wolf Dress for Family - School Play Costume",
+      "value": "Adult",
+      "action": "move to Size"
+    },
+    {
+      "title": "Big Bad Wolf Dress for Family - School Play Costume",
+      "value": "Children",
+      "action": "move to Size"
+    },
+    {
+      "title": "Big Bad Wolf Dress for Family - School Play Costume",
+      "value": "Adult",
+      "action": "move to Size"
+    },
+    {
+      "title": "Cheshire Cat Costume for Kids - School Play Costume",
+      "value": "Purple Blue Stripe",
+      "action": "move to Pattern"
+    },
+    {
+      "title": "70s Disco Costume for Kids - School Play Costume",
+      "value": "Set includes wig and glasses",
+      "action": "move to Set"
+    },
+    {
+      "title": "70s Disco Costume for Kids - School Play Costume",
+      "value": "Set includes wig and glasses",
+      "action": "move to Set"
+    }
+  ],
+  "sizeRemaps": [
+    {
+      "title": "Robot Tutu for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [],
+      "blocked": "two supplier sizes map to the same US label; merge the variants by hand first"
+    },
+    {
+      "title": "Toy Story Jessie Skirt for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [],
+      "blocked": "two supplier sizes map to the same US label; merge the variants by hand first"
+    },
+    {
+      "title": "Flight Attendant Britney Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [],
+      "blocked": "two supplier sizes map to the same US label; merge the variants by hand first"
+    },
+    {
+      "title": "Robin Two Years Costume Set for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [],
+      "blocked": "two supplier sizes map to the same US label; merge the variants by hand first"
+    },
+    {
+      "title": "Scottish Highlander Skirt for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Lion Costume for Family - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Parent-child Monster Animal Costume for Family - Halloween Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S（4-6） -> 4-5",
+        "M（8-10） -> 6-7",
+        "L（12-14） -> 8-10",
+        "XL（16） -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Sherlock Holmes Costume Set for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Teacher Movie Character Costume Set for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Nun Dress for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Traditional Ethnic Baglia Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Bat Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [],
+      "blocked": "two supplier sizes map to the same US label; merge the variants by hand first"
+    },
+    {
+      "title": "Irish Fairy Dress for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS(100-110) -> 2-3T",
+        "S(110-125) -> 4-5",
+        "M(125-140) -> 6-7",
+        "L(140-155) -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Pantomime Clown Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Five Colored Mexican Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Cinderella Costume for Family - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS-(95-110) -> 2-3T",
+        "S-(110-125) -> 4-5",
+        "M-(125-140) -> 6-7",
+        "L-(140-150) -> 8-10",
+        "XL-(150-160) -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Cheshire Cat Dress for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Little Match Girl Dress for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS-(95-110) -> 2-3T",
+        "S-(110-125) -> 4-5",
+        "M-(125-140) -> 6-7",
+        "L-(140-150) -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Reindeer Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Cheshire Cat Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M） -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Greek Toga Dress for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Little Red Riding Hood Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [],
+      "blocked": null
+    },
+    {
+      "title": "Dress Drama Blue for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Nativity Shepherd Robe for Family - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Nativity Shepherd Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Rabbit Onesie for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [],
+      "blocked": null
+    },
+    {
+      "title": "70s Disco Dress for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [],
+      "blocked": "two supplier sizes map to the same US label; merge the variants by hand first"
+    },
+    {
+      "title": "Robe Wizard Cape for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Christmas Tree Costume for Family - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Storybook Farm Girl Apron Set for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [],
+      "blocked": "two supplier sizes map to the same US label; merge the variants by hand first"
+    },
+    {
+      "title": "Irish Fairy Costume for Family - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Bat Dress for Family - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Medieval Knight Gown for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Little Match Girl Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [],
+      "blocked": null
+    },
+    {
+      "title": "Big Bad Wolf Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Vampire Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Storybook Princess Gown for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Queen of Hearts Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Cat Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Victorian Street Urchin Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Sherlock Holmes Costume Set for Family - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Lion Costume for Family - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Tin Man Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Bavarian Folk Dress for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Praying Mantis Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Three-color Beer Overalls for Kids - Halloween Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "70s Disco Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Choir Robe for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Irish Fairy Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Choir Robe for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Queen of Hearts Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Nativity Shepherd Jumpsuit for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Zombie Horror Chef Costume for Kids - Halloween Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Big Bad Wolf Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Storybook Farm Girl Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Scarecrow Overalls for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Colorful Prince King Costume for Family - Halloween Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Colonial Farm Black Overalls for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Robin Hood Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Scarecrow Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Irish Fairy Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Irish Fairy Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Zeus Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Sherlock Holmes Costume for Family - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Big Bad Wolf Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Choir Robe for Family - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Queen of Hearts Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Pirate Costume Set for Family - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12",
+        "XXL -> 13-14"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Pirate Costume Set for Family - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12",
+        "XXL -> 13-14"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Medieval Knight Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12",
+        "XXL -> 13-14"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Bavarian Folk Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12",
+        "XXL -> 13-14"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Big Bad Wolf Dress for Family - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12",
+        "XXL -> 13-14"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Nativity Shepherd Costume for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Big Bad Wolf Dress for Family - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10",
+        "XL -> 11-12",
+        "XXL -> 13-14"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Cheshire Cat Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Greek Toga for Kids - School Play Costume",
+      "renameOptionTo": "Size",
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Reindeer Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "70s Disco Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "70s Disco Costume for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "XS -> 2-3T",
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Cat Skirt for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    },
+    {
+      "title": "Lady's Chinese- Modified Dress for Kids - School Play Costume",
+      "renameOptionTo": null,
+      "values": [
+        "S -> 4-5",
+        "M -> 6-7",
+        "L -> 8-10"
+      ],
+      "blocked": null
+    }
+  ]
+}
