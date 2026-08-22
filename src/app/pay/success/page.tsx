@@ -35,7 +35,7 @@ export default async function PaySuccessPage({
 
   if (!paid) {
     return (
-      <main className="flex min-h-svh flex-col items-center justify-center bg-void px-5 py-16 text-center text-pearl">
+      <main className="flex flex-col items-center justify-center px-5 py-16 text-center text-pearl sm:py-24">
         <p className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.35em] text-gold uppercase">
           Payment
         </p>
@@ -72,7 +72,7 @@ export default async function PaySuccessPage({
   }
 
   return (
-    <main className="flex min-h-svh flex-col items-center justify-center bg-void px-5 py-16 text-center text-pearl">
+    <main className="flex flex-col items-center justify-center px-5 py-16 text-center text-pearl sm:py-24">
       <p className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.35em] text-gold uppercase">
         Payment received
       </p>

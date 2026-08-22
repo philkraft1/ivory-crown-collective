@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const dust = [
   { left: "8%", delay: "0s", duration: "11s", size: 2 },
@@ -75,6 +76,12 @@ export function Hero() {
               />
               <span className="relative">Pay / book</span>
             </a>
+            <Link
+              href="/privacy"
+              className="inline-flex items-center justify-center border border-gold/45 px-6 py-3 font-[family-name:var(--font-cinzel)] text-[0.7rem] font-semibold tracking-[0.22em] text-gold-bright uppercase transition-colors hover:border-gold-hot hover:text-gold-hot sm:text-xs"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </div>
       </div>

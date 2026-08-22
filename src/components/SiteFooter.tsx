@@ -13,16 +13,32 @@ export function SiteFooter() {
             {SITE.founder.name}, {SITE.founder.title}
           </p>
         </div>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-pearl/45">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-pearl/45">
           <Link href="/#pay" className="transition-colors hover:text-gold-bright">
             Pay / book
           </Link>
+          <div className="flex flex-wrap items-center gap-2.5">
+            <span className="text-pearl/45">{SITE.shopLabel}</span>
+            <a
+              href={SITE.shopUrl}
+              className="inline-flex items-center justify-center border border-gold/45 px-3.5 py-1.5 font-[family-name:var(--font-cinzel)] text-[0.65rem] font-semibold tracking-[0.18em] text-gold-bright uppercase transition-colors hover:border-gold-hot hover:text-gold-hot"
+              rel="noopener noreferrer"
+            >
+              {SITE.shopCta}
+            </a>
+          </div>
           <a href={`tel:${SITE.phoneTel}`} className="transition-colors hover:text-gold-bright">
             {SITE.phoneDisplay}
           </a>
           <a href={`mailto:${SITE.email}`} className="transition-colors hover:text-gold-bright">
             {SITE.email}
           </a>
+          <Link
+            href="/privacy"
+            className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.18em] text-gold-bright uppercase transition-colors hover:text-gold-hot"
+          >
+            Privacy Policy
+          </Link>
         </div>
         <p className="text-xs tracking-[0.14em] text-pearl/35 uppercase">
           © {new Date().getFullYear()}
