@@ -1,6 +1,6 @@
-# Costume store ops (separate from agency site)
+# Store ops (separate from agency site)
 
-Store: `1wtpc0-c2.myshopify.com` (intended custom domain: `shop.ivorycrowncollective.com`)
+Store: `1wtpc0-c2.myshopify.com` · live: https://www.ivorycrowncollective.store
 
 This folder is **Shopify Admin / catalog ops only**. It must never be wired into the Next.js agency site at `ivorycrowncollective.com`.
 
@@ -9,30 +9,29 @@ This folder is **Shopify Admin / catalog ops only**. It must never be wired into
 | Path | Purpose |
 |------|---------|
 | `UNLOCK.md` | Fix primary-domain redirect (password already off) |
-| `TAXONOMY.md` | Collections, tags, navigation model |
-| `NAV.md` | Main/footer menu setup (needs navigation scope or Admin UI) |
+| `TAXONOMY.md` | Four-catalog tags + smart collections |
+| `NAV.md` | Main/footer menu (Women · Men · Costumes · Holiday & Seasonal) |
 | `UX.md` | Horizon homepage / purchase-path checklist |
 | `IMPORT.md` | Legal CSV import path |
-| `reports/category-gaps.md` | Competitive category-gap recommendations (types only) |
-| `reports/research-checklist.md` | Reusable checklist for later gap research |
-| `templates/shopify-products-import.csv` | Legal CSV import template + replaceable stubs |
-| `scripts/apply-taxonomy.mjs` | Create smart collections (+ menus if scoped) |
-| `scripts/tag-products.mjs` | Map catalog → kids taxonomy tags |
-| `scripts/tag-departments.mjs` | Classify women/men/kids/beauty |
-| `scripts/apply-departments.mjs` | Department collections + pages |
-| `scripts/refresh-token.sh` | Refresh expiring CLI Admin token |
-| `scripts/verify-storefront.sh` | Confirms myshopify no longer redirects to agency |
+| `theme/` | Horizon homepage/header JSON snapshots |
+| `reports/` | Audits, gaps, assortment notes |
+| `templates/shopify-products-import.csv` | Legal CSV import template |
+| `scripts/audit-four-catalogs.mjs` | Archive noise + retag four catalogs |
+| `scripts/expand-women-men-catalog.mjs` | Restore women apparel + seed Men from owned assets |
+| `scripts/apply-four-catalogs.mjs` | Collections, pages, merch tags |
+| `scripts/apply-departments.mjs` | Legacy department collections |
+| `scripts/tag-departments.mjs` | Legacy women/men/kids/beauty classifier |
+| `scripts/refresh-token.sh` | Refresh CLI Admin token |
+| `scripts/verify-storefront.sh` | Confirms storefront host |
 
 ## Live status
 
-- **Storefront live:** https://www.ivorycrowncollective.store (primary domain)
-- Smart collections published to Online Store; products tagged for age / occasion / type
-- Horizon homepage: department carousel (Women · Men · Kids · Beauty) + kids sections
-- Women / Beauty / Kids collections published; Men ready (inventory thin)
-- Product trust links; Shipping / Returns / Size Guide pages
+- **Four catalogs:** Women · Men · Costumes · Holiday & Seasonal
+- Horizon homepage: catalog carousel + featured rails for each
+- Men filled from owned product images (duplicate + retitle); grocery/supplement noise archived
+- Navigation: set Main menu in Admin per `NAV.md` if token lacks `write_online_store_navigation`
 - Password protection: off
-- Agency apex `ivorycrowncollective.com` remains the Next.js site (separate)
-- Menus: set in Admin per `NAV.md` if Main menu still needs age/occasion links
+- Agency apex remains Next.js
 
 ## Auth
 

@@ -1,0 +1,244 @@
+{
+  "generatedAt": "2026-08-24T02:18:41.069Z",
+  "total": 157,
+  "archive": [
+    {
+      "id": "gid://shopify/Product/9831140163829",
+      "title": "Sheva Women's High Rise Running Shorts",
+      "handle": "sheva-womens-high-rise-running-shorts",
+      "vendor": "Goal Five"
+    },
+    {
+      "id": "gid://shopify/Product/9831140491509",
+      "title": "Pionxr Bra Top",
+      "handle": "pionxr-bra-top",
+      "vendor": "Goal Five"
+    },
+    {
+      "id": "gid://shopify/Product/9831141277941",
+      "title": "Excel Women's Workout Shorts",
+      "handle": "excel-womens-workout-shorts",
+      "vendor": "Goal Five"
+    },
+    {
+      "id": "gid://shopify/Product/9831143178485",
+      "title": "Indie Women's Sport Shorts",
+      "handle": "indie-womens-sport-shorts",
+      "vendor": "Goal Five"
+    },
+    {
+      "id": "gid://shopify/Product/9831144095989",
+      "title": "Cheesy Cheese - Collagen+ Protein Blend",
+      "handle": "cheesy-cheese-collagen-protein-blend",
+      "vendor": "Meal Boosters"
+    },
+    {
+      "id": "gid://shopify/Product/9831144128757",
+      "title": "ENERGYbits® Spirulina | Large Bag",
+      "handle": "energybits®-spirulina-large-bag",
+      "vendor": "ENERGYbits"
+    },
+    {
+      "id": "gid://shopify/Product/9831144161525",
+      "title": "Organic Mushroom Complex Supplement Capsules",
+      "handle": "organic-mushroom-complex-supplement-capsules",
+      "vendor": "FreshCap Mushrooms"
+    },
+    {
+      "id": "gid://shopify/Product/9831144194293",
+      "title": "1st Phorm Level-1 Bar Salted Caramel",
+      "handle": "1st-phorm-level-1-bar-salted-caramel",
+      "vendor": "Duo Grocery"
+    },
+    {
+      "id": "gid://shopify/Product/9831144259829",
+      "title": "Liquid I.V. Hydration Multiplier, Electrolyte Drink Mix Powder, Tropical Punch - 6 Individual Packets",
+      "handle": "liquid-i-v-hydration-multiplier-electrolyte-drink-mix-powder-tropical-punch-6-individual-packets",
+      "vendor": "Pasteur Pharmacy"
+    },
+    {
+      "id": "gid://shopify/Product/9831144292597",
+      "title": "Acqua di Parma Quercia Eau de Parfum",
+      "handle": "acqua-di-parma-quercia-eau-de-parfum",
+      "vendor": "Nava Beauty"
+    },
+    {
+      "id": "gid://shopify/Product/9831144423669",
+      "title": "REDCON1 MRE Lite Whole Food Protein",
+      "handle": "redcon1-mre-lite-whole-food-protein",
+      "vendor": "Ultimate Sport Nutrition"
+    },
+    {
+      "id": "gid://shopify/Product/9831144456437",
+      "title": "Tom Ford Oud Wood Unisex Eau de Parfum Spray – 3.4 oz (100 ML)",
+      "handle": "tom-ford-oud-wood-unisex-eau-de-parfum-spray-3-4-oz-100-ml",
+      "vendor": "Banlieue91"
+    },
+    {
+      "id": "gid://shopify/Product/9831144489205",
+      "title": "White Cheddar - Collagen+ Protein Blend",
+      "handle": "white-cheddar-collagen-protein-blend",
+      "vendor": "Meal Boosters"
+    },
+    {
+      "id": "gid://shopify/Product/9831144554741",
+      "title": "Light Therapy X",
+      "handle": "light-therapy-x",
+      "vendor": "Your Emf Shield"
+    }
+  ],
+  "byPrimary": {
+    "women": 21,
+    "men": 0,
+    "costumes": 16,
+    "seasonal": 67
+  },
+  "updated": 67,
+  "archived": 14,
+  "skipped": 39,
+  "archiveTitles": [
+    "Sheva Women's High Rise Running Shorts",
+    "Pionxr Bra Top",
+    "Excel Women's Workout Shorts",
+    "Indie Women's Sport Shorts",
+    "Cheesy Cheese - Collagen+ Protein Blend",
+    "ENERGYbits® Spirulina | Large Bag",
+    "Organic Mushroom Complex Supplement Capsules",
+    "1st Phorm Level-1 Bar Salted Caramel",
+    "Liquid I.V. Hydration Multiplier, Electrolyte Drink Mix Powder, Tropical Punch - 6 Individual Packets",
+    "Acqua di Parma Quercia Eau de Parfum",
+    "REDCON1 MRE Lite Whole Food Protein",
+    "Tom Ford Oud Wood Unisex Eau de Parfum Spray – 3.4 oz (100 ML)",
+    "White Cheddar - Collagen+ Protein Blend",
+    "Light Therapy X"
+  ],
+  "samples": {
+    "women": [
+      {
+        "title": "Women's Bamboo Lounge Long Sleeve T-Shirt",
+        "handle": "womens-bamboo-lounge-long-sleeve-t-shirt",
+        "type": "Apparel"
+      },
+      {
+        "title": "Essential Tee",
+        "handle": "essential-tee",
+        "type": "Apparel"
+      },
+      {
+        "title": "Laguna UPF 50+ Women's Sun Shirt",
+        "handle": "laguna-upf-50-womens-sun-shirt",
+        "type": "Apparel"
+      },
+      {
+        "title": "Zadie Ivory Short Sleeve Button Cardigan",
+        "handle": "zadie-ivory-short-sleeve-button-cardigan",
+        "type": "Apparel"
+      },
+      {
+        "title": "Women’s Bamboo Lounge Set - Lounge T-Shirt + Lounge Shorts",
+        "handle": "women-s-bamboo-lounge-set-lounge-t-shirt-lounge-shorts",
+        "type": "Apparel"
+      },
+      {
+        "title": "Vintage Bloom Denim Romper",
+        "handle": "vintage-bloom-denim-romper",
+        "type": "Apparel"
+      },
+      {
+        "title": "Slope Curve Jeans HJ039",
+        "handle": "slope-curve-jeans-hj039",
+        "type": "Apparel"
+      },
+      {
+        "title": "Rockstar Streetwear White Cotton Tee Casual Wardrobe Essential True To Size For Confident Everyday Style",
+        "handle": "rockstar-streetwear-white-cotton-tee-casual-wardrobe-essential-true-to-size-for-confident-everyday-style",
+        "type": "Apparel"
+      }
+    ],
+    "men": [],
+    "costumes": [
+      {
+        "title": "Toy Story Jessie Skirt for Kids - School Play Costume",
+        "handle": "toy-story-jessie-cosplay-costume-jessie-short-skirt-set-anime-movie-character-cosplay-outfit",
+        "type": "Costume"
+      },
+      {
+        "title": "Flight Attendant Britney Dress for Kids - School Play Costume",
+        "handle": "flight-attendant-cosplay-britney-spears-dress-uniform-set-stage-performance-costume",
+        "type": "Costume"
+      },
+      {
+        "title": "Robin Two Years Costume Set for Kids - School Play Costume",
+        "handle": "robin-cosplay-costume-two-years-later-nico-robin-swimsuit-set-cosplay-clothing",
+        "type": "Costume"
+      },
+      {
+        "title": "Sherlock Holmes Costume Set for Kids - School Play Costume",
+        "handle": "lolita-style-british-cosplay-costume-childrens-detective-sherlock-holmes-outfit-with-cape-and-glasses",
+        "type": "Costume"
+      },
+      {
+        "title": "Traditional Ethnic Baglia Dress for Kids - School Play Costume",
+        "handle": "traditional-ethnic-clothing-baglia-child-cosplay-beer-costume-embroidered-brown-strap-long-dress",
+        "type": "Costume"
+      },
+      {
+        "title": "Five Colored Mexican Dress for Kids - School Play Costume",
+        "handle": "five-colored-mexican-ethnic-skirt-dress-for-stage-performance",
+        "type": "Costume"
+      },
+      {
+        "title": "Cinderella Costume for Family - School Play Costume",
+        "handle": "cinderella-maid-costume-for-childrens-day-stage-performance-rustic-farm-maid-outfit-for-poor-commoner-role",
+        "type": "Costume"
+      },
+      {
+        "title": "Robe Wizard Cape for Kids - School Play Costume",
+        "handle": "performance-robe-wizard-cape-stage-costume-witch-costume-festival-costume-with-cosplay-badge",
+        "type": "Costume"
+      }
+    ],
+    "seasonal": [
+      {
+        "title": "Robot Tutu for Kids - School Play Costume",
+        "handle": "halloween-kids-alien-robot-costume-cheerleader-dance-ballet-skirt-ai-gradient-tulle-skirt",
+        "type": "Costume"
+      },
+      {
+        "title": "Scottish Highlander Skirt for Kids - School Play Costume",
+        "handle": "childrens-scottish-style-outfit-boys-plaid-skirt-vintage-clothing-halloween-stage-costume-party-wear",
+        "type": "Costume"
+      },
+      {
+        "title": "Lion Costume for Family - School Play Costume",
+        "handle": "halloween-costume-stage-performance-outfit-little-lion-cosplay-animal-costume-role-play",
+        "type": "Costume"
+      },
+      {
+        "title": "Parent-child Monster Animal Costume for Family - Halloween Costume",
+        "handle": "childrens-halloween-parent-child-monster-party-costume-animal-costume-king-kong-plush-gorilla",
+        "type": "Costume"
+      },
+      {
+        "title": "Teacher Movie Character Costume Set for Kids - School Play Costume",
+        "handle": "halloween-costume-teacher-movie-character-vintage-maid-servant-mistress-cosplay-outfit-set",
+        "type": "Costume"
+      },
+      {
+        "title": "Nun Dress for Kids - School Play Costume",
+        "handle": "halloween-childrens-black-nun-costume-cosplay-dress-for-girls-fairy-tale-play-performance-outfit",
+        "type": "Costume"
+      },
+      {
+        "title": "Bat Dress for Kids - School Play Costume",
+        "handle": "halloween-costume-for-girls-bat-costume-cosplay-childrens-stage-performance-outfit-party-dress",
+        "type": "Costume"
+      },
+      {
+        "title": "Irish Fairy Dress for Kids - School Play Costume",
+        "handle": "halloween-costume-western-ethnic-festival-st-patricks-day-childrens-irish-fairy-dwarf-dress",
+        "type": "Costume"
+      }
+    ]
+  }
+}
