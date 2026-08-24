@@ -4,6 +4,7 @@ import { FormEvent, useCallback, useState } from "react";
 import Link from "next/link";
 import { ContactIdentity } from "@/components/ContactIdentity";
 import { Turnstile } from "@/components/Turnstile";
+import { trackEnhancedConversion } from "@/lib/gtag";
 import { SITE } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
@@ -42,6 +43,16 @@ export function Contact() {
       if (!response.ok) {
         throw new Error(payload.error || "Something went wrong.");
       }
+
+      trackEnhancedConversion(
+        "generate_lead",
+        {
+          name: String(data.get("name") || ""),
+          email: String(data.get("email") || ""),
+          phone: String(data.get("phone") || ""),
+        },
+        { method: "contact_form" },
+      );
 
       setStatus("sent");
       form.reset();
@@ -119,6 +130,7 @@ export function Contact() {
               required
               name="name"
               type="text"
+              autoComplete="name"
               maxLength={100}
               className="w-full border border-gold/25 bg-transparent px-4 py-3 text-pearl outline-none transition focus:border-gold-bright"
             />
@@ -131,6 +143,7 @@ export function Contact() {
                 required
                 name="email"
                 type="email"
+                autoComplete="email"
                 maxLength={254}
                 className="w-full border border-gold/25 bg-transparent px-4 py-3 text-pearl outline-none transition focus:border-gold-bright"
               />
@@ -140,6 +153,7 @@ export function Contact() {
               <input
                 name="phone"
                 type="tel"
+                autoComplete="tel"
                 maxLength={40}
                 className="w-full border border-gold/25 bg-transparent px-4 py-3 text-pearl outline-none transition focus:border-gold-bright"
               />

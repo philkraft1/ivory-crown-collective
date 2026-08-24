@@ -1,17 +1,32 @@
 import Link from "next/link";
+import { GoogleEnhancedConversion } from "@/components/GoogleEnhancedConversion";
 import { SITE } from "@/lib/site";
 import { getStripe } from "@/lib/stripe";
+import type { UserDataInput } from "@/lib/user-data";
 
-async function verifyPaidSession(sessionId: string | undefined): Promise<{
+type PaidSession = {
   paid: boolean;
   ref: string | null;
-}> {
+  user: UserDataInput;
+  value: number | null;
+  currency: string | null;
+};
+
+const emptySession: PaidSession = {
+  paid: false,
+  ref: null,
+  user: {},
+  value: null,
+  currency: null,
+};
+
+async function verifyPaidSession(sessionId: string | undefined): Promise<PaidSession> {
   if (!sessionId || !/^cs_[a-zA-Z0-9_]+$/.test(sessionId)) {
-    return { paid: false, ref: null };
+    return emptySession;
   }
 
   if (!process.env.STRIPE_SECRET_KEY) {
-    return { paid: false, ref: null };
+    return emptySession;
   }
 
   try {
@@ -19,9 +34,30 @@ async function verifyPaidSession(sessionId: string | undefined): Promise<{
     const paid =
       session.status === "complete" &&
       (session.payment_status === "paid" || session.payment_status === "no_charge");
-    return { paid, ref: paid ? session.id : null };
+    if (!paid) return emptySession;
+
+    const details = session.customer_details;
+    const address = details?.address;
+
+    return {
+      paid: true,
+      ref: session.id,
+      user: {
+        email: details?.email ?? session.customer_email,
+        phone: details?.phone,
+        name: details?.name,
+        street: address?.line1,
+        city: address?.city,
+        region: address?.state,
+        postalCode: address?.postal_code,
+        country: address?.country,
+      },
+      value:
+        typeof session.amount_total === "number" ? session.amount_total / 100 : null,
+      currency: session.currency,
+    };
   } catch {
-    return { paid: false, ref: null };
+    return emptySession;
   }
 }
 
@@ -31,7 +67,9 @@ export default async function PaySuccessPage({
   searchParams: Promise<{ session_id?: string }>;
 }) {
   const params = await searchParams;
-  const { paid, ref } = await verifyPaidSession(params.session_id);
+  const { paid, ref, user, value, currency } = await verifyPaidSession(
+    params.session_id,
+  );
 
   if (!paid) {
     return (
@@ -73,6 +111,11 @@ export default async function PaySuccessPage({
 
   return (
     <main className="flex flex-col items-center justify-center px-5 py-16 text-center text-pearl sm:py-24">
+      <GoogleEnhancedConversion
+        event="purchase"
+        user={user}
+        purchase={{ transactionId: ref, value, currency }}
+      />
       <p className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.35em] text-gold uppercase">
         Payment received
       </p>

@@ -196,7 +196,7 @@ export default function PrivacyPage() {
                 </table>
               </div>
               <p className="mt-4">
-                We do not buy lists, run advertising pixels, or sell personal information.
+                We do not buy lists or sell personal information.
               </p>
             </section>
 
@@ -205,11 +205,15 @@ export default function PrivacyPage() {
                 4. How we use it
               </h2>
               <ul className="mt-4 list-disc space-y-2 pl-5">
-                <li>Respond to inquiries and book web design, entertainment, or IT work.</li>
+                <li>Respond to inquiries and book web design, software, or IT work.</li>
                 <li>Process deposits and consult fees and confirm payment.</li>
                 <li>Prevent spam, fraud, and abuse.</li>
                 <li>Keep business, tax, and legal records.</li>
                 <li>Operate, debug, and secure this website.</li>
+                <li>
+                  Measure advertising conversions (hashed email, phone, and name/address when you
+                  submit a form or complete a payment).
+                </li>
               </ul>
               <p className="mt-4">
                 We do not use your information for unrelated marketing unless you ask us to.
@@ -224,6 +228,18 @@ export default function PrivacyPage() {
                 We share information only with vendors who help us operate, and only as needed:
               </p>
               <ul className="mt-4 list-disc space-y-2 pl-5">
+                <li>
+                  <strong className="text-pearl">Google LLC</strong> — Analytics and Ads enhanced
+                  conversions. After you send a message or pay, we may send hashed email, phone,
+                  and name/address so Google can attribute conversions.{" "}
+                  <a
+                    className="text-gold-bright underline underline-offset-4"
+                    href="https://policies.google.com/privacy"
+                    rel="noopener noreferrer"
+                  >
+                    policies.google.com/privacy
+                  </a>
+                </li>
                 <li>
                   <strong className="text-pearl">Stripe, Inc.</strong> — payments.{" "}
                   <a
@@ -283,12 +299,14 @@ export default function PrivacyPage() {
               </h2>
               <p className="mt-4">
                 This site uses Google Analytics to understand how people use the site (for example,
-                pages visited and approximate traffic). Google may set cookies or similar storage
-                for that measurement. Stripe Checkout, Cloudflare Turnstile, and Vercel may also set
-                strictly necessary cookies or similar storage to complete a payment, verify you are
-                not a bot, or keep the site secure. You can control cookies in your browser; blocking
-                necessary ones may stop checkout or the contact form from working. You can learn more
-                about Google&apos;s practices at{" "}
+                pages visited and approximate traffic). When you submit the contact form or complete
+                a payment, we also send hashed first-party details (email, phone, name, and billing
+                address when available) to Google for enhanced conversion measurement. Google may
+                set cookies or similar storage for that measurement. Stripe Checkout, Cloudflare
+                Turnstile, and Vercel may also set strictly necessary cookies or similar storage to
+                complete a payment, verify you are not a bot, or keep the site secure. You can
+                control cookies in your browser; blocking necessary ones may stop checkout or the
+                contact form from working. You can learn more about Google&apos;s practices at{" "}
                 <a
                   href="https://policies.google.com/privacy"
                   className="text-champagne underline decoration-champagne/40 underline-offset-2 hover:decoration-champagne"

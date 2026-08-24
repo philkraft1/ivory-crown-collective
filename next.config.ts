@@ -12,7 +12,7 @@ const cspDirectives = [
   "form-action 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "img-src 'self' data: https://*.stripe.com https://*.google-analytics.com https://*.googletagmanager.com",
+  "img-src 'self' data: https://*.stripe.com https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.googleadservices.com https://*.g.doubleclick.net",
   "font-src 'self' data:",
   "style-src 'self' 'unsafe-inline'",
   // Stripe Checkout + Cloudflare Turnstile + Google Analytics (gtag.js)
@@ -21,8 +21,8 @@ const cspDirectives = [
     ? "script-src 'self' 'unsafe-inline' https://js.stripe.com https://challenges.cloudflare.com https://www.googletagmanager.com"
     : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://challenges.cloudflare.com https://www.googletagmanager.com",
   isProd
-    ? "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com"
-    : "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com ws: wss:",
+    ? "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://*.googleadservices.com https://*.g.doubleclick.net"
+    : "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://*.googleadservices.com https://*.g.doubleclick.net ws: wss:",
   "report-uri /api/csp-report",
   "report-to csp-endpoint",
   ...(isProd ? ["upgrade-insecure-requests"] : []),

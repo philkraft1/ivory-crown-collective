@@ -87,7 +87,7 @@ export default function RootLayout({
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${SITE.gaMeasurementId}');`,
+gtag('config', '${SITE.gaMeasurementId}', { allow_enhanced_conversions: true });`,
           }}
         />
       </head>
