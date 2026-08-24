@@ -80,18 +80,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      // Keep a single canonical origin so CSRF Origin checks and Stripe
-      // success URLs stay aligned with NEXT_PUBLIC_SITE_URL.
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.ivorycrowncollective.com" }],
-        destination: "https://ivorycrowncollective.com/:path*",
-        permanent: true,
-      },
-    ];
-  },
+  // Do not 308 www → apex. Apex DNS currently points at GoDaddy forwarding
+  // (3.33.251.168 / 15.197.225.128), which 301s back to www. That loop meant
+  // Google's tag detector never saw HTML — only "Redirecting...".
+  // www is the Vercel hostname and must serve the site.
   async headers() {
     return [
       {
