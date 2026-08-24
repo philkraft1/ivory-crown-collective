@@ -1,6 +1,6 @@
-# Taxonomy: clothing shop departments
+# Taxonomy: four buyer catalogs
 
-Three equal departments. Prefer **smart collections** (tag rules).
+Prefer **smart collections** (tag rules).
 
 ## Department tags
 
@@ -8,7 +8,8 @@ Three equal departments. Prefer **smart collections** (tag rules).
 |-----|-----|
 | `dept:women` | Women apparel, accessories, beauty |
 | `dept:men` | Men apparel / accessories |
-| `dept:kids` | Kids costumes & dress-up |
+| `dept:kids` | Costumes & dress-up |
+| `dept:seasonal` | Holiday & seasonal (Halloween, fall gifts, etc.) |
 | `dept:beauty` | Helper on beauty SKUs (with `type:beauty`) |
 
 ## Type tags + Product type
@@ -19,40 +20,43 @@ Three equal departments. Prefer **smart collections** (tag rules).
 | `type:accessory` | Accessory |
 | `type:beauty` | Beauty |
 | `type:costume` | Costume |
+| `type:footwear` | Footwear |
 
 Do **not** leave beauty / everyday apparel on `type:costume`.
 
-## Kids costume tags (unchanged)
+## Merch tags
+
+| Tag | Collection |
+|-----|------------|
+| `merch:seasonal` | Dual-signal with `dept:seasonal` |
+| `merch:best-seller` | Best Sellers |
+| `merch:new` | New Arrivals |
+| `merch:under-40` | Under $40 |
+
+## Kids costume tags
 
 - Age: `age:toddler` | `age:little-kids` | `age:big-kids`
 - Occasion: `occasion:book-character` | `occasion:halloween` | `occasion:stage` | `occasion:everyday`
 
-## Collections
-
-### Departments
+## Top-level collections
 
 | Title | Handle | Rule |
 |-------|--------|------|
 | Women | `women` | `dept:women` |
-| Women Apparel | `women-apparel` | `dept:women` + `type:apparel` |
-| Women Accessories | `women-accessories` | `dept:women` + `type:accessory` |
-| Beauty | `beauty` | `type:beauty` |
 | Men | `men` | `dept:men` |
-| Men Apparel | `men-apparel` | `dept:men` + `type:apparel` |
-| Men Accessories | `men-accessories` | `dept:men` + `type:accessory` |
-| Kids & Costumes | `kids-costumes` | `dept:kids` |
 | Costumes | `costumes` | `dept:kids` + `type:costume` |
+| Holiday & Seasonal | `holiday-seasonal` | `dept:seasonal` |
 
-### Kids age / occasion
-
-Toddler, Little Kids, Big Kids, Book Character Day, Halloween, Stage & Recital, Everyday Dress-up — same as before.
+Nested: women-apparel, women-accessories, beauty, men-apparel, men-accessories, age/occasion kids collections.
 
 ## Scripts
 
 ```bash
-source store-ops/.secrets/admin.env   # or refresh-token.sh
-node store-ops/scripts/tag-departments.mjs
-node store-ops/scripts/apply-departments.mjs
+source store-ops/.secrets/admin.env
+bash store-ops/scripts/refresh-token.sh
+node store-ops/scripts/audit-four-catalogs.mjs
+node store-ops/scripts/expand-women-men-catalog.mjs
+node store-ops/scripts/apply-four-catalogs.mjs
 ```
 
 ## Navigation

@@ -1,4 +1,4 @@
-# Navigation — clothing shop
+# Navigation — four catalogs
 
 ## Main menu
 
@@ -9,17 +9,19 @@
 - **Men** → `/collections/men`
   - Apparel → `/collections/men-apparel`
   - Accessories → `/collections/men-accessories`
-- **Kids & Costumes** → `/collections/kids-costumes`
+- **Costumes** → `/collections/costumes`
   - Toddler | Little Kids | Big Kids
-  - Book Character Day | Halloween
+  - Book Character Day
+- **Holiday & Seasonal** → `/collections/holiday-seasonal`
+  - Halloween | Under $40 | New Arrivals
 
 ## Footer
 
 - Shipping `/pages/shipping`
 - Returns `/pages/returns`
 - Size Guide `/pages/size-guide`
-- Women `/pages/women` · Men `/pages/men` · Kids `/pages/kids-costumes`
+- Women `/pages/women` · Men `/pages/men` · Costumes `/pages/costumes` · Holiday `/pages/holiday-seasonal`
 
 ## API note
 
-Menus need `write_online_store_navigation`. If the CLI token lacks it, set the Main menu in Admin → Online Store → Navigation.
+Menus need `write_online_store_navigation`. If the CLI token lacks it, set the Main menu in Admin → Online Store → Navigation to match the tree above.
