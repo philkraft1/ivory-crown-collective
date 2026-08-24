@@ -116,6 +116,12 @@ export default async function PaySuccessPage({
         user={user}
         purchase={{ transactionId: ref, value, currency }}
       />
+      {user.email ? (
+        <input type="hidden" id="email" name="email" value={user.email} readOnly />
+      ) : null}
+      {user.phone ? (
+        <input type="hidden" id="phone" name="phone" value={user.phone} readOnly />
+      ) : null}
       <p className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.35em] text-gold uppercase">
         Payment received
       </p>

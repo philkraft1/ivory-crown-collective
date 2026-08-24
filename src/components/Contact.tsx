@@ -141,6 +141,7 @@ export function Contact() {
               <span className="mb-2 block text-xs tracking-[0.2em] text-pearl/45 uppercase">Email</span>
               <input
                 required
+                id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
@@ -151,6 +152,7 @@ export function Contact() {
             <label className="block">
               <span className="mb-2 block text-xs tracking-[0.2em] text-pearl/45 uppercase">Phone</span>
               <input
+                id="phone"
                 name="phone"
                 type="tel"
                 autoComplete="tel"
