@@ -8,12 +8,13 @@ This folder is **Shopify Admin / catalog ops only**. It must never be wired into
 
 | Path | Purpose |
 |------|---------|
+| `ANALYTICS.md` | Store GA4 measurement ID (`G-M5TL69BJF8`) + theme install notes |
 | `UNLOCK.md` | Fix primary-domain redirect (password already off) |
 | `TAXONOMY.md` | Four-catalog tags + smart collections |
 | `NAV.md` | Main/footer menu (Women · Men · Costumes · Holiday & Seasonal) |
 | `UX.md` | Horizon homepage / purchase-path checklist |
 | `IMPORT.md` | Legal CSV import path |
-| `theme/` | Horizon homepage/header JSON snapshots |
+| `theme/` | Horizon theme snapshots (homepage JSON, layouts, google-tag snippet) |
 | `reports/` | Audits, gaps, assortment notes |
 | `templates/shopify-products-import.csv` | Legal CSV import template |
 | `scripts/audit-four-catalogs.mjs` | Archive noise + retag four catalogs |
@@ -28,6 +29,7 @@ This folder is **Shopify Admin / catalog ops only**. It must never be wired into
 
 - **Four catalogs:** Women · Men · Costumes · Holiday & Seasonal
 - Horizon homepage: catalog carousel + featured rails for each
+- **GA4:** `G-M5TL69BJF8` via theme `snippets/google-tag.liquid` (see `ANALYTICS.md`)
 - Men filled from owned product images (duplicate + retitle); grocery/supplement noise archived
 - Navigation: set Main menu in Admin per `NAV.md` if token lacks `write_online_store_navigation`
 - Password protection: off
