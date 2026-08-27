@@ -7,15 +7,17 @@ covers the production secrets and checks you need after deploy.
 
 | Variable | Purpose |
 | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Canonical origin for Stripe redirects + CSRF Origin allowlist. **Required in prod.** |
+| `NEXT_PUBLIC_SITE_URL` | Canonical origin for Stripe redirects + CSRF Origin allowlist. **Required in prod.** Set to `https://ivorycrowncollective.com`. |
 | `STRIPE_SECRET_KEY` | Server-side Checkout (redirect mode — no publishable key needed) |
-| `STRIPE_WEBHOOK_SECRET` | Verifies `/api/stripe/webhook` |
+| `STRIPE_WEBHOOK_SECRET` | Verifies `/api/stripe/webhook` (`checkout.session.completed`) |
+| `CONTACT_TO_EMAIL` | Inbox for contact form deliveries |
 | `RESEND_API_KEY` | Contact delivery (FormSubmit is disabled in production) |
 | `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` | Rate limits on contact + checkout |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` / `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile on **contact and checkout** |
 
-Missing Upstash, Turnstile, Resend, or site URL in production causes the
-affected API to **fail closed** (HTTP 503 / 403), not open.
+Set these in **Vercel → Project → Settings → Environment Variables → Production**, then redeploy. Missing Upstash, Turnstile, Resend, or site URL in production causes the affected API to **fail closed** (HTTP 503 / 403), not open.
+
+Stripe Dashboard webhook URL: `https://ivorycrowncollective.com/api/stripe/webhook` (event: `checkout.session.completed`).
 
 ## Layers
 
