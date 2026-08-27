@@ -74,20 +74,23 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${outfit.variable} ${cinzel.variable} min-h-svh antialiased`}>
       <head>
-        {/* Native <head> snippet so GA's HTML crawler can detect the tag.
-            next/script afterInteractive only injects after hydration, which
-            Google's "Test your website" tool does not execute. */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${SITE.gaMeasurementId}`}
-        />
+        {/* Hostname-gated GA4 so only ivorycrowncollective.com loads the agency property.
+            Native <head> script so Google's HTML crawler / "Test your website" can see it. */}
         <script
           id="google-analytics"
           dangerouslySetInnerHTML={{
-            __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', '${SITE.gaMeasurementId}', { allow_enhanced_conversions: true });`,
+            __html: `
+if (location.hostname.endsWith('ivorycrowncollective.com')) {
+  var s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=${SITE.gaMeasurementId}';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${SITE.gaMeasurementId}', { allow_enhanced_conversions: true });
+}
+`.trim(),
           }}
         />
       </head>
