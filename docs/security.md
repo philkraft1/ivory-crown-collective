@@ -27,12 +27,29 @@ Stripe Dashboard webhook URL: `https://ivorycrowncollective.com/api/stripe/webho
 4. **Turnstile** — bot check on contact **and** checkout (skipped in local dev when keys are absent)
 5. **Stripe integrity** — pinned success/cancel URLs, webhook signature verify, success page retrieves the session before claiming payment, Checkout idempotency keys (offering + IP + 2-minute bucket)
 
+## Where to create each secret
+
+These values are **not** in the repo and cannot be invented by an agent. Create
+them in each vendor dashboard, then paste into **Vercel → Production** env
+(and `.env.local` for local testing).
+
+| Variable | Where to get it |
+| --- | --- |
+| `RESEND_API_KEY` | [resend.com/api-keys](https://resend.com/api-keys) — create an API key. Verify/add domain `ivorycrowncollective.com` (or use Resend’s onboarding domain for a quick test). Contact mail goes to `phil@ivorycrowncollective.com`. |
+| `UPSTASH_REDIS_REST_URL` | [console.upstash.com](https://console.upstash.com) — create a free Redis DB → **REST API** → `UPSTASH_REDIS_REST_URL` |
+| `UPSTASH_REDIS_REST_TOKEN` | Same Upstash Redis page → `UPSTASH_REDIS_REST_TOKEN` |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | [dash.cloudflare.com → Turnstile](https://dash.cloudflare.com/?to=/:account/turnstile) — Add widget, hostnames: `ivorycrowncollective.com` (+ `localhost` optional) → **Site Key** |
+| `TURNSTILE_SECRET_KEY` | Same Turnstile widget → **Secret Key** |
+| `STRIPE_WEBHOOK_SECRET` | [dashboard.stripe.com/webhooks](https://dashboard.stripe.com/webhooks) (**live** mode if `STRIPE_SECRET_KEY` is live) — endpoint `https://ivorycrowncollective.com/api/stripe/webhook`, event `checkout.session.completed` → **Signing secret** (`whsec_...`) |
+
+After pasting into Vercel Production, redeploy (`vercel --prod` or push to `main`) so runtime picks them up. `NEXT_PUBLIC_TURNSTILE_SITE_KEY` is build-time and **requires a rebuild**.
+
 ## Setup recipes
 
 ### Upstash
 
-1. Create a free Redis database at [upstash.com](https://upstash.com)
-2. Copy REST URL + token into `.env.local` / Vercel env
+1. Create a free Redis database at [console.upstash.com](https://console.upstash.com)
+2. Copy REST URL + token into `.env.local` / Vercel Production env
 
 Limits (per IP):
 
@@ -41,9 +58,15 @@ Limits (per IP):
 
 ### Cloudflare Turnstile
 
-1. Add a widget at [dash.cloudflare.com → Turnstile](https://dash.cloudflare.com)
+1. Add a widget at [dash.cloudflare.com → Turnstile](https://dash.cloudflare.com/?to=/:account/turnstile)
 2. Set hostnames for `ivorycrowncollective.com` (and localhost for testing)
 3. Put site key + secret in env — used by both contact and pay sections
+
+### Resend
+
+1. Create an API key at [resend.com/api-keys](https://resend.com/api-keys)
+2. Verify `ivorycrowncollective.com` (or temporarily use `onboarding@resend.dev` as from)
+3. Set `RESEND_API_KEY` and `CONTACT_TO_EMAIL` (default inbox: `phil@ivorycrowncollective.com`)
 
 ### Stripe webhook
 
