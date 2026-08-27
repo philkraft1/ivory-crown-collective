@@ -29,7 +29,7 @@ This folder is **Shopify Admin / catalog ops only**. It must never be wired into
 
 - **Four catalogs:** Women · Men · Costumes · Holiday & Seasonal
 - Horizon homepage: catalog carousel + featured rails for each
-- **GA4:** `G-M5TL69BJF8` via theme `snippets/google-tag.liquid` (see `ANALYTICS.md`)
+- **GA4:** `G-M5TL69BJF8` via Shopify Google channel web pixel only (see `ANALYTICS.md`; do not also render theme google-tag)
 - Men filled from owned product images (duplicate + retitle); grocery/supplement noise archived
 - Navigation: set Main menu in Admin per `NAV.md` if token lacks `write_online_store_navigation`
 - Password protection: off

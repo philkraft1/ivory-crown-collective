@@ -2,13 +2,16 @@
 
 Shopify storefront measurement ID: **`G-M5TL69BJF8`**
 
-Installed manually in Horizon via:
+## Source of truth
 
-- `snippets/google-tag.liquid`
-- `{% render 'google-tag' %}` immediately after `<head>` in `layout/theme.liquid` and `layout/password.liquid`
+Tracking is provided by the **Shopify Google / YouTube channel web pixel** (see storefront `webPixelsConfigList` → `google_tag_ids`). That pixel also references Google tag **`GT-PLHFH4GS`**.
 
-Snapshots live under `store-ops/theme/`. Deployed with Admin API `themeFilesUpsert`.
+Do **not** also render a theme `snippets/google-tag.liquid` for the same `G-` ID — that double-counts page views.
 
-Do **not** also connect the Google & YouTube channel for this same property without removing the theme snippet (duplicate hits).
+The theme snippet file may exist as a deprecated stub only; layouts must **not** `{% render 'google-tag' %}`.
 
-Agency site (`ivorycrowncollective.com`) uses a separate property (`G-M0286DKYRS`) in the Next.js app — keep them distinct.
+## Agency site
+
+`ivorycrowncollective.com` uses a separate GA4 property: **`G-M0286DKYRS`** (Next.js `SITE.gaMeasurementId`). Keep store and agency IDs distinct.
+
+Retired / do not use on agency: `G-0B672ZN217`.
