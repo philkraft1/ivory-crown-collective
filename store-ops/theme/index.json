@@ -16,7 +16,7 @@
         "headline": {
           "type": "text",
           "settings": {
-            "text": "<h1>Shop women, men, costumes &amp; the season</h1>",
+            "text": "<h1>Kids costumes, apparel, and seasonal finds</h1>",
             "type_preset": "h1",
             "max_width": "narrow",
             "alignment": "left",
@@ -26,7 +26,7 @@
         "support": {
           "type": "text",
           "settings": {
-            "text": "<p>Four clear catalogs. Everyday apparel, standout costumes, and holiday finds \u2014 checkout in minutes.</p>",
+            "text": "<p>Halloween and school-play costumes, plus women and men apparel. US shipping, sizes on every product, 30-day returns.</p>",
             "type_preset": "rte",
             "max_width": "narrow",
             "padding-block-end": 24,
@@ -37,8 +37,8 @@
         "cta": {
           "type": "button",
           "settings": {
-            "label": "Shop women",
-            "link": "shopify://collections/women",
+            "label": "Shop costumes",
+            "link": "shopify://collections/costumes",
             "style_class": "button",
             "open_in_new_tab": false
           }

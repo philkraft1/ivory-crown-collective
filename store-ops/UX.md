@@ -11,7 +11,7 @@ Agency site stays separate. Store: `www.ivorycrowncollective.store`.
 1. Brand
 2. One headline (women, men, costumes & season)
 3. One short supporting line
-4. CTA → Women (or Costumes in peak Halloween)
+4. CTA → Costumes during Halloween season (Women the rest of the year)
 5. Dominant visual
 
 No cards/badges in the hero.

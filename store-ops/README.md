@@ -20,6 +20,7 @@ This folder is **Shopify Admin / catalog ops only**. It must never be wired into
 | `scripts/audit-four-catalogs.mjs` | Archive noise + retag four catalogs |
 | `scripts/expand-women-men-catalog.mjs` | Restore women apparel + seed Men from owned assets |
 | `scripts/apply-four-catalogs.mjs` | Collections, pages, merch tags |
+| `scripts/optimize-visibility.mjs` | SEO titles, trust pages, product meta, menu, homepage |
 | `scripts/apply-departments.mjs` | Legacy department collections |
 | `scripts/tag-departments.mjs` | Legacy women/men/kids/beauty classifier |
 | `scripts/refresh-token.sh` | Refresh CLI Admin token |
