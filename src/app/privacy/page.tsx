@@ -11,9 +11,10 @@ export const metadata: Metadata = {
   },
 };
 
-const EFFECTIVE = "August 20, 2026";
+const EFFECTIVE = "November 4, 2026";
 const ENTITY = `${SITE.name} LLC`;
-const SHOP_HOST = SITE.shopUrl.replace(/^https?:\/\//, "");
+const EBAY_PRIVACY =
+  "https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260";
 
 const toc = [
   { id: "controller", label: "1. Who is responsible" },
@@ -127,17 +128,23 @@ export default function PrivacyPage() {
                 Checkout deposits, and related success/cancel pages.
               </p>
               <p className="mt-3">
-                The costume shop at{" "}
-                <a className="text-gold-bright underline underline-offset-4" href={SITE.shopUrl}>
-                  {SHOP_HOST}
-                </a>{" "}
-                is operated on Shopify. Purchases, accounts, and checkout there are also subject to{" "}
+                Retail orders are placed on{" "}
                 <a
                   className="text-gold-bright underline underline-offset-4"
-                  href="https://www.shopify.com/legal/privacy"
+                  href={SITE.ebayUrl}
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Shopify’s Privacy Policy
+                  {SITE.ebayLabel}
+                </a>
+                , not on this website. Those purchases follow{" "}
+                <a
+                  className="text-gold-bright underline underline-offset-4"
+                  href={EBAY_PRIVACY}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  eBay’s User Privacy Notice
                 </a>
                 .
               </p>
@@ -275,17 +282,6 @@ export default function PrivacyPage() {
                   <strong className="text-pearl">FormSubmit / email routing</strong> — delivering
                   contact-form messages to {SITE.email} when that path is used.
                 </li>
-                <li>
-                  <strong className="text-pearl">Shopify Inc.</strong> — only for the costume shop
-                  at {SHOP_HOST}.{" "}
-                  <a
-                    className="text-gold-bright underline underline-offset-4"
-                    href="https://www.shopify.com/legal/privacy"
-                    rel="noopener noreferrer"
-                  >
-                    shopify.com/legal/privacy
-                  </a>
-                </li>
               </ul>
               <p className="mt-4">
                 We may also disclose information if required by law or to protect {ENTITY}, our
@@ -370,8 +366,8 @@ export default function PrivacyPage() {
               </h2>
               <p className="mt-4">
                 ivorycrowncollective.com is not directed to children under 13, and we do not
-                knowingly collect personal information from children under 13. Costume purchases
-                for minors on {SHOP_HOST} should be made by a parent or guardian.
+                knowingly collect personal information from children under 13. Purchases for minors
+                on {SITE.ebayLabel} should be made by a parent or guardian.
               </p>
             </section>
 

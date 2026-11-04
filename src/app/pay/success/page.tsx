@@ -92,7 +92,7 @@ export default async function PaySuccessPage({
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Link
-            href="/#pay"
+            href="/book"
             className="border border-gold/45 px-6 py-3 font-[family-name:var(--font-cinzel)] text-xs tracking-[0.22em] text-gold-bright uppercase transition-colors hover:border-gold-hot hover:text-gold-hot"
           >
             Try again
@@ -141,7 +141,7 @@ export default async function PaySuccessPage({
       )}
       <div className="mt-10 flex flex-wrap justify-center gap-4">
         <Link
-          href="/#contact"
+          href="/contact"
           className="border border-gold/45 px-6 py-3 font-[family-name:var(--font-cinzel)] text-xs tracking-[0.22em] text-gold-bright uppercase transition-colors hover:border-gold-hot hover:text-gold-hot"
         >
           Contact
