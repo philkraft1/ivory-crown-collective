@@ -58,7 +58,7 @@ export const SERVICES = [
       "Integrations between the systems you already use",
       "Notes the next person can follow",
     ],
-    offeringId: "it-solutions-deposit",
+    offeringId: "it-pro",
     interest: "IT Solutions",
   },
 ] as const;
