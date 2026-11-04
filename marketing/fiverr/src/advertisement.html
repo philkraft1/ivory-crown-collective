@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Monthly website care — Ivory Crown Collective</title>
+  <style>
+    @font-face {
+      font-family: "Cinzel";
+      src: url("fonts/Cinzel.ttf") format("truetype");
+      font-weight: 400 900;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Cormorant";
+      src: url("fonts/CormorantGaramond.ttf") format("truetype");
+      font-weight: 400 700;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Cormorant";
+      src: url("fonts/CormorantGaramond-Italic.ttf") format("truetype");
+      font-weight: 400 700;
+      font-style: italic;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("fonts/Inter-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("fonts/Inter-Medium.ttf") format("truetype");
+      font-weight: 500;
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("fonts/Inter-SemiBold.ttf") format("truetype");
+      font-weight: 600;
+      font-display: block;
+    }
+
+    @page { size: letter; margin: 0; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      background: #000;
+      color: #f6f1e4;
+      font-family: Inter, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 8.5in;
+      height: 11in;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+      page-break-after: always;
+      break-after: page;
+    }
+    .page:last-child { page-break-after: auto; break-after: auto; }
+
+    .glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 42% at 50% 0%, rgba(212, 177, 90, 0.16), transparent 60%);
+      pointer-events: none;
+    }
+
+    .pad {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      padding: 0.72in 0.62in 0.62in;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .frame {
+      position: absolute;
+      inset: 0.28in;
+      border: 1px solid rgba(212, 177, 90, 0.34);
+      pointer-events: none;
+    }
+
+    .kicker {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #d4b15a;
+    }
+
+    h1, h2, h3 { font-family: Cinzel, serif; font-weight: 600; }
+
+    .lede {
+      font-family: Cormorant, serif;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1.35;
+      color: #f3ead6;
+    }
+
+    ul { list-style: none; }
+    li {
+      position: relative;
+      padding-left: 16px;
+      margin: 0 0 8px;
+      font-size: 12.5px;
+      line-height: 1.35;
+      color: #f6f1e4;
+    }
+    li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.42em;
+      width: 5px;
+      height: 5px;
+      background: #e8c547;
+      transform: rotate(45deg);
+    }
+
+    .runhead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.28in;
+    }
+    .runhead .who {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: Cinzel, serif;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: #f0d78c;
+    }
+    .runhead img { width: 42px; height: auto; }
+
+    footer.foot {
+      position: absolute;
+      left: 0.62in;
+      right: 0.62in;
+      bottom: 0.42in;
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid rgba(212, 177, 90, 0.28);
+      padding-top: 8px;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #b7a888;
+    }
+
+    /* Cover */
+    .cover { text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .cover .crest { width: 5.2in; margin-top: 0.08in; }
+    .cover h1 {
+      margin-top: 0.02in;
+      font-size: 36px;
+      letter-spacing: 0.08em;
+      line-height: 1.05;
+    }
+    .cover .lede { max-width: 5.8in; margin-top: 0.16in; font-size: 21px; }
+    .promises {
+      margin-top: 0.28in;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      align-items: center;
+    }
+    .promises li {
+      padding-left: 0;
+      font-family: Cormorant, serif;
+      font-size: 18px;
+      color: #f3ead6;
+    }
+    .promises li::before { display: none; }
+    .price-row {
+      margin-top: 0.36in;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .price-row article {
+      border: 1px solid rgba(212, 177, 90, 0.4);
+      padding: 14px 10px 12px;
+      background: rgba(212, 177, 90, 0.04);
+    }
+    .price-row .amt {
+      font-family: Cinzel, serif;
+      font-size: 28px;
+      color: #f0d78c;
+      letter-spacing: 0.04em;
+    }
+    .price-row h2 { font-size: 13px; letter-spacing: 0.04em; margin-top: 4px; }
+    .price-row p { margin-top: 4px; font-size: 11px; color: #d9cba8; letter-spacing: 0.04em; }
+
+    /* Month page */
+    .month h1 { font-size: 30px; letter-spacing: 0.04em; line-height: 1.1; margin: 8px 0 10px; }
+    .steps { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 0.22in; }
+    .steps article { border-top: 1px solid #e8c547; padding-top: 10px; }
+    .steps .n { font-family: Cinzel, serif; font-size: 22px; color: #f0d78c; }
+    .steps h2 { font-size: 15px; margin: 6px 0 8px; letter-spacing: 0.03em; }
+    .steps p { font-family: Cormorant, serif; font-size: 15px; line-height: 1.3; color: #f3ead6; }
+    .defs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 0.28in; }
+    .defs article {
+      border: 1px solid rgba(212, 177, 90, 0.35);
+      padding: 16px 16px 12px;
+    }
+    .defs h2 { font-size: 14px; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .defs p { font-family: Cormorant, serif; font-size: 15.5px; line-height: 1.32; color: #f3ead6; }
+
+    /* Package pages */
+    .pkg { display: grid; grid-template-columns: 2.7in 1fr; gap: 0.32in; margin-top: 0.08in; }
+    .pkg-side h1 { font-size: 32px; letter-spacing: 0.03em; line-height: 1.05; margin-top: 8px; }
+    .amt-lg {
+      margin-top: 10px;
+      font-family: Cinzel, serif;
+      font-size: 54px;
+      color: #f0d78c;
+      letter-spacing: 0.03em;
+      line-height: 1;
+    }
+    .days { margin-top: 8px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #d9cba8; }
+    .rush { margin-top: 8px; font-family: Cormorant, serif; font-style: italic; font-size: 15px; color: #f0d78c; }
+    .illu { margin-top: 0.28in; }
+    .pkg-main .lede { font-size: 22px; }
+    .block { margin-top: 0.26in; }
+    .pkg-main li { font-size: 14.5px; margin-bottom: 10px; }
+    .block h2 {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #d4b15a;
+      margin-bottom: 8px;
+    }
+
+    /* Add-ons */
+    .menu { margin-top: 0.16in; }
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      border-bottom: 1px solid rgba(212, 177, 90, 0.22);
+      padding: 11px 0;
+    }
+    .row strong { font-family: Cinzel, serif; font-weight: 600; font-size: 15px; letter-spacing: 0.04em; }
+    .row .meta { display: block; margin-top: 2px; font-family: Cormorant, serif; font-size: 15px; color: #e7dcc4; }
+    .row em { font-style: normal; font-family: Cinzel, serif; color: #f0d78c; font-size: 16px; white-space: nowrap; }
+    .split { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; margin-top: 0.22in; }
+    .panel {
+      border: 1px solid rgba(212, 177, 90, 0.35);
+      padding: 14px 14px 10px;
+    }
+    .panel h2 { font-size: 13px; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .panel p, .panel li { font-family: Cormorant, serif; font-size: 15px; line-height: 1.3; color: #f3ead6; }
+    .panel ol { list-style: none; margin: 0; padding: 0; }
+    .panel ol li { padding-left: 0; margin-bottom: 8px; }
+    .panel li::before { display: none; }
+    .begin-num { font-family: Cinzel, serif; color: #f0d78c; margin-right: 6px; }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <div class="glow"></div>
+    <div class="frame"></div>
+    <div class="pad cover">
+      <img class="crest" src="crest.png" alt="Ivory Crown Collective" />
+      <h1>MONTHLY<br />WEBSITE CARE</h1>
+      <p class="lede">A month of updates, bug fixes, and steady support for a website you already have.</p>
+      <ul class="promises">
+        <li>Page updates, sized by the package you pick</li>
+        <li>Bug fixes on the site you already run</li>
+        <li>IT and integration support on the full month</li>
+      </ul>
+      <div class="price-row">
+        <article>
+          <p class="amt">$150</p>
+          <h2>Site care</h2>
+          <p>3 pages · 7 days</p>
+        </article>
+        <article>
+          <p class="amt">$400</p>
+          <h2>Site and app care</h2>
+          <p>8 pages · 5 days</p>
+        </article>
+        <article>
+          <p class="amt">$800</p>
+          <h2>Full monthly support</h2>
+          <p>15 pages · 3 days</p>
+        </article>
+      </div>
+      <footer class="foot"><span>Each order is one month</span><span>01</span></footer>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="glow"></div>
+    <div class="frame"></div>
+    <div class="pad month">
+      <div class="runhead">
+        <div class="who"><img src="crown.png" alt="" /> IVORY CROWN COLLECTIVE</div>
+        <p class="kicker">The month</p>
+      </div>
+      <h1>One list. A sized month. The site stays in shape.</h1>
+      <p class="lede">You already have a website. This month it may need a new photo, a wording change, a form, a plugin, or a fix. You choose the package. The package sets how much fits.</p>
+      <div class="steps">
+        <article>
+          <p class="n">01</p>
+          <h2>You send the work</h2>
+          <p>The site link, a way in, and a short list. Text and images for any new page come from you.</p>
+        </article>
+        <article>
+          <p class="n">02</p>
+          <h2>The window closes</h2>
+          <p>Delivery is 7 days, 5 days, or 3 days. The higher package also comes with a faster reply.</p>
+        </article>
+        <article>
+          <p class="n">03</p>
+          <h2>The next month is new</h2>
+          <p>Each order is one month. When you want another, place a new order with a new list.</p>
+        </article>
+      </div>
+      <div class="defs">
+        <article>
+          <h2>What one page means</h2>
+          <p>One page is an update to a page you already have, or one simple new page built from text and images you send. Another page is a $75 add-on and adds one day.</p>
+        </article>
+        <article>
+          <h2>What every package keeps</h2>
+          <p>Updates stay responsive. Content you supply is uploaded. Social icons stay in place. The site you already have is the site this month cares for.</p>
+        </article>
+      </div>
+      <p class="lede" style="margin-top:0.42in; text-align:center;">Site care $150 · Site and app care $400 · Full monthly support $800</p>
+      <footer class="foot"><span>Monthly website care</span><span>02</span></footer>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="glow"></div>
+    <div class="frame"></div>
+    <div class="pad">
+      <div class="runhead">
+        <div class="who"><img src="crown.png" alt="" /> IVORY CROWN COLLECTIVE</div>
+        <p class="kicker">Package 01</p>
+      </div>
+      <div class="pkg">
+        <div class="pkg-side">
+          <p class="kicker">A light month</p>
+          <h1>Site care</h1>
+          <p class="amt-lg">$150</p>
+          <p class="days">Delivered in 7 days</p>
+          <p class="rush">Faster delivery: 3 days for $75.</p>
+          <div class="illu">
+            <svg width="210" height="150" viewBox="0 0 210 150" fill="none" aria-hidden="true">
+              <rect x="18" y="16" width="120" height="92" stroke="#e8c547" stroke-width="1.25"/>
+              <path d="M18 34H138" stroke="#e8c547" stroke-width="1"/>
+              <circle cx="28" cy="25" r="2" fill="#e8c547"/>
+              <circle cx="36" cy="25" r="2" fill="#d4b15a"/>
+              <path d="M32 50H110" stroke="#f0d78c" stroke-width="1.25"/>
+              <path d="M32 62H96" stroke="#8a6d1a" stroke-width="1"/>
+              <path d="M32 72H84" stroke="#8a6d1a" stroke-width="1"/>
+              <rect x="32" y="84" width="36" height="12" stroke="#e8c547" stroke-width="1"/>
+              <path d="M150 78l28 16v28l-28 16-28-16V94l28-16z" stroke="#e8c547" stroke-width="1.25"/>
+              <path d="M150 94v28M136 102l14 8 14-8" stroke="#d4b15a" stroke-width="1"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pkg-main">
+          <p class="lede">For a small, live site that needs a short list handled with care, then a check-in.</p>
+          <div class="block">
+            <h2>Included</h2>
+            <ul>
+              <li>Updates on up to 3 pages</li>
+              <li>1 plugin, installed and checked</li>
+              <li>Content uploads from files you send</li>
+              <li>One check-in on the finished work</li>
+              <li>Responsive updates and social icons</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h2>A month might look like</h2>
+            <ul>
+              <li>A new homepage photo and updated hours</li>
+              <li>A broken button and a stray link put right</li>
+              <li>One plugin you have already chosen, installed and checked</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h2>Bring this</h2>
+            <ul>
+              <li>The page links, the wording, and the images</li>
+              <li>The name of the plugin, if one is on the list</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h2>The window</h2>
+            <p class="lede" style="font-size:18px;">The 7 days cover this month’s list. A page past the three, or a plugin past the one, is an add-on on the last page.</p>
+          </div>
+        </div>
+      </div>
+      <footer class="foot"><span>Site care · $150</span><span>03</span></footer>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="glow"></div>
+    <div class="frame"></div>
+    <div class="pad">
+      <div class="runhead">
+        <div class="who"><img src="crown.png" alt="" /> IVORY CROWN COLLECTIVE</div>
+        <p class="kicker">Package 02</p>
+      </div>
+      <div class="pkg">
+        <div class="pkg-side">
+          <p class="kicker">Site plus the tool behind it</p>
+          <h1>Site and app care</h1>
+          <p class="amt-lg">$400</p>
+          <p class="days">Delivered in 5 days</p>
+          <p class="rush">Faster delivery: 2 days for $100.</p>
+          <div class="illu">
+            <svg width="220" height="150" viewBox="0 0 220 150" fill="none" aria-hidden="true">
+              <rect x="8" y="28" width="112" height="86" stroke="#e8c547" stroke-width="1.25"/>
+              <path d="M8 44H120" stroke="#e8c547" stroke-width="1"/>
+              <path d="M20 60H78" stroke="#f0d78c" stroke-width="1.25"/>
+              <path d="M20 72H66" stroke="#8a6d1a"/>
+              <rect x="20" y="86" width="28" height="14" stroke="#e8c547"/>
+              <rect x="128" y="18" width="78" height="104" stroke="#e8c547" stroke-width="1.25"/>
+              <path d="M140 40h40M140 52h28M140 72h46M140 84h34" stroke="#d4b15a"/>
+              <circle cx="167" cy="104" r="8" stroke="#f0d78c" stroke-width="1.25"/>
+              <path d="M167 100v5l3 2" stroke="#f0d78c" stroke-width="1.25"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pkg-main">
+          <p class="lede">For a live site that also has a web app, and a month that includes a form.</p>
+          <div class="block">
+            <h2>Included</h2>
+            <ul>
+              <li>Updates on up to 8 pages</li>
+              <li>3 plugins, installed and checked</li>
+              <li>One opt-in form on a page you already have</li>
+              <li>Small fixes to an existing web app</li>
+              <li>Content uploads, responsive updates, and social icons</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h2>A month might look like</h2>
+            <ul>
+              <li>Copy and photos refreshed across the pages in the package</li>
+              <li>A newsletter form placed on an existing page</li>
+              <li>A small bug corrected in a tool your customers already use</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h2>Bring this</h2>
+            <ul>
+              <li>The list of pages, and the fields the form should collect</li>
+              <li>Where the app misbehaves, and what the correct result looks like</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h2>The window</h2>
+            <p class="lede" style="font-size:18px;">The 5 days cover this month’s list. An app fix here is a small correction to a web app you already run.</p>
+          </div>
+        </div>
+      </div>
+      <footer class="foot"><span>Site and app care · $400</span><span>04</span></footer>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="glow"></div>
+    <div class="frame"></div>
+    <div class="pad">
+      <div class="runhead">
+        <div class="who"><img src="crown.png" alt="" /> IVORY CROWN COLLECTIVE</div>
+        <p class="kicker">Package 03</p>
+      </div>
+      <div class="pkg">
+        <div class="pkg-side">
+          <p class="kicker">The full month</p>
+          <h1>Full monthly support</h1>
+          <p class="amt-lg">$800</p>
+          <p class="days">Delivered in 3 days</p>
+          <p class="rush">Faster delivery: 1 day for $125.</p>
+          <div class="illu">
+            <svg width="220" height="150" viewBox="0 0 220 150" fill="none" aria-hidden="true">
+              <circle cx="48" cy="74" r="22" stroke="#e8c547" stroke-width="1.25"/>
+              <circle cx="110" cy="40" r="16" stroke="#f0d78c" stroke-width="1.25"/>
+              <circle cx="168" cy="86" r="26" stroke="#e8c547" stroke-width="1.25"/>
+              <path d="M68 66 L96 48" stroke="#d4b15a"/>
+              <path d="M70 80 L144 84" stroke="#d4b15a"/>
+              <path d="M124 50 L148 72" stroke="#d4b15a"/>
+              <path d="M42 74h12M48 68v12M110 34v12M164 86h8" stroke="#f0d78c" stroke-width="1.1"/>
+            </svg>
+          </div>
+        </div>
+        <div class="pkg-main">
+          <p class="lede">For the month when the pages, the app, and the technical work belong in one pair of hands, with a faster reply.</p>
+          <div class="block">
+            <h2>Included</h2>
+            <ul>
+              <li>Updates on up to 15 pages</li>
+              <li>5 plugins, installed and checked</li>
+              <li>One opt-in form</li>
+              <li>One email-tool connection, for a tool you already pay for</li>
+              <li>App fixes, plus IT or integration support</li>
+              <li>A faster reply during the order</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h2>A month might look like</h2>
+            <ul>
+              <li>A wide content pass across the pages in the package</li>
+              <li>A broken workflow in the existing app put back in order</li>
+              <li>Mailchimp, Klaviyo, or a similar tool connected, and one integration straightened out</li>
+            </ul>
+          </div>
+          <div class="block">
+            <h2>The window</h2>
+            <p class="lede" style="font-size:18px;">The 3 days cover this month’s list, with a faster reply while the order is open. The email tool is one you already pay for.</p>
+          </div>
+        </div>
+      </div>
+      <footer class="foot"><span>Full monthly support · $800</span><span>05</span></footer>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="glow"></div>
+    <div class="frame"></div>
+    <div class="pad">
+      <div class="runhead">
+        <div class="who"><img src="crown.png" alt="" /> IVORY CROWN COLLECTIVE</div>
+        <p class="kicker">Add-ons and the start</p>
+      </div>
+      <h1 style="font-size:28px; letter-spacing:0.04em;">Add what the month still needs.</h1>
+      <p class="lede" style="margin-top:8px; max-width:6.4in;">Every add-on is priced on its own and adds the days shown. The package price stays the price of the month you picked.</p>
+      <div class="menu">
+        <div class="row"><div><strong>Extra page</strong><span class="meta">One more page, from your text and images</span></div><em>$75 · 1 day</em></div>
+        <div class="row"><div><strong>Extra plugin</strong><span class="meta">One more plugin, installed and checked</span></div><em>$40 · 1 day</em></div>
+        <div class="row"><div><strong>Opt-in form</strong><span class="meta">One form on a page you already have</span></div><em>$60 · 1 day</em></div>
+        <div class="row"><div><strong>Email-tool connection</strong><span class="meta">One tool you already pay for</span></div><em>$90 · 2 days</em></div>
+        <div class="row"><div><strong>Extra hour</strong><span class="meta">Updates, fixes, or setup beyond the package</span></div><em>$95 · 1 day</em></div>
+      </div>
+      <div class="split">
+        <div class="panel">
+          <h2>A larger piece of work</h2>
+          <p>A new website, a new store, product uploads, and payment setup are their own projects.</p>
+          <p style="margin-top:8px;">A hacked site, or a site that is fully down, starts with a look. That recovery is billed in extra hours at $95.</p>
+        </div>
+        <div class="panel">
+          <h2>Begin</h2>
+          <ol>
+            <li><span class="begin-num">01</span>Pick Site care, Site and app care, or Full monthly support.</li>
+            <li><span class="begin-num">02</span>Send the link, a login or a collaborator invite, and the list.</li>
+            <li><span class="begin-num">03</span>Send the text and images for any new page.</li>
+          </ol>
+        </div>
+      </div>
+      <p class="lede" style="margin-top:0.22in; text-align:center; font-style:italic;">Each order is one month. The next month begins when you say so.</p>
+      <footer class="foot"><span>Ivory Crown Collective · Monthly website care</span><span>06</span></footer>
+    </div>
+  </section>
+</body>
+</html>
