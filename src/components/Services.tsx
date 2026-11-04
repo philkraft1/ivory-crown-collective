@@ -11,7 +11,12 @@ export function Services() {
           Three practices. One standard.
         </h2>
         <p className="mt-4 max-w-lg text-base leading-relaxed text-pearl/55">
-          Web design, software & apps, and IT — one studio, the same standard of craft.
+          Web design, software & apps, and IT — one studio, the same standard of craft. For a
+          site you already have,{" "}
+          <a href="#monthly-care" className="text-gold-bright underline-offset-4 hover:underline">
+            monthly care
+          </a>{" "}
+          keeps it in shape.
         </p>
 
         <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-0">

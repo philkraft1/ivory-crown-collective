@@ -172,6 +172,7 @@ export function Contact() {
               <option>Web Design</option>
               <option>Software & Apps</option>
               <option>IT Solutions</option>
+              <option>Monthly website care</option>
               <option>Multiple / Other</option>
             </select>
           </label>

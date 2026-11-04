@@ -1,6 +1,13 @@
+export type PayServiceId =
+  | "web-design"
+  | "software-apps"
+  | "it-solutions"
+  | "consult"
+  | "monthly-care";
+
 export type PayOffering = {
   id: string;
-  serviceId: "web-design" | "software-apps" | "it-solutions" | "consult";
+  serviceId: PayServiceId;
   title: string;
   description: string;
   amountCents: number;
@@ -40,7 +47,42 @@ export const PAY_OFFERINGS: PayOffering[] = [
     amountCents: 10000,
     label: "$100 consult",
   },
+  {
+    id: "monthly-site-care",
+    serviceId: "monthly-care",
+    title: "Site care — one month",
+    description:
+      "One month of small page updates, bug fixes, and one check-in on a site you already have. Up to 3 pages and 1 plugin. Delivered in 7 days.",
+    amountCents: 15000,
+    label: "$150",
+  },
+  {
+    id: "monthly-site-app-care",
+    serviceId: "monthly-care",
+    title: "Site and app care — one month",
+    description:
+      "One month of site updates, one opt-in form, and small fixes to an existing web app. Up to 8 pages and 3 plugins. Delivered in 5 days.",
+    amountCents: 40000,
+    label: "$400",
+  },
+  {
+    id: "monthly-full-support",
+    serviceId: "monthly-care",
+    title: "Full monthly support — one month",
+    description:
+      "One month of site care, app fixes, and IT or integration support, with a faster reply. Up to 15 pages, 5 plugins, one form, and one email-tool connection. Delivered in 3 days.",
+    amountCents: 80000,
+    label: "$800",
+  },
 ];
+
+export const DEPOSIT_OFFERINGS = PAY_OFFERINGS.filter(
+  (item) => item.serviceId !== "monthly-care",
+);
+
+export const MONTHLY_CARE_OFFERINGS = PAY_OFFERINGS.filter(
+  (item) => item.serviceId === "monthly-care",
+);
 
 export function getOffering(id: string): PayOffering | undefined {
   return PAY_OFFERINGS.find((item) => item.id === id);

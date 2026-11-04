@@ -10,6 +10,7 @@ type PaidSession = {
   user: UserDataInput;
   value: number | null;
   currency: string | null;
+  monthlyCare: boolean;
 };
 
 const emptySession: PaidSession = {
@@ -18,6 +19,7 @@ const emptySession: PaidSession = {
   user: {},
   value: null,
   currency: null,
+  monthlyCare: false,
 };
 
 async function verifyPaidSession(sessionId: string | undefined): Promise<PaidSession> {
@@ -55,6 +57,7 @@ async function verifyPaidSession(sessionId: string | undefined): Promise<PaidSes
       value:
         typeof session.amount_total === "number" ? session.amount_total / 100 : null,
       currency: session.currency,
+      monthlyCare: session.metadata?.serviceId === "monthly-care",
     };
   } catch {
     return emptySession;
@@ -67,7 +70,7 @@ export default async function PaySuccessPage({
   searchParams: Promise<{ session_id?: string }>;
 }) {
   const params = await searchParams;
-  const { paid, ref, user, value, currency } = await verifyPaidSession(
+  const { paid, ref, user, value, currency, monthlyCare } = await verifyPaidSession(
     params.session_id,
   );
 
@@ -129,7 +132,9 @@ export default async function PaySuccessPage({
         Thank you.
       </h1>
       <p className="mt-4 max-w-md text-base leading-relaxed text-pearl/55">
-        {SITE.founder.name} will follow up shortly to confirm next steps.
+        {monthlyCare
+          ? `${SITE.founder.name} will follow up for access and this month’s list.`
+          : `${SITE.founder.name} will follow up shortly to confirm next steps.`}
       </p>
       {ref && (
         <p className="mt-3 max-w-md break-all text-xs text-pearl/30">Ref: {ref}</p>

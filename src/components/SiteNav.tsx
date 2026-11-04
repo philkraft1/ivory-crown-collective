@@ -4,6 +4,7 @@ import { SITE } from "@/lib/site";
 const links = [
   { href: "/", label: "Home" },
   { href: "/#about", label: "About" },
+  { href: "/#monthly-care", label: "Care" },
   { href: "/#pay", label: "Book" },
   { href: SITE.shopUrl, label: "Shop", external: true },
   { href: "/#contact", label: "Contact" },

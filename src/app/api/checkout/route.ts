@@ -91,6 +91,21 @@ export async function POST(request: Request) {
           serviceId: offering.serviceId,
           founder: `${SITE.founder.name}, ${SITE.founder.title}`,
         },
+        ...(offering.serviceId === "monthly-care"
+          ? {
+              custom_fields: [
+                {
+                  key: "month_list",
+                  label: {
+                    type: "custom" as const,
+                    custom: "Site link and this month's list",
+                  },
+                  type: "text" as const,
+                  optional: false,
+                },
+              ],
+            }
+          : {}),
         integration_identifier: `icc-${offering.serviceId}-${randomIntegrationSuffix()}`,
       },
       {

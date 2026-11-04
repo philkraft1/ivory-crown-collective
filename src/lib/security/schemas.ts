@@ -5,6 +5,7 @@ export const CONTACT_INTERESTS = [
   "Web Design",
   "Software & Apps",
   "IT Solutions",
+  "Monthly website care",
   "Multiple / Other",
   "General",
 ] as const;
