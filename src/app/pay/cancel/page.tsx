@@ -15,7 +15,7 @@ export default function PayCancelPage() {
       </p>
       <div className="mt-10 flex flex-wrap justify-center gap-4">
         <Link
-          href="/#pay"
+          href="/book"
           className="group relative inline-flex overflow-hidden px-6 py-3 font-[family-name:var(--font-cinzel)] text-xs font-semibold tracking-[0.22em] text-ink uppercase"
         >
           <span
@@ -25,7 +25,7 @@ export default function PayCancelPage() {
           <span className="relative">Back to pay</span>
         </Link>
         <Link
-          href="/#contact"
+          href="/contact"
           className="border border-gold/45 px-6 py-3 font-[family-name:var(--font-cinzel)] text-xs tracking-[0.22em] text-gold-bright uppercase transition-colors hover:border-gold-hot hover:text-gold-hot"
         >
           Contact

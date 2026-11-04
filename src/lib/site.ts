@@ -2,14 +2,13 @@ export const SITE = {
   name: "Ivory Crown Collective",
   url: "https://ivorycrowncollective.com",
   description:
-    "Ivory Crown Collective — web design, software & apps, and IT solutions. Book a project.",
+    "Ivory Crown Collective builds websites, software, and IT systems. Choose a service to get started.",
   phoneDisplay: "(732) 233-8516",
   phoneTel: "+17322338516",
   // Normalized from phil@ivorycrowncollective@gmail.com (invalid double-@)
   email: "phil@ivorycrowncollective.com",
-  shopUrl: "https://ivorycrowncollective.store",
-  shopLabel: "Grab your fall needs",
-  shopCta: "Shop",
+  ebayUrl: "https://www.ebay.com/str/ivorycrowncollective",
+  ebayLabel: "eBay",
   gaMeasurementId: "G-M0286DKYRS",
   founder: {
     name: "Philip S. Kraft",
@@ -22,21 +21,67 @@ export const SITE = {
 export const SERVICES = [
   {
     id: "web-design",
+    href: "/services/web-design",
     title: "Web Design",
-    blurb:
-      "Brand-first sites and interfaces built to convert — marketing pages, product UI, and digital presence with clear structure.",
+    line: "Sites with a clear next step.",
+    lede: "Marketing pages and product sites, laid out so a visitor understands the work and knows what to do next.",
+    points: [
+      "A structure people can follow without a tour",
+      "Pages written around the work you actually do",
+      "A layout that still feels like your business on a phone",
+    ],
+    offeringId: "web-design-deposit",
+    interest: "Web Design",
   },
   {
     id: "software-apps",
+    href: "/services/software-apps",
     title: "Software & Apps",
-    blurb:
-      "Custom web apps and lightweight software — workflows, dashboards, and tools shaped around how your business actually runs.",
+    line: "Tools built around the work.",
+    lede: "Custom web apps and small software for a process that has outgrown a spreadsheet or a pile of messages.",
+    points: [
+      "Workflows, dashboards, and internal tools",
+      "Screens that match how the work already happens",
+      "Software your team can keep using after launch",
+    ],
+    offeringId: "software-apps-deposit",
+    interest: "Software & Apps",
   },
   {
     id: "it-solutions",
+    href: "/services/it-solutions",
     title: "IT Solutions",
-    blurb:
-      "Practical systems work — stack decisions, integrations, and tooling that keep your operation sharp and maintainable.",
+    line: "Systems that stay understandable.",
+    lede: "Stack choices, connections between the tools you already pay for, and the setup that keeps a small operation running.",
+    points: [
+      "A recommendation you can act on",
+      "Integrations between the systems you already use",
+      "Notes the next person can follow",
+    ],
+    offeringId: "it-solutions-deposit",
+    interest: "IT Solutions",
+  },
+] as const;
+
+export const CARE_DOOR = {
+  id: "monthly-care",
+  href: "/services/monthly-care",
+  title: "Monthly Care",
+  line: "Upkeep for a site you already have.",
+  lede: "Updates, fixes, and a check-in, sized as one month. You send the site, a way in, and a short list.",
+  interest: "Monthly website care",
+} as const;
+
+export const DOORS = [
+  ...SERVICES.map((service) => ({
+    href: service.href,
+    title: service.title,
+    line: service.line,
+  })),
+  {
+    href: CARE_DOOR.href,
+    title: CARE_DOOR.title,
+    line: CARE_DOOR.line,
   },
 ] as const;
 

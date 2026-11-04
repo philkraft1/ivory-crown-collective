@@ -2,20 +2,18 @@ import { FEATURED_PROJECT, PORTFOLIO } from "@/lib/site";
 
 export function Portfolio() {
   return (
-    <section id="about" className="relative border-t border-gold/15 px-5 py-20 sm:px-8 sm:py-28">
+    <section className="relative px-5 py-14 sm:px-8 sm:py-20">
       <div
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(232,185,35,0.08)_0%,transparent_50%)]"
         aria-hidden="true"
       />
       <div className="relative mx-auto max-w-6xl">
-        <p className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.35em] text-gold uppercase">
-          About
-        </p>
-        <h2 className="mt-3 max-w-xl font-[family-name:var(--font-cinzel)] text-3xl font-semibold tracking-[-0.02em] text-pearl sm:text-4xl md:text-5xl">
+        <p className="text-sm text-gold">Work</p>
+        <h1 className="mt-3 max-w-xl font-[family-name:var(--font-cinzel)] text-4xl font-semibold tracking-[-0.03em] text-pearl sm:text-5xl">
           Recent work.
-        </h2>
-        <p className="mt-4 max-w-lg text-base leading-relaxed text-pearl/55">
-          A look at what Ivory Crown Collective has been shipping — starting with the latest site build.
+        </h1>
+        <p className="mt-4 max-w-lg text-base leading-relaxed text-pearl/70">
+          A look at what the studio has shipped, starting with the latest site.
         </p>
 
         <a

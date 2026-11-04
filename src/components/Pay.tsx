@@ -1,68 +1,43 @@
 "use client";
 
 import { CheckoutPanel, CheckoutTurnstile, useCheckoutActions } from "@/components/CheckoutPanel";
-import { DEPOSIT_OFFERINGS, formatUsd } from "@/lib/payments";
+import { DEPOSIT_OFFERINGS, formatUsd, type PayOffering } from "@/lib/payments";
 import { SITE } from "@/lib/site";
 
-export function Pay() {
+export function Pay({ offeringIds }: { offeringIds?: readonly string[] }) {
+  const offerings = offeringIds
+    ? DEPOSIT_OFFERINGS.filter((item) => offeringIds.includes(item.id))
+    : DEPOSIT_OFFERINGS;
+
   return (
-    <section id="pay" className="relative border-t border-gold/15 px-5 py-20 sm:px-8 sm:py-28">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(232,185,35,0.1)_0%,transparent_45%)]"
-        aria-hidden="true"
-      />
-
-      <div className="relative mx-auto max-w-6xl">
-        <p className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.35em] text-gold uppercase">
-          Pay / book
-        </p>
-        <h2 className="mt-3 max-w-2xl font-[family-name:var(--font-cinzel)] text-3xl font-semibold tracking-[-0.02em] text-pearl sm:text-4xl md:text-5xl">
-          Secure deposits with Stripe.
-        </h2>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-pearl/55">
-          Lock in work with {SITE.founder.name}. You’ll check out on Stripe’s secure page — card and
-          other local methods when available.
-        </p>
-
-        <CheckoutPanel action="checkout">
-          <PayOffers />
-        </CheckoutPanel>
-
-        <p className="mt-8 text-xs tracking-[0.16em] text-pearl/35 uppercase">
-          Powered by Stripe · Secure checkout
-        </p>
-      </div>
-    </section>
+    <CheckoutPanel action="checkout">
+      <PayOffers offerings={offerings} />
+    </CheckoutPanel>
   );
 }
 
-function PayOffers() {
+function PayOffers({ offerings }: { offerings: PayOffering[] }) {
   const { canPay, loadingId, error, start } = useCheckoutActions();
 
   return (
-    <>
-      <div className="mt-10 space-y-3">
-        <p className="text-xs tracking-[0.2em] text-pearl/45 uppercase">
-          {canPay
-            ? "Verified — choose a package to pay"
-            : "Complete the check below to enable payment"}
+    <div>
+      <div className="space-y-3">
+        <p className="text-sm text-pearl/60">
+          {canPay ? "Choose a package to pay." : "Complete the check below to enable payment."}
         </p>
         <CheckoutTurnstile />
       </div>
 
-      <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {DEPOSIT_OFFERINGS.map((offering) => (
+      <div className={`mt-8 grid gap-4 ${offerings.length > 1 ? "md:grid-cols-2" : ""}`}>
+        {offerings.map((offering) => (
           <article
             key={offering.id}
-            className="flex flex-col border border-gold/20 px-6 py-7 transition-colors hover:border-gold/40"
+            className="flex flex-col rounded-lg border border-white/10 px-6 py-6"
           >
-            <p className="text-xs tracking-[0.22em] text-gold-bright uppercase">
-              {offering.serviceId === "consult" ? "Consult" : offering.serviceId.replace("-", " ")}
-            </p>
-            <h3 className="mt-3 font-[family-name:var(--font-cinzel)] text-2xl font-semibold text-pearl">
+            <h3 className="font-[family-name:var(--font-cinzel)] text-xl font-semibold text-pearl">
               {offering.title}
             </h3>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-pearl/55">{offering.description}</p>
+            <p className="mt-3 flex-1 text-sm leading-relaxed text-pearl/65">{offering.description}</p>
             <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
               <p className="font-[family-name:var(--font-cinzel)] text-xl text-gold-hot">
                 {formatUsd(offering.amountCents)}
@@ -71,7 +46,7 @@ function PayOffers() {
                 type="button"
                 disabled={!canPay || loadingId === offering.id}
                 onClick={() => start(offering.id)}
-                className="group relative inline-flex min-w-[9.5rem] items-center justify-center overflow-hidden px-6 py-3 font-[family-name:var(--font-cinzel)] text-xs font-semibold tracking-[0.22em] text-ink uppercase disabled:cursor-not-allowed disabled:opacity-50"
+                className="group relative inline-flex min-w-[9.5rem] items-center justify-center overflow-hidden rounded-md px-6 py-3 font-[family-name:var(--font-cinzel)] text-xs font-semibold tracking-[0.14em] text-ink uppercase disabled:cursor-not-allowed disabled:opacity-50"
               >
                 <span
                   aria-hidden="true"
@@ -95,6 +70,10 @@ function PayOffers() {
           .
         </p>
       )}
-    </>
+
+      <p className="mt-6 text-xs tracking-[0.12em] text-pearl/40 uppercase">
+        Powered by Stripe · Secure checkout
+      </p>
+    </div>
   );
 }

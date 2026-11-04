@@ -9,7 +9,22 @@ import { SITE } from "@/lib/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-export function Contact() {
+const FORM_INTERESTS = [
+  "Web Design",
+  "Software & Apps",
+  "IT Solutions",
+  "Monthly website care",
+  "Multiple / Other",
+] as const;
+
+type FormInterest = (typeof FORM_INTERESTS)[number];
+
+function isFormInterest(value: string | undefined): value is FormInterest {
+  return FORM_INTERESTS.some((item) => item === value);
+}
+
+export function Contact({ interest }: { interest?: string }) {
+  const selectedInterest: FormInterest = isFormInterest(interest) ? interest : "Web Design";
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const [turnstileToken, setTurnstileToken] = useState("");
@@ -63,21 +78,18 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative border-t border-gold/15 px-5 py-20 sm:px-8 sm:py-28">
-      <div className="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
-        <div>
-          <p className="font-[family-name:var(--font-cinzel)] text-xs tracking-[0.35em] text-gold uppercase">
-            Book / contact
-          </p>
-          <h2 className="mt-3 font-[family-name:var(--font-cinzel)] text-3xl font-semibold tracking-[-0.02em] text-pearl sm:text-4xl md:text-5xl">
-            Let’s build something.
-          </h2>
-          <p className="mt-4 max-w-md text-base leading-relaxed text-pearl/55">
-            Web design, software & apps, or IT help — message {SITE.founder.name} and you’ll hear
-            back directly. Prefer to start with a deposit?{" "}
-            <a href="#pay" className="text-gold-bright underline underline-offset-4 hover:text-gold-hot">
-              Pay securely with Stripe
-            </a>
+    <section id="contact" className="grid gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
+      <div>
+          <p className="text-sm text-gold">Contact</p>
+          <h1 className="mt-3 font-[family-name:var(--font-cinzel)] text-4xl font-semibold tracking-[-0.03em] text-pearl sm:text-5xl">
+            Send a note.
+          </h1>
+          <p className="mt-4 max-w-md text-base leading-relaxed text-pearl/70">
+            Web design, software, IT, or a month of care. {SITE.founder.name} reads these
+            directly. Ready to hold a date?{" "}
+            <Link href="/book" className="text-gold-bright underline underline-offset-4 hover:text-gold-hot">
+              Pay a deposit
+            </Link>
             .
           </p>
 
@@ -166,14 +178,12 @@ export function Contact() {
             <span className="mb-2 block text-xs tracking-[0.2em] text-pearl/45 uppercase">Interest</span>
             <select
               name="interest"
-              defaultValue="Web Design"
+              defaultValue={selectedInterest}
               className="w-full border border-gold/25 bg-void px-4 py-3 text-pearl outline-none transition focus:border-gold-bright"
             >
-              <option>Web Design</option>
-              <option>Software & Apps</option>
-              <option>IT Solutions</option>
-              <option>Monthly website care</option>
-              <option>Multiple / Other</option>
+              {FORM_INTERESTS.map((item) => (
+                <option key={item}>{item}</option>
+              ))}
             </select>
           </label>
 
@@ -227,7 +237,6 @@ export function Contact() {
             </p>
           )}
         </form>
-      </div>
     </section>
   );
 }
