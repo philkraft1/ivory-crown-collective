@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ItPlans } from "@/components/ItPlans";
 import { PageShell } from "@/components/PageShell";
 import { Pay } from "@/components/Pay";
 import { FEATURED_PROJECT, SERVICES } from "@/lib/site";
@@ -37,10 +38,11 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const service = getService(slug);
   if (!service) notFound();
 
-  const offering = getOffering(service.offeringId);
+  const isIt = service.id === "it-solutions";
+  const offering = isIt ? undefined : getOffering(service.offeringId);
 
   return (
-    <PageShell>
+    <PageShell wide={isIt}>
       <Link href="/" className="text-sm text-pearl/55 transition-colors hover:text-gold-bright">
         Home
       </Link>
@@ -49,14 +51,20 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-pearl/70">{service.lede}</p>
 
-      <ul className="mt-10 space-y-3">
-        {service.points.map((point) => (
-          <li key={point} className="flex gap-3 text-base leading-relaxed text-pearl/75">
-            <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
-            {point}
-          </li>
-        ))}
-      </ul>
+      {isIt ? (
+        <div className="mt-12">
+          <ItPlans />
+        </div>
+      ) : (
+        <ul className="mt-10 space-y-3">
+          {service.points.map((point) => (
+            <li key={point} className="flex gap-3 text-base leading-relaxed text-pearl/75">
+              <span aria-hidden="true" className="mt-[0.55em] h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+              {point}
+            </li>
+          ))}
+        </ul>
+      )}
 
       {service.id === "web-design" && (
         <p className="mt-10 text-sm leading-relaxed text-pearl/60">
@@ -73,25 +81,27 @@ export default async function ServicePage({ params }: ServicePageProps) {
         </p>
       )}
 
-      <div className="mt-14 border-t border-white/10 pt-10">
-        <h2 className="font-[family-name:var(--font-cinzel)] text-2xl font-semibold text-pearl">
-          Begin with a deposit
-        </h2>
-        <p className="mt-3 max-w-xl text-base leading-relaxed text-pearl/65">
-          {offering
-            ? `${formatUsd(offering.amountCents)} holds your place and is applied to the project.`
-            : "The deposit holds your place and is applied to the project."}{" "}
-          <Link
-            href={`/contact?interest=${encodeURIComponent(service.interest)}`}
-            className="text-gold-bright underline decoration-gold/40 underline-offset-4 hover:text-gold-hot"
-          >
-            Prefer to talk first?
-          </Link>
-        </p>
-        <div className="mt-8">
-          <Pay offeringIds={[service.offeringId]} />
+      {!isIt && (
+        <div className="mt-14 border-t border-white/10 pt-10">
+          <h2 className="font-[family-name:var(--font-cinzel)] text-2xl font-semibold text-pearl">
+            Begin with a deposit
+          </h2>
+          <p className="mt-3 max-w-xl text-base leading-relaxed text-pearl/65">
+            {offering
+              ? `${formatUsd(offering.amountCents)} holds your place and is applied to the project.`
+              : "The deposit holds your place and is applied to the project."}{" "}
+            <Link
+              href={`/contact?interest=${encodeURIComponent(service.interest)}`}
+              className="text-gold-bright underline decoration-gold/40 underline-offset-4 hover:text-gold-hot"
+            >
+              Prefer to talk first?
+            </Link>
+          </p>
+          <div className="mt-8">
+            <Pay offeringIds={[service.offeringId]} />
+          </div>
         </div>
-      </div>
+      )}
     </PageShell>
   );
 }

@@ -82,7 +82,6 @@ export async function POST(request: Request) {
           },
         ],
         success_url: `${origin}/pay/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${origin}/pay/cancel`,
         customer_email: parsed.data.email,
         billing_address_collection: "auto",
         allow_promotion_codes: true,
@@ -105,7 +104,25 @@ export async function POST(request: Request) {
                 },
               ],
             }
-          : {}),
+          : offering.serviceId === "it-solutions"
+            ? {
+                custom_fields: [
+                  {
+                    key: "systems",
+                    label: {
+                      type: "custom" as const,
+                      custom: "Which systems should this cover?",
+                    },
+                    type: "text" as const,
+                    optional: false,
+                  },
+                ],
+              }
+            : {}),
+        cancel_url:
+          offering.serviceId === "it-solutions"
+            ? `${origin}/services/it-solutions`
+            : `${origin}/pay/cancel`,
         integration_identifier: `icc-${offering.serviceId}-${randomIntegrationSuffix()}`,
       },
       {

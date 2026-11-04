@@ -11,6 +11,7 @@ type PaidSession = {
   value: number | null;
   currency: string | null;
   monthlyCare: boolean;
+  itSolutions: boolean;
 };
 
 const emptySession: PaidSession = {
@@ -20,6 +21,7 @@ const emptySession: PaidSession = {
   value: null,
   currency: null,
   monthlyCare: false,
+  itSolutions: false,
 };
 
 async function verifyPaidSession(sessionId: string | undefined): Promise<PaidSession> {
@@ -58,6 +60,7 @@ async function verifyPaidSession(sessionId: string | undefined): Promise<PaidSes
         typeof session.amount_total === "number" ? session.amount_total / 100 : null,
       currency: session.currency,
       monthlyCare: session.metadata?.serviceId === "monthly-care",
+      itSolutions: session.metadata?.serviceId === "it-solutions",
     };
   } catch {
     return emptySession;
@@ -70,7 +73,7 @@ export default async function PaySuccessPage({
   searchParams: Promise<{ session_id?: string }>;
 }) {
   const params = await searchParams;
-  const { paid, ref, user, value, currency, monthlyCare } = await verifyPaidSession(
+  const { paid, ref, user, value, currency, monthlyCare, itSolutions } = await verifyPaidSession(
     params.session_id,
   );
 
@@ -134,7 +137,9 @@ export default async function PaySuccessPage({
       <p className="mt-4 max-w-md text-base leading-relaxed text-pearl/55">
         {monthlyCare
           ? `${SITE.founder.name} will follow up for access and this month’s list.`
-          : `${SITE.founder.name} will follow up shortly to confirm next steps.`}
+          : itSolutions
+            ? `${SITE.founder.name} will follow up to confirm the systems in this package.`
+            : `${SITE.founder.name} will follow up shortly to confirm next steps.`}
       </p>
       {ref && (
         <p className="mt-3 max-w-md break-all text-xs text-pearl/30">Ref: {ref}</p>

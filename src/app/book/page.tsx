@@ -20,13 +20,22 @@ export default function BookPage() {
       <p className="mt-4 max-w-xl text-lg leading-relaxed text-pearl/70">
         Pick the work, then pay on Stripe. The amount is applied to the project.{" "}
         <Link
-          href={CARE_DOOR.href}
+          href="/services/it-solutions"
           className="text-gold-bright underline decoration-gold/40 underline-offset-4 hover:text-gold-hot"
         >
-          Monthly care
+          IT packages
         </Link>{" "}
-        is billed on its own page.
+        are priced on their own page.
       </p>
+      <Link
+        href={CARE_DOOR.href}
+        className="mt-8 inline-flex items-center rounded-lg border border-gold/45 bg-white/[0.03] px-5 py-4 text-base text-pearl transition-colors hover:border-gold-hot hover:text-gold-bright focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-bright"
+      >
+        Looking for Monthly Maintenance?{" "}
+        <span className="ml-2 font-[family-name:var(--font-cinzel)] text-sm tracking-[0.08em] text-gold-bright uppercase">
+          Click here
+        </span>
+      </Link>
       <div className="mt-12">
         <Pay />
       </div>

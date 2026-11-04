@@ -32,12 +32,31 @@ export const PAY_OFFERINGS: PayOffering[] = [
     label: "$300 deposit",
   },
   {
-    id: "it-solutions-deposit",
+    id: "it-basic",
     serviceId: "it-solutions",
-    title: "IT Solutions Deposit",
-    description: "Kickoff deposit for systems, integrations, or IT project work.",
-    amountCents: 30000,
-    label: "$300 deposit",
+    title: "IT Basic",
+    description:
+      "One system you already use, set up for up to 5 people, with a short guide and one check-in. Delivered in 7 days.",
+    amountCents: 45000,
+    label: "$450",
+  },
+  {
+    id: "it-pro",
+    serviceId: "it-solutions",
+    title: "IT Pro",
+    description:
+      "Up to 3 systems, one integration, access for up to 15 people, a runbook, and two check-ins. Delivered in 10 days.",
+    amountCents: 120000,
+    label: "$1,200",
+  },
+  {
+    id: "it-max",
+    serviceId: "it-solutions",
+    title: "IT Max",
+    description:
+      "The tools you rely on, up to 5 integrations, a security pass, a backup plan, and a faster reply. Delivered in 14 days.",
+    amountCents: 240000,
+    label: "$2,400",
   },
   {
     id: "consult-retainer",
@@ -77,8 +96,10 @@ export const PAY_OFFERINGS: PayOffering[] = [
 ];
 
 export const DEPOSIT_OFFERINGS = PAY_OFFERINGS.filter(
-  (item) => item.serviceId !== "monthly-care",
+  (item) => item.serviceId !== "monthly-care" && item.serviceId !== "it-solutions",
 );
+
+export const IT_OFFERINGS = PAY_OFFERINGS.filter((item) => item.serviceId === "it-solutions");
 
 export const MONTHLY_CARE_OFFERINGS = PAY_OFFERINGS.filter(
   (item) => item.serviceId === "monthly-care",
