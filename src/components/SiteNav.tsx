@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
@@ -17,6 +18,11 @@ const serviceLinks = [
     line: CARE_DOOR.line,
   },
 ];
+
+const leadLinks = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+] as const;
 
 const pageLinks = [
   { href: "/work", label: "Work" },
@@ -77,13 +83,28 @@ export function SiteNav() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8">
         <Link
           href="/"
-          className="shrink-0 font-[family-name:var(--font-cinzel)] text-sm font-semibold tracking-[0.04em] text-pearl transition-colors hover:text-gold-bright"
+          className="inline-flex shrink-0 items-center gap-2.5 font-[family-name:var(--font-cinzel)] text-sm font-semibold tracking-[0.04em] text-pearl transition-colors hover:text-gold-bright"
         >
+          <Image src="/brand/crown.png" alt="" width={424} height={324} className="h-8 w-auto" />
           <span className="sm:hidden">Ivory Crown</span>
           <span className="hidden sm:inline">{SITE.name}</span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-5 lg:flex">
+          {leadLinks.map((link) => {
+            const current = isCurrent(pathname, link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={current ? "page" : undefined}
+                className={`text-sm ${linkClass(current)}`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+
           <div className="relative">
             <button
               type="button"
@@ -154,7 +175,7 @@ export function SiteNav() {
 
         <button
           type="button"
-          className="text-sm text-pearl/80 md:hidden"
+          className="text-sm text-pearl/80 lg:hidden"
           aria-expanded={menuOpen}
           aria-controls={menuId}
           onClick={() => setMenuOpen((open) => !open)}
@@ -164,9 +185,25 @@ export function SiteNav() {
       </div>
 
       {menuOpen && (
-        <nav id={menuId} aria-label="Mobile" className="border-t border-white/10 bg-void md:hidden">
+        <nav id={menuId} aria-label="Mobile" className="border-t border-white/10 bg-void lg:hidden">
           <div className="mx-auto max-w-6xl px-5 py-4">
-            <p className="text-xs text-gold">Services</p>
+            <ul>
+              {leadLinks.map((link) => {
+                const current = isCurrent(pathname, link.href);
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      aria-current={current ? "page" : undefined}
+                      className={`block py-2.5 text-base ${current ? "text-gold-bright" : "text-pearl"}`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+            <p className="mt-3 border-t border-white/10 pt-3 text-xs text-gold">Services</p>
             <ul className="mt-2">
               {serviceLinks.map((link) => {
                 const current = pathname === link.href;

@@ -8,7 +8,7 @@ const HASH_ROUTES: Record<string, string> = {
   "#software-apps": "/services/software-apps",
   "#it-solutions": "/services/it-solutions",
   "#monthly-care": "/services/monthly-care",
-  "#about": "/work",
+  "#about": "/about",
   "#pay": "/book",
   "#contact": "/contact",
 };
