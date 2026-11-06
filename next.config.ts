@@ -79,6 +79,21 @@ const securityHeaders = [
     : []),
 ];
 
+// Live-game overlays (public/overlay/*) are loaded as a browser source by
+// TikTok LIVE Studio / OBS. The site-wide frame-ancestors 'none' + DENY
+// headers block that embed, so overlays get their own permissive framing
+// policy while every other route keeps the strict one.
+const overlayCsp = cspDirectives
+  .map((d) => (d.startsWith("frame-ancestors") ? "frame-ancestors *" : d))
+  .join("; ")
+  .concat(";");
+const overlayHeaders = [
+  { key: "Content-Security-Policy", value: overlayCsp },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Cache-Control", value: "no-store" },
+];
+
 const nextConfig: NextConfig = {
   // Do not 308 www → apex. Apex DNS currently points at GoDaddy forwarding
   // (3.33.251.168 / 15.197.225.128), which 301s back to www. That loop meant
@@ -87,7 +102,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
+        source: "/overlay/:path*",
+        headers: overlayHeaders,
+      },
+      {
+        source: "/:path((?!overlay/).*)",
         headers: securityHeaders,
       },
     ];
