@@ -13,14 +13,62 @@ const solve = document.querySelector("#solve");
 const spinButton = document.querySelector("#spin");
 const samples = document.querySelector("#samples");
 const link = document.querySelector("#overlay-link");
+const tiktokLink = document.querySelector("#tiktok-link");
+const tiktokNote = document.querySelector("#tiktok-note");
+const tiktokTransparent = document.querySelector("#tiktok-transparent");
+const tiktokTitle = document.querySelector("#tiktok-title");
+const tiktokSubtitle = document.querySelector("#tiktok-subtitle");
+const tiktokSpin = document.querySelector("#tiktok-spin");
+const copyTiktok = document.querySelector("#copy-tiktok");
 const connection = document.querySelector("#conn");
 const speakToggle = document.querySelector("#speak");
 const wheel = document.querySelector("#wheel");
 const wedgeReadout = document.querySelector("#wedge");
 const solveButton = document.querySelector("#solve-btn");
 
-link.href = `${location.origin}/overlay`;
-link.textContent = link.href;
+link.href = "/overlay";
+link.textContent = "local board";
+
+let tiktokBase = tiktokLink.href;
+
+function renderTiktokLink() {
+  const url = new URL(tiktokBase);
+  url.search = "";
+  if (tiktokTransparent.checked) url.searchParams.set("transparent", "1");
+  const title = tiktokTitle.value.trim();
+  const subtitle = tiktokSubtitle.value.trim();
+  if (title) url.searchParams.set("title", title);
+  if (subtitle) url.searchParams.set("subtitle", subtitle);
+  if (tiktokSpin.checked) url.searchParams.set("spin", "1");
+  tiktokLink.href = url.toString();
+  tiktokLink.textContent = url.toString();
+}
+
+async function loadTiktokLink() {
+  try {
+    const response = await fetch("/api/tiktok-link");
+    const data = await response.json();
+    if (data.url) tiktokBase = data.url;
+    tiktokNote.textContent = data.note || "";
+  } catch {
+    tiktokNote.textContent = "TikTok rejects 127.0.0.1. Use the public overlay address.";
+  }
+  renderTiktokLink();
+}
+
+for (const field of [tiktokTransparent, tiktokTitle, tiktokSubtitle, tiktokSpin]) {
+  field.addEventListener("input", renderTiktokLink);
+  field.addEventListener("change", renderTiktokLink);
+}
+copyTiktok.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(tiktokLink.href);
+    copyTiktok.textContent = "Copied";
+  } catch {
+    copyTiktok.textContent = "Copy the link above";
+  }
+});
+loadTiktokLink();
 
 let state = null;
 let lastSpoken = "";

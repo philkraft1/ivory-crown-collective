@@ -83,7 +83,7 @@
     font: inherit;
     text-transform: uppercase;
   }
-  #category { text-transform: none; }
+  #category, #tiktok-title, #tiktok-subtitle { text-transform: none; }
   .row, .samples { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
   button, .samples button {
     border: 1px solid rgba(255, 214, 10, 0.4);
@@ -110,7 +110,9 @@
   form input { margin: 0; }
   .speak { margin-top: 12px; letter-spacing: 0; text-transform: none; font-size: 0.9rem; font-weight: 650; color: #fff8ea; }
   .speak input { width: auto; display: inline-block; margin: 0 6px 0 0; }
-  .overlay-note { margin: 12px 0 0; font-size: 0.92rem; }
+  .tiktok { margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(255, 214, 10, 0.28); }
+  .tiktok h2 { margin: 0 0 6px; font-family: Georgia, "Palatino Linotype", serif; color: #ffe56a; font-size: 1.35rem; }
+  .overlay-note { margin: 12px 0; font-size: 0.92rem; word-break: break-all; }
   .overlay-note a { color: #ffd60a; }
   button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid #ffd60a; outline-offset: 2px; }
   .players { justify-content: stretch; margin-top: 8px; }
@@ -171,7 +173,23 @@
         <button id="solve-btn" type="submit">Solve</button>
       </form>
       <label class="speak"><input id="speak" type="checkbox" checked /> Speak the calls on this computer</label>
-      <p class="overlay-note">Browser source for OBS or TikTok: <a id="overlay-link" href="/overlay" target="_blank" rel="noreferrer">open the overlay</a></p>
+      <section class="tiktok" aria-label="TikTok overlay link">
+        <h2>TikTok link</h2>
+        <p id="tiktok-note" class="hint"></p>
+        <label class="speak"><input id="tiktok-transparent" type="checkbox" checked /> Transparent background</label>
+        <label>Title
+          <input id="tiktok-title" type="text" maxlength="60" placeholder="Wheel of Fortune" />
+        </label>
+        <label>Subtitle
+          <input id="tiktok-subtitle" type="text" maxlength="80" placeholder="Send a gift to spin the wheel!" />
+        </label>
+        <p class="overlay-note"><a id="tiktok-link" href="https://ivorycrowncollective.com/overlay/wheel.html" target="_blank" rel="noreferrer">https://ivorycrowncollective.com/overlay/wheel.html</a></p>
+        <div class="row">
+          <button id="copy-tiktok" type="button">Copy TikTok link</button>
+          <label class="speak"><input id="tiktok-spin" type="checkbox" /> Spin once when it loads</label>
+        </div>
+      </section>
+      <p class="overlay-note">Preview on this machine only: <a id="overlay-link" href="/overlay">local board</a></p>
     </section>
   </div>
   <script type="module" src="/host.js"></script>

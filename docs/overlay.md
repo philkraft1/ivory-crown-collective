@@ -3,9 +3,14 @@
 ## Wheel of Fortune
 
 - **URL:** `https://ivorycrowncollective.com/overlay/wheel.html`
-  (locally: `http://localhost:3000/overlay/wheel.html`)
+  (local preview only: `http://localhost:3000/overlay/wheel.html` — TikTok rejects this)
 - **File:** `public/overlay/wheel.html` — self-contained, no site nav/footer,
   no fixed-size stage.
+
+TikTok LIVE Studio rejects `localhost` and `127.0.0.1`. Paste the public
+overlay, not the host console. The host page builds that address and adds
+the query parameters below. A generated HTTPS tunnel, when one is running,
+points at this same file.
 
 ### Add it in TikTok LIVE Studio / OBS
 

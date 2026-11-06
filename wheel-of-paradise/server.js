@@ -5,6 +5,7 @@ const fs = require("fs");
 const http = require("http");
 const path = require("path");
 const { createGame, applyAction, hostView, publicView, SPIN_MS } = require("./lib/game");
+const { tiktokOverlay } = require("./lib/tiktok-link");
 
 const PUBLIC_DIR = path.join(__dirname, "public");
 const STATIC = {
@@ -55,6 +56,7 @@ function createApp(options = {}) {
   const token = options.token || crypto.randomBytes(16).toString("hex");
   const rng = options.rng || Math.random;
   const spinMs = Number.isFinite(options.spinMs) ? options.spinMs : SPIN_MS;
+  const originFile = options.originFile || path.join(__dirname, "tiktok-origin.txt");
   const game = createGame();
   const publicClients = new Set();
   const hostClients = new Set();
@@ -153,6 +155,17 @@ function createApp(options = {}) {
       return;
     }
 
+    if (req.method === "GET" && pathname === "/api/tiktok-link") {
+      let originText = "";
+      try {
+        originText = fs.readFileSync(originFile, "utf8");
+      } catch {
+        originText = "";
+      }
+      sendJson(res, 200, tiktokOverlay(originText));
+      return;
+    }
+
     if (req.method === "GET" && pathname === "/api/state") {
       sendJson(res, 200, publicView(game));
       return;
@@ -226,7 +239,7 @@ if (require.main === module) {
     const address = server.address();
     const shownPort = address && typeof address === "object" ? address.port : port;
     console.log(`Wheel of Fortune host   http://${host}:${shownPort}/host`);
-    console.log(`Overlay for OBS/TikTok  http://${host}:${shownPort}/overlay`);
+    console.log("TikTok overlay link     see the host page (HTTPS, not this machine's localhost)");
   });
 }
 
