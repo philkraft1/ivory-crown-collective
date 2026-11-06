@@ -10,6 +10,7 @@ export const SITE = {
   ebayUrl: "https://www.ebay.com/str/ivorycrowncollective",
   ebayLabel: "eBay",
   gaMeasurementId: "G-M0286DKYRS",
+  adsenseClient: "ca-pub-1650615821073381",
   founder: {
     name: "Philip S. Kraft",
     title: "CEO",

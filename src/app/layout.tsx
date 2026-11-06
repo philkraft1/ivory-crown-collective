@@ -77,6 +77,11 @@ export default function RootLayout({
         {/* Hostname-gated GA4 so only ivorycrowncollective.com loads the agency property.
             Native <head> script so Google's HTML crawler / "Test your website" can see it. */}
         <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${SITE.adsenseClient}`}
+          crossOrigin="anonymous"
+        />
+        <script
           id="google-analytics"
           dangerouslySetInnerHTML={{
             __html: `

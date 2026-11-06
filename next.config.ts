@@ -12,17 +12,17 @@ const cspDirectives = [
   "form-action 'self'",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "img-src 'self' data: https://*.stripe.com https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.googleadservices.com https://*.g.doubleclick.net",
-  "font-src 'self' data:",
-  "style-src 'self' 'unsafe-inline'",
-  // Stripe Checkout + Cloudflare Turnstile + Google Analytics (gtag.js)
-  "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://checkout.stripe.com https://challenges.cloudflare.com",
+  "img-src 'self' data: https://*.stripe.com https://*.google-analytics.com https://*.googletagmanager.com https://*.google.com https://*.googleadservices.com https://*.g.doubleclick.net https://*.googlesyndication.com https://*.gstatic.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "style-src 'self' 'unsafe-inline' https://www.gstatic.com https://fonts.googleapis.com",
+  // Stripe Checkout + Cloudflare Turnstile + Google Analytics + AdSense
+  "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://checkout.stripe.com https://challenges.cloudflare.com https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://pagead2.googlesyndication.com https://www.google.com https://fundingchoicesmessages.google.com https://securepubads.g.doubleclick.net",
   isProd
-    ? "script-src 'self' 'unsafe-inline' https://js.stripe.com https://challenges.cloudflare.com https://www.googletagmanager.com"
-    : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://challenges.cloudflare.com https://www.googletagmanager.com",
+    ? "script-src 'self' 'unsafe-inline' https://js.stripe.com https://challenges.cloudflare.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://www.googletagservices.com https://adservice.google.com https://partner.googleadservices.com https://www.google.com https://securepubads.g.doubleclick.net https://fundingchoicesmessages.google.com"
+    : "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://challenges.cloudflare.com https://www.googletagmanager.com https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://www.googletagservices.com https://adservice.google.com https://partner.googleadservices.com https://www.google.com https://securepubads.g.doubleclick.net https://fundingchoicesmessages.google.com",
   isProd
-    ? "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://*.googleadservices.com https://*.g.doubleclick.net"
-    : "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://*.googleadservices.com https://*.g.doubleclick.net ws: wss:",
+    ? "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://*.googleadservices.com https://*.g.doubleclick.net https://*.googlesyndication.com https://*.adtrafficquality.google https://csi.gstatic.com https://fundingchoicesmessages.google.com"
+    : "connect-src 'self' https://api.stripe.com https://challenges.cloudflare.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://*.google.com https://*.googleadservices.com https://*.g.doubleclick.net https://*.googlesyndication.com https://*.adtrafficquality.google https://csi.gstatic.com https://fundingchoicesmessages.google.com ws: wss:",
   "report-uri /api/csp-report",
   "report-to csp-endpoint",
   ...(isProd ? ["upgrade-insecure-requests"] : []),

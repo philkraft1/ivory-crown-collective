@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   },
 };
 
-const EFFECTIVE = "November 4, 2026";
+const EFFECTIVE = "November 5, 2026";
 const ENTITY = `${SITE.name} LLC`;
 const EBAY_PRIVACY =
   "https://www.ebay.com/help/policies/member-behaviour-policies/user-privacy-notice-privacy-policy?id=4260";
@@ -221,6 +221,7 @@ export default function PrivacyPage() {
                   Measure advertising conversions (hashed email, phone, and name/address when you
                   submit a form or complete a payment).
                 </li>
+                <li>Show ads on this website through Google AdSense.</li>
               </ul>
               <p className="mt-4">
                 We do not use your information for unrelated marketing unless you ask us to.
@@ -236,9 +237,10 @@ export default function PrivacyPage() {
               </p>
               <ul className="mt-4 list-disc space-y-2 pl-5">
                 <li>
-                  <strong className="text-pearl">Google LLC</strong> — Analytics and Ads enhanced
-                  conversions. After you send a message or pay, we may send hashed email, phone,
-                  and name/address so Google can attribute conversions.{" "}
+                  <strong className="text-pearl">Google LLC</strong> — Analytics, AdSense, and Ads
+                  enhanced conversions. AdSense may use cookies to show and measure ads on this
+                  site. After you send a message or pay, we may send hashed email, phone, and
+                  name/address so Google can attribute conversions.{" "}
                   <a
                     className="text-gold-bright underline underline-offset-4"
                     href="https://policies.google.com/privacy"
@@ -295,10 +297,20 @@ export default function PrivacyPage() {
               </h2>
               <p className="mt-4">
                 This site uses Google Analytics to understand how people use the site (for example,
-                pages visited and approximate traffic). When you submit the contact form or complete
-                a payment, we also send hashed first-party details (email, phone, name, and billing
-                address when available) to Google for enhanced conversion measurement. Google may
-                set cookies or similar storage for that measurement. Stripe Checkout, Cloudflare
+                pages visited and approximate traffic). Google AdSense may set cookies or similar
+                storage to show ads and measure them. You can manage personalized ads at{" "}
+                <a
+                  href="https://adssettings.google.com"
+                  className="text-champagne underline decoration-champagne/40 underline-offset-2 hover:decoration-champagne"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google&apos;s Ad Settings
+                </a>
+                . When you submit the contact form or complete a payment, we also send hashed
+                first-party details (email, phone, name, and billing address when available) to
+                Google for enhanced conversion measurement. Google may set cookies or similar
+                storage for that measurement. Stripe Checkout, Cloudflare
                 Turnstile, and Vercel may also set strictly necessary cookies or similar storage to
                 complete a payment, verify you are not a bot, or keep the site secure. You can
                 control cookies in your browser; blocking necessary ones may stop checkout or the
@@ -340,7 +352,19 @@ export default function PrivacyPage() {
               <ul className="mt-4 list-disc space-y-2 pl-5">
                 <li>Know what personal information we hold and how we use it.</li>
                 <li>Access, correct, or delete that information, subject to legal limits.</li>
-                <li>Opt out of sale or sharing — we do not sell or share for advertising.</li>
+                <li>
+                  Opt out of sale or sharing. We do not sell personal information. Google AdSense
+                  may use cookies to show ads, and you can turn off personalized ads in{" "}
+                  <a
+                    href="https://adssettings.google.com"
+                    className="text-gold-bright underline underline-offset-4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Google&apos;s Ad Settings
+                  </a>
+                  .
+                </li>
                 <li>Appeal a denial of a privacy request.</li>
               </ul>
               <p className="mt-4">
