@@ -86,6 +86,16 @@ export const DOORS = [
   },
 ] as const;
 
+export const FEATURED_PROJECT = {
+  category: "Web Design",
+  title: "The Rosenfeld Ranch",
+  summary:
+    "A dual-destination site for a New Jersey petting farm and puppy experience — clear paths for Howell and Lakewood, built to feel warm, local, and easy to book.",
+  href: "https://rosenfeldranch.com",
+  hrefLabel: "rosenfeldranch.com",
+  meta: "Live · Howell & Lakewood, NJ",
+} as const;
+
 export const PORTFOLIO = [
   {
     category: "Software & Apps",
