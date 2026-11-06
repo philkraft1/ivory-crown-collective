@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ItPlans } from "@/components/ItPlans";
 import { PageShell } from "@/components/PageShell";
 import { Pay } from "@/components/Pay";
-import { FEATURED_PROJECT, SERVICES } from "@/lib/site";
+import { SERVICES } from "@/lib/site";
 import { formatUsd, getOffering } from "@/lib/payments";
 
 type ServicePageProps = {
@@ -64,21 +64,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </li>
           ))}
         </ul>
-      )}
-
-      {service.id === "web-design" && (
-        <p className="mt-10 text-sm leading-relaxed text-pearl/60">
-          Recent:{" "}
-          <a
-            href={FEATURED_PROJECT.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-gold-bright underline decoration-gold/40 underline-offset-4 hover:text-gold-hot"
-          >
-            {FEATURED_PROJECT.title}
-          </a>
-          <span className="text-pearl/45"> · {FEATURED_PROJECT.meta}</span>
-        </p>
       )}
 
       {!isIt && (

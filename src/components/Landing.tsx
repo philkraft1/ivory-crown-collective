@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { HashRedirect } from "@/components/HashRedirect";
-import { DOORS, FEATURED_PROJECT } from "@/lib/site";
+import { DOORS } from "@/lib/site";
 
 export function Landing() {
   return (
@@ -53,21 +53,13 @@ export function Landing() {
             ))}
           </ul>
 
-          <div className="mt-12 flex flex-col items-center gap-3 text-sm text-pearl/60 sm:flex-row sm:justify-center sm:gap-8">
+          <div className="mt-12 text-center text-sm text-pearl/60">
             <Link
               href="/contact"
               className="text-pearl underline decoration-gold/40 underline-offset-4 transition-colors hover:text-gold-bright"
             >
               Not sure where to start? Send a note.
             </Link>
-            <a
-              href={FEATURED_PROJECT.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition-colors hover:text-gold-bright"
-            >
-              Recent site · {FEATURED_PROJECT.title}
-            </a>
           </div>
         </div>
       </section>
