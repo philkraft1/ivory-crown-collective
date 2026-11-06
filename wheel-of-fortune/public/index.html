@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wheel of Paradise</title>
+  <link rel="stylesheet" href="/host.css">
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <p class="brand">Live Games</p>
+      <h1>Wheel of Paradise</h1>
+      <p>A chat game for TikTok LIVE Studio. Viewers join, guess letters, and solve the puzzle on stream.</p>
+    </section>
+    <section class="card">
+      <h2>On stream</h2>
+      <ol>
+        <li>Double-click Start Wheel of Fortune, or run npm start in this folder.</li>
+        <li>Open the host desk and lock in a puzzle.</li>
+        <li>In TikTok LIVE Studio, add a Link source and paste http://127.0.0.1:8787/overlay</li>
+        <li>Place that source in the upper-middle of a vertical scene. Do not add the host page.</li>
+        <li>When you are LIVE, connect your TikTok username on the host desk.</li>
+      </ol>
+      <div class="row">
+        <a href="/host"><button type="button">Open host desk</button></a>
+        <a href="/overlay"><button type="button">Preview overlay</button></a>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Chat commands</h2>
+      <p><b>/join</b> gets a viewer in line. They can join at any time.</p>
+      <p><b>/s</b> spins the wheel on that viewer's turn.</p>
+      <p><b>/g S</b> plays one letter after the wheel stops.</p>
+      <p><b>/solve the whole puzzle</b> solves it.</p>
+      <p>An exclamation mark works too, if TikTok filters the slash.</p>
+    </section>
+  </main>
+</body>
+</html>

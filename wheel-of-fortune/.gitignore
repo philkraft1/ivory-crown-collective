@@ -1,0 +1,8 @@
+node_modules/
+cloudflared.exe
+npm-debug.log*
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*

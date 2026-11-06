@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Wheel of Paradise host desk</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/host.css">
+</head>
+<body>
+  <header class="warn">Do not put this page on stream. It can show the answer. The overlay URL is the one for TikTok LIVE Studio.</header>
+  <main>
+    <section class="hero">
+      <p class="brand">Live Games</p>
+      <h1>Wheel of Paradise</h1>
+      <p id="now">Set a puzzle to open the round.</p>
+    </section>
+
+    <section class="card">
+      <h2>Put this on stream</h2>
+      <p id="overlay-url" class="url"></p>
+      <div class="row">
+        <button id="copy-url" type="button">Copy overlay link</button>
+        <button id="open-overlay" type="button">Open overlay window</button>
+      </div>
+      <p class="hint">Do not paste the local address above into LIVE Studio. Make a stream link, then paste that https address into Add source, then Link.</p>
+      <p id="stream-url" class="url">No stream link yet.</p>
+      <p id="stream-detail" class="hint">Click New stream link when you are ready to go live.</p>
+      <button id="new-link" type="button">New stream link</button>
+      <label class="check"><input id="transparent" type="checkbox"> Transparent background, for laying the game over your camera</label>
+      <label class="check"><input id="sound" type="checkbox" checked> Wheel sounds</label>
+    </section>
+
+    <section class="card">
+      <h2>TikTok chat</h2>
+      <p id="tiktok" class="status-pill">Practice mode is ready</p>
+      <form id="connect-form">
+        <label>Your TikTok username <input id="username" name="username" autocomplete="off" placeholder="without the @"></label>
+        <div class="row">
+          <button type="submit">Connect when live</button>
+          <button id="disconnect" type="button">Disconnect</button>
+        </div>
+      </form>
+      <p class="hint">Connect only while you are LIVE. No TikTok password is stored. Until then, use the practice buttons below.</p>
+    </section>
+
+    <section class="card">
+      <h2>Puzzle</h2>
+      <form id="puzzle-form">
+        <label>Category <input id="category" name="category" value="Phrase"></label>
+        <label>Puzzle <input id="puzzle" name="puzzle" placeholder="Before the sun comes up"></label>
+        <div class="row">
+          <button type="submit">Lock puzzle</button>
+          <button id="random" type="button">Surprise puzzle</button>
+          <button id="start" type="button">Start round</button>
+        </div>
+      </form>
+      <p class="hint">Scores are game points, not real money.</p>
+      <button id="peek" type="button">Peek at the answer</button>
+      <p id="answer" class="answer" hidden></p>
+    </section>
+
+    <section class="card">
+      <h2>Practice chat</h2>
+      <form id="chat-form">
+        <label>Viewer name <input id="sim-name" value="Alex"></label>
+        <label>Chat message <input id="sim-comment" placeholder="/join"></label>
+        <button type="submit">Send</button>
+      </form>
+      <div class="row">
+        <button type="button" data-chat="/join">/join</button>
+        <button id="skip" type="button">Skip player</button>
+        <button id="force" type="button">Award solve</button>
+        <button id="reset" type="button">Reset game</button>
+      </div>
+      <div id="letters" class="letters"></div>
+      <ol id="heard" class="heard"></ol>
+    </section>
+
+    <section class="card leaderboard-card">
+      <h2>Leaderboard</h2>
+      <p class="hint">Ranked by total points, then by puzzles solved. It stays up between rounds until you reset the game.</p>
+      <ol id="leaderboard" class="leaderboard"></ol>
+    </section>
+
+    <section class="card">
+      <h2>This round</h2>
+      <div id="players" class="players"></div>
+      <ol id="log"></ol>
+    </section>
+  </main>
+  <script src="/host.js"></script>
+</body>
+</html>

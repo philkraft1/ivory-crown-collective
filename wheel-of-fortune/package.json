@@ -1,0 +1,17 @@
+{
+  "name": "wheel-of-fortune",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wheel of Paradise chat game for TikTok LIVE Studio",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "tiktok-live-connector": "^2.5.0"
+  }
+}
