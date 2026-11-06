@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Wheel of Paradise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/overlay.css?v=17">
+</head>
+<body>
+  <main class="stage" id="stage">
+    <img class="stage-art" src="/stage.jpg" alt="">
+    <svg class="scene" viewBox="0 0 1080 1920" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#79c8ff"/>
+          <stop offset="0.42" stop-color="#ffe7a8"/>
+          <stop offset="0.68" stop-color="#ffb15a"/>
+        </linearGradient>
+        <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#49d0dc"/>
+          <stop offset="0.55" stop-color="#1287a8"/>
+          <stop offset="1" stop-color="#0b5f78"/>
+        </linearGradient>
+      </defs>
+      <rect width="1080" height="1920" fill="url(#sky)"/>
+      <g fill="#ffffff" opacity="0.9">
+        <ellipse cx="210" cy="250" rx="100" ry="38"/>
+        <ellipse cx="290" cy="230" rx="74" ry="32"/>
+        <ellipse cx="150" cy="230" rx="62" ry="26"/>
+        <ellipse cx="820" cy="160" rx="90" ry="30"/>
+        <ellipse cx="890" cy="180" rx="60" ry="24"/>
+      </g>
+      <circle cx="780" cy="1040" r="108" fill="#fff6cf"/>
+      <circle cx="780" cy="1040" r="74" fill="#ffd56a"/>
+      <rect y="1120" width="1080" height="800" fill="url(#sea)"/>
+      <path d="M0 1140c90-70 180-70 270 0s180 70 270 0 180-70 270 0 180 70 270 0v120H0z" fill="#baf4f6" opacity="0.85"/>
+      <path d="M0 1280c110-46 200-46 300 0s190 46 300 0 190-46 300 0 180 46 180 46v80H0z" fill="#7ad7e4" opacity="0.55"/>
+      <rect y="1620" width="1080" height="300" fill="#f4d7a4"/>
+      <path d="M0 1660c80-30 140-8 190 10 40-28 90-20 130 6 50-24 110-10 150 16v228H0z" fill="#e7c48a"/>
+      <g fill="#1f6b3a">
+        <path d="M150 1500c40-80 30-170-10-250-20 70-10 140 10 250z"/>
+        <path d="M120 1280c-70-20-120-10-170 20 60 10 110 8 170-20z"/>
+        <path d="M140 1260c-20-80 10-140 50-190-10 70 0 130-50 190z"/>
+        <path d="M160 1270c80-30 140-10 190 30-70 8-130 4-190-30z"/>
+        <path d="M150 1290c20 70 70 110 130 140-60-20-100-60-130-140z"/>
+        <path d="M140 1300c-10 80-60 130-130 160 50-30 90-80 130-160z"/>
+      </g>
+      <path d="M168 1290c-30 80-40 180-20 310" fill="none" stroke="#8a5a2b" stroke-width="18" stroke-linecap="round"/>
+      <g fill="#1f6b3a" transform="translate(860 80)">
+        <path d="M70 1420c30-90 20-190-16-280-16 78-6 150 16 280z"/>
+        <path d="M40 1180c-78-16-130-4-180 28 66 8 120 6 180-28z"/>
+        <path d="M60 1160c-16-88 16-150 58-200-12 74 0 140-58 200z"/>
+        <path d="M80 1170c88-28 150-6 200 36-76 6-140 2-200-36z"/>
+        <path d="M70 1190c16 76 74 118 140 148-64-22-108-64-140-148z"/>
+        <path d="M58 1200c-8 86-64 140-140 170 54-32 96-86 140-170z"/>
+      </g>
+      <path d="M930 1360c-20 90-16 190 10 280" fill="none" stroke="#8a5a2b" stroke-width="18" stroke-linecap="round"/>
+    </svg>
+    <header class="top">
+      <p class="brand">Paradise</p>
+      <h1>Wheel of Paradise</h1>
+      <p id="category" class="category">Waiting for a puzzle</p>
+      <p class="help">
+        <span class="cmd" data-cmd="join">/join</span>
+        <span class="cmd" data-cmd="spin">/s</span>
+        <span class="cmd" data-cmd="guess">/g S</span>
+        <span class="cmd" data-cmd="solve">/solve [your answer] to solve the puzzle</span>
+      </p>
+      <div id="turn-indicator" class="turn-indicator" hidden>
+        <div class="indicator-photo" id="indicator-photo"></div>
+        <strong id="indicator-name"></strong>
+        <b id="indicator-time">20</b>
+      </div>
+    </header>
+
+    <section class="wheel-wrap" aria-hidden="false">
+      <div class="wheel-disc">
+        <div class="pointer"></div>
+        <canvas id="wheel" width="1000" height="1000"></canvas>
+        <div class="hub">
+          <span id="hub-kicker">Join</span>
+          <strong id="hub-score">$0</strong>
+        </div>
+        <div id="flash" class="flash"></div>
+      </div>
+    </section>
+
+    <div class="status-row">
+      <p id="status" class="status">Type /join in chat to play</p>
+    </div>
+
+    <section class="board-wrap">
+      <div class="board-clock" id="clock-wrap" hidden>
+        <strong id="clock">20</strong>
+        <span>seconds left</span>
+        <i id="clock-bar"></i>
+      </div>
+      <div id="board" class="board"></div>
+      <div id="vowels" class="vowels"></div>
+      <p id="called" class="called">No consonants called yet</p>
+    </section>
+
+    <section class="bottom">
+      <div id="winner" class="winner" hidden></div>
+      <div id="players" class="seats"></div>
+      <ol id="log" class="log"></ol>
+    </section>
+    <div id="turn-popup" class="turn-popup" hidden>
+      <div class="popup-photo" id="popup-photo"></div>
+      <p>Your turn</p>
+      <strong id="popup-name"></strong>
+    </div>
+    <div id="confetti" class="confetti"></div>
+  </main>
+  <script src="/overlay.js?v=17"></script>
+</body>
+</html>
