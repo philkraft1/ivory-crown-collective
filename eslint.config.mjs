@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Standalone local game server, not part of the Next.js site.
+    "wheel-of-paradise/**",
   ]),
 ]);
 

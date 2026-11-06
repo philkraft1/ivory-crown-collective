@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+wheel-of-paradise/node_modules/
 /.pnp
 .pnp.*
 .yarn/*

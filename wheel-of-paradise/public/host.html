@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Wheel of Fortune — Host</title>
+<link rel="stylesheet" href="/ui.css" />
+<style>
+  :root { --tile: 42px; --wheel: 210px; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    color: #fff8ea;
+    font-family: "Segoe UI", system-ui, sans-serif;
+    background:
+      radial-gradient(900px 420px at 8% -10%, rgba(255, 46, 136, 0.35), transparent 55%),
+      radial-gradient(700px 480px at 110% 0%, rgba(124, 77, 255, 0.45), transparent 50%),
+      #14081f;
+  }
+  .top, .layout { width: min(1120px, calc(100% - 28px)); margin: 0 auto; }
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    padding: 22px 0 8px;
+  }
+  .eyebrow {
+    margin: 0;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: #ffd60a;
+    font-weight: 700;
+  }
+  h1 {
+    margin: 4px 0 0;
+    font-family: Georgia, "Palatino Linotype", serif;
+    font-size: clamp(2rem, 4vw, 3.1rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #ffe56a;
+  }
+  .conn {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #b9f6ca;
+  }
+  .message {
+    width: min(1120px, calc(100% - 28px));
+    margin: 8px auto 14px;
+    min-height: 1.4em;
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+  .layout { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 16px; padding-bottom: 32px; }
+  .panel {
+    background: rgba(22, 8, 40, 0.78);
+    border: 1px solid rgba(255, 214, 10, 0.28);
+    border-radius: 18px;
+    padding: 16px;
+  }
+  .wheel-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin: 18px 0;
+  }
+  .wedge { margin: 0; font-size: 1.4rem; font-weight: 800; color: #fff; min-width: 8ch; }
+  label { display: block; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255, 248, 234, 0.7); }
+  input[type="text"], input:not([type]) {
+    display: block;
+    width: 100%;
+    margin: 6px 0 12px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: #12061c;
+    color: #fff8ea;
+    font: inherit;
+    text-transform: uppercase;
+  }
+  #category { text-transform: none; }
+  .row, .samples { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  button, .samples button {
+    border: 1px solid rgba(255, 214, 10, 0.4);
+    background: rgba(255, 214, 10, 0.1);
+    color: #fff8ea;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button:hover, .samples button:hover { background: rgba(255, 214, 10, 0.22); }
+  #load, #solve-btn {
+    background: #ffd60a;
+    color: #2a1600;
+    border-color: #ffd60a;
+  }
+  .hint { margin: 4px 0 10px; color: rgba(255, 248, 234, 0.65); font-size: 0.86rem; }
+  .letters { display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 6px; margin-bottom: 12px; }
+  .letters button { padding: 8px 0; }
+  .letters button.vowel { border-color: #ff2e88; }
+  .letters button.used { opacity: 0.35; }
+  form { display: flex; gap: 8px; }
+  form input { margin: 0; }
+  .speak { margin-top: 12px; letter-spacing: 0; text-transform: none; font-size: 0.9rem; font-weight: 650; color: #fff8ea; }
+  .speak input { width: auto; display: inline-block; margin: 0 6px 0 0; }
+  .overlay-note { margin: 12px 0 0; font-size: 0.92rem; }
+  .overlay-note a { color: #ffd60a; }
+  button:focus-visible, input:focus-visible, a:focus-visible { outline: 2px solid #ffd60a; outline-offset: 2px; }
+  .players { justify-content: stretch; margin-top: 8px; }
+  .players li { flex: 1; }
+  .players input {
+    margin: 0 0 4px;
+    padding: 4px 0;
+    border: 0;
+    background: transparent;
+    font-weight: 800;
+    text-transform: none;
+  }
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="eyebrow">This machine · 127.0.0.1:8787</p>
+      <h1>Wheel of Fortune</h1>
+    </div>
+    <p class="conn" id="conn">Connecting…</p>
+  </header>
+  <p class="message" id="message" aria-live="polite"></p>
+  <div class="layout">
+    <section class="panel" aria-label="Board">
+      <div id="board" class="board" aria-live="polite"></div>
+      <div class="wheel-row">
+        <div class="wheel-wrap">
+          <div class="pointer" aria-hidden="true"></div>
+          <div class="wheel" id="wheel" role="img" aria-label="Wheel"></div>
+          <button class="hub" id="spin" type="button">SPIN</button>
+        </div>
+        <p class="wedge" id="wedge">—</p>
+      </div>
+      <ol id="players" class="players"></ol>
+    </section>
+    <section class="panel controls" aria-label="Host controls">
+      <label>Category
+        <input id="category" type="text" maxlength="40" placeholder="Phrase" />
+      </label>
+      <label>Puzzle
+        <input id="puzzle" type="text" maxlength="48" placeholder="Type the puzzle" autocomplete="off" />
+      </label>
+      <div id="samples" class="samples"></div>
+      <div class="row">
+        <button id="load" type="button">Load puzzle</button>
+        <button id="welcome" type="button">Welcome</button>
+        <button id="new-round" type="button">New round</button>
+        <button id="reset" type="button">Reset scores</button>
+      </div>
+      <p class="hint">Space spins. Press a letter to call it. Vowels cost $250 after a hit. Faded letters on the board are only visible here.</p>
+      <div id="letters" class="letters" aria-label="Letters"></div>
+      <form id="solve-form">
+        <input id="solve" type="text" placeholder="Solve the puzzle" autocomplete="off" />
+        <button id="solve-btn" type="submit">Solve</button>
+      </form>
+      <label class="speak"><input id="speak" type="checkbox" checked /> Speak the calls on this computer</label>
+      <p class="overlay-note">Browser source for OBS or TikTok: <a id="overlay-link" href="/overlay" target="_blank" rel="noreferrer">open the overlay</a></p>
+    </section>
+  </div>
+  <script type="module" src="/host.js"></script>
+</body>
+</html>
