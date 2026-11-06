@@ -1,0 +1,10 @@
+{
+  "name": "wheel-of-paradise",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone Wheel of Fortune host for this machine. Not part of the marketing site.",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  }
+}

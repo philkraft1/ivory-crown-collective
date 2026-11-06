@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+wheel-of-paradise/node_modules/
+wheel-of-paradise/tiktok-origin.txt
 /.pnp
 .pnp.*
 .yarn/*
